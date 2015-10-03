@@ -9,4 +9,4 @@ Zum Beispiel könnte man sich überlegen, dass die Spielperson ein Labyrinth dur
 Als Erweiterung wäre auch vorstellbar, dass man für jede Tür z.B. nur drei Versuche hat. Verliert man das Mini-Game dieser Tür mehr als drei mal verliert man Punkte, oder Leben, oder muss von Vorne beginnen. 
 Eine weitere Erweiterung wäre eine Multiplayer Variante zu gestalten. Zwei oder mehr Spieler würden also zeitgleich das Labyrinth durchlaufen und gegeneinander spielen. Um den Wettkampf zu steigern könnte man zum Beispiel Funktionen einbauen, dass Spieler eine Tür hinter sich versiegeln könntne, sodass es für den nächsten Spieler schwieriger (oder unmöglich) ist diese Tür zu öffnen.
 
-Bei der Umsetzung dieses Spieles müsste natürlich noch an den Details gefeilt werden, aber soweit erst einmal zu der groben Idee.
+Bei der Umsetzung dieses Spieles müsste natürlich noch an den Details gefeilt werden, aber soweit erst einmal die ungefähre Idee.
