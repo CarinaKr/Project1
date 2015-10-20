@@ -1,0 +1,10 @@
+
+Anwendungen, mit PHP:
+
+1. Der Spieler soll ueber das "Spielbrett" bewegt werden.
+2. Uebergang zu den Minigames.
+3. individuelle Spielanwendungen innerhalb der Mini-Games (z.B. Bewegung des Spielers, Bedienung von Schaltflaechen,
+    Bewegung einzelner Elemente, ...)
+
+Durch den Aufbau des Projektes wird der PHP Anteil wohl groesser ausfallen, als der HTML Anteil. Daher wird der PHP
+Anteil zwischen den Gruppenmitgliedern aufgeteilt.
