@@ -1,0 +1,9 @@
+Anwendungen, mit HTML:
+
+Die HTML-Anteile der Mini-Games werden vermutlich eher kürzer ausfallen und lediglich einen Canvas (der dann in PHP/
+ Javascript als "Spielbrett" verwendet wird) und notwendige Buttons zur Spielsteuerung enthalten. 
+Daher werden die HTML-Anteile der Mini-Games vermutlich sich auch sehr ähnlich sehen (etwa so, wie in dem Mini-Game 
+"Mastermind", welches bereits in GitHub steht).
+
+Der HTML-Anteile der Main Methode, also des eigentlichen Labyrintes wird etwas umfangreicher und wir neben einem
+Canvas als Spielbrett und Buttons zur Spielsteuerung auch Links zu den einzelnen Mini-Games enthalten.
