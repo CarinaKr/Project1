@@ -104,6 +104,10 @@ function zeigeLoesung()
 		else if(zLoesung[i]==6){zMainCtx.drawImage(zMainBild,0,100,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 		else if(zLoesung[i]==7){zMainCtx.drawImage(zMainBild,50,100,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 	}
+	zMainCtx.fillStyle="black";
+	zMainCtx.font="30px Arial"
+	zMainCtx.textBaseLine='top';
+	zMainCtx.fillText("Loesung:",400,220);
 }
 
 function zeichneHintergrund()
@@ -327,7 +331,6 @@ function loop()
 		else
 		{zMainCtx.fillText("You lost!",100,200);}
 	}
-	zeigeLoesung();
 	
 	requestaframe(loop);
 }
