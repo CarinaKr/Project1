@@ -8,3 +8,11 @@ Anwendungen, mit PHP:
 
 Durch den Aufbau des Projektes wird der PHP Anteil wohl groesser ausfallen, als der HTML Anteil. Daher wird der PHP
 Anteil zwischen den Gruppenmitgliedern aufgeteilt.
+
+
+Es hat sich herausgestellt, dass für die Anforderungen für diese Projekt die Verwendung von Javascrip geeigneter ist, als
+PHP. Daher wird der PHP-Anteil in Javascrip programmiert werden.
+
+Stand:
+-Mini-Game "Mastermind" fertig und in Github gestellt.
+-Mini-Game "Puzzle" fertig und in Github gestellt.
