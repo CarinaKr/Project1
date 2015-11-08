@@ -106,8 +106,8 @@ function zeigeLoesung()
 	}
 	zMainCtx.fillStyle="black";
 	zMainCtx.font="30px Arial"
-	zMainCtx.textBaseLine='top';
-	zMainCtx.fillText("Loesung:",400,220);
+	zMainCtx.textBaseLine='bottom';
+	zMainCtx.fillText("Loesung:",400,250);
 }
 
 function zeichneHintergrund()
@@ -332,13 +332,25 @@ function loop()
 		{zMainCtx.fillText("You lost!",100,200);}
 	}
 	
+	
 	requestaframe(loop);
 }
 
 function backToTheMaze()
 {
-	window.history.back();
+	if(zGewonnen)
+	{
+		localStorage.setItem("MmindGewonnen","true");
+	}
+	var pTemp=localStorage.getItem("PuzzleGewonnen");
+	var i=0;
+	//window.open("../Labyrinth/Labyrinth.html","_self");
+	close();
 }
 
+function temp()
+{
+	return "true";
+}
 
 init();
