@@ -5,8 +5,6 @@ for(var i=0;i<16;i++)
 {
 	hatFeld[i]=new Array(16);
 }
-var zXSpieler=1;
-var zYSpieler=7;
 var zErwarteEingabe=false;
 
 
@@ -30,14 +28,14 @@ function init()
 	zMainCtx=main_canvas.getContext('2d');
 	
 	document.addEventListener("keypress",tasteGedrueckt,false);
-	document.addEventListener("storage",storage,false);
+	window.addEventListener("storage",storage,false);
 	
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
 			hatFeld[i][j]=new Feld(i*50,j*50);
 		}}
-	//resetSpiel();
+	resetSpiel();
 	ladeBilder();
 	ladeSpielfeld();
 }
@@ -60,15 +58,10 @@ function ladeBilder()
 
 function ladeSpielfeld()
 {   
-
-	if(localStorage.getItem("MmindGewonnen")=="true")
-	{
-		localStorage.setItem("Feld"+1+9,"true");
-		localStorage.setItem("Feld"+1+10,"true");
-		localStorage.setItem("Feld"+2+9,"true");
-		localStorage.setItem("Feld"+2+10,"true");
-	}
-
+	//var tempWindow=window.open("../Mastermind/Mastermind.html","");
+	//var pString=tempWindow.temp();
+	//tempWindow.close();
+	
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
@@ -80,7 +73,9 @@ function ladeSpielfeld()
 
 	zHintergrundCtx.drawImage(zLabyrinthBild,0,0,800,600,0,0,800,600);
 	zMainCtx.clearRect(0,0,800,600);
-	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXSpieler][zYSpieler].zX+5,hatFeld[zXSpieler][zYSpieler].zY+3,45,45);
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
 }
 
 function Feld(pX,pY)
@@ -92,54 +87,68 @@ function Feld(pX,pY)
 
 function oben()
 {
-	if(zYSpieler>0&&hatFeld[zXSpieler][zYSpieler-1].zAktiv)
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	if(zYS>0&&hatFeld[zXS+0][zYS-1].zAktiv)
 	{
-		zYSpieler--;
-		pruefeFeld(zXSpieler,zYSpieler);
+		zYS--;
+		localStorage.setItem("zYSpieler",zYS);
+		pruefeFeld(zXS,zYS);
 	}
 }
 
 function unten()
 {
-	if(zYSpieler<15&&hatFeld[zXSpieler][zYSpieler+1].zAktiv)
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	if(zYS<15&&hatFeld[zXS][zYS+1].zAktiv)
 	{
-		zYSpieler++;
-		pruefeFeld(zXSpieler,zYSpieler);
+		zYS++;
+		localStorage.setItem("zYSpieler",zYS);
+		pruefeFeld(zXS,zYS);
 	}
 }
 
 function links1()
 {
-	if(zXSpieler>0&&hatFeld[zXSpieler-1][zYSpieler].zAktiv)
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	if(zXS>0&&hatFeld[zXS-1][zYS].zAktiv)
 	{
-		zXSpieler--;
-		pruefeFeld(zXSpieler,zYSpieler);
+		zXS--;
+		localStorage.setItem("zXSpieler",zXS);
+		pruefeFeld(zXS,zYS);
 	}
 }
 
 function rechts()
 {
-	if(zXSpieler<15&&hatFeld[zXSpieler+1][zYSpieler].zAktiv)
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	if(zXS<15&&hatFeld[zXS+1][zYS].zAktiv)
 	{
-		zXSpieler++;
-		pruefeFeld(zXSpieler,zYSpieler);
+		zXS++;
+		localStorage.setItem("zXSpieler",zXS);
+		pruefeFeld(zXS,zYS);
 	}
 }
 
 function pruefeFeld( pX, pY)
 {
 	zMainCtx.clearRect(0,0,800,600);
-	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXSpieler][zYSpieler].zX+5,hatFeld[zXSpieler][zYSpieler].zY+3,45,45);
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[pX][pY].zX+5,hatFeld[pX][pY].zY+3,45,45);
 
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
-	if(pSpiel=="Mastermind"||pSpiel=="Farben"||pSpiel=="Puzzle"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
+	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
 		pSpiel=="Spiel6"||pSpiel=="Spiel7")
 		{
 			zErwarteEingabe=true;
 		zMainCtx.fillStyle="grey";
 		zMainCtx.font="20px Arial"
 		zMainCtx.textBaseLine='bottom';
-		zMainCtx.fillText("Press Enter",hatFeld[zXSpieler][zYSpieler].zX,hatFeld[zXSpieler][zYSpieler].zY);
+		zMainCtx.fillText("Press Enter",hatFeld[zXS][zYS].zX,hatFeld[zXS][zYS].zY);
 	}
 	else
 	{zErwarteEingabe=false;}
@@ -148,34 +157,36 @@ function pruefeFeld( pX, pY)
 
 function tasteGedrueckt(e)
 {
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	var pTaste=e.keyCode || e.which;
 	if(zErwarteEingabe&&pTaste==13)
 	{
-		if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Mastermind")	//Spiel 1
+		if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel1")	//Spiel 1
 		{
-			window.open("Mastermind/Mastermind.html","");
+			window.open("Mastermind/Mastermind.html","");			
 		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Puzzle")	//Spiel  2
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel2")	//Spiel  2
 		{
-			
+			window.open("Puzzle/Puzzle.html","");	
 		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Farben")	//Spiel  3
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel3")	//Spiel  3
 		{
-			
+			window.open("Farben/Farben.html","");	
 		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Spiel4")	//Spiel  4
-		{
-			
-		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Spiel5")	//Spiel  5
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
 		{
 			
 		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Spiel6")	//Spiel  6
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
 		{
 			
 		}
-		else if(localStorage.getItem("spielFeld"+zXSpieler+zYSpieler)=="Spiel7")	//Spiel  7
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
+		{
+			
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
 		{
 			
 		}
@@ -190,18 +201,18 @@ function resetSpiel()
 			localStorage.setItem("Feld"+i+j,"false");
 			localStorage.setItem("spielFeld"+i+j,"");
 		}}
-	localStorage.setItem("Feld"+1+7,"true");
-	localStorage.setItem("Feld"+1+8,"true");
-	localStorage.setItem("Feld"+1+9,"true");
-	for(var k=2;k<=8;k++)
-	{localStorage.setItem("Feld"+2+k,"true");}
-	localStorage.setItem("Feld"+3+2,"true");
+	raum1Freischalten();
 	
-	localStorage.setItem("spielFeld"+1+9,"Mastermind");
-	localStorage.setItem("spielFeld"+3+2,"Puzzle");
-	localStorage.setItem("spielFeld"+4+6,"Farben");
+	localStorage.setItem("spielFeld"+1+9,"Spiel1");
+	localStorage.setItem("spielFeld"+2+10,"Spiel1");
+	localStorage.setItem("spielFeld"+3+2,"Spiel2");
+	localStorage.setItem("spielFeld"+4+3,"Spiel2");
+	localStorage.setItem("spielFeld"+4+6,"Spiel3");
+	localStorage.setItem("spielFeld"+5+5,"Spiel3");
 	localStorage.setItem("spielFeld"+6+3,"Spiel4");
-	localStorage.setItem("spielFeld"+3+8,"Spiel5");
+	localStorage.setItem("spielFeld"+7+3,"Spiel4");
+	localStorage.setItem("spielFeld"+6+8,"Spiel5");
+	localStorage.setItem("spielFeld"+7+7,"Spiel5");
 	localStorage.setItem("spielFeld"+9+4,"Spiel6");
 	localStorage.setItem("spielFeld"+13+4,"Spiel7");
 	
@@ -213,12 +224,132 @@ function resetSpiel()
 	localStorage.setItem("Spiel5Gewonnen","false");
 	localStorage.setItem("Spiel6Gewonnen","false");
 	localStorage.setItem("Spiel7Gewonnen","false");
+	
+	localStorage.setItem("zXSpieler","1");
+	localStorage.setItem("zYSpieler","7");
 }
 
 function storage(e)
 {
-	localStorage.setItem(e.key(),e.newValue());
+	var i=e.key;
+	var j=e.newValue;
+	
+	localStorage.setItem(e.key,e.newValue);
+	if(i=="MmindGewonnen"&&j=="true")
+	{spiel1Freischalten();}
+	else if(i=="PuzzleGewonnen"&&j=="true")
+	{spiel2Freischalten();}
+	else if(i=="FarbenGewonnen"&&j=="true")
+	{spiel3Freischalten();}
+
+	ladeSpielfeld();
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	pruefeFeld(zXS,zYS);
 }
 
+function spiel1Freischalten()
+{
+		localStorage.setItem("spielFeld"+1+9,"");
+		localStorage.setItem("spielFeld"+2+10,"");
+		
+		//Raum von Spiel 1
+		localStorage.setItem("Feld"+1+9,"true");
+		localStorage.setItem("Feld"+2+9,"true");
+		localStorage.setItem("Feld"+1+10,"true");
+		localStorage.setItem("Feld"+2+10,"true");
+		
+		//Türen angrenzender Spiele
+		localStorage.setItem("Feld"+7+3,"true");
+		localStorage.setItem("Feld"+7+7,"true");
+		
+		raum2Freischalten();
+}
+function spiel2Freischalten()
+{
+		localStorage.setItem("spielFeld"+3+2,"");
+		localStorage.setItem("spielFeld"+4+3,"");
+		
+		//Raum von Spiel 2
+		localStorage.setItem("Feld"+3+2,"true");
+		localStorage.setItem("Feld"+3+3,"true");
+		localStorage.setItem("Feld"+4+2,"true");
+		localStorage.setItem("Feld"+4+3,"true");
+		
+		//Türen
+		localStorage.setItem("Feld"+6+3,"true");
+		localStorage.setItem("Feld"+5+5,"true");
+		localStorage.setItem("Feld"+9+4,"true");
+		
+		raum3Freischalten();	
+}
+function spiel3Freischalten()
+{
+	localStorage.setItem("spielFeld"+4+6,"");
+	localStorage.setItem("spielFeld"+5+5,"");
+	
+	//Raum von spiel 3
+	for(var k=4;k<=5;k++)
+		{ for(var l=5;l<=6;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+	
+	//Türen
+	localStorage.setItem("Feld"+4+3,"true");
+	localStorage.setItem("Feld"+6+3,"true");
+	localStorage.setItem("Feld"+5+5,"true");
+	localStorage.setItem("Feld"+9+4,"true");
+	localStorage.setItem("Feld"+6+8,"true");
+	
+	raum3Freischalten();
+	raum4Freischalten();
+	
+}
+
+function raum1Freischalten()
+{
+	localStorage.setItem("Feld"+1+7,"true");
+	localStorage.setItem("Feld"+1+8,"true");
+	localStorage.setItem("Feld"+1+9,"true");
+	for(var k=2;k<=8;k++)
+	{localStorage.setItem("Feld"+2+k,"true");}
+	localStorage.setItem("Feld"+3+2,"true");
+}
+function raum2Freischalten()
+{
+		
+		for(var i=3;i<=8;i++)
+		{localStorage.setItem("Feld"+i+10,"true");}
+		localStorage.setItem("Feld"+8+9,"true");
+		localStorage.setItem("Feld"+8+8,"true");
+		localStorage.setItem("Feld"+9+8,"true");
+		for(var j=8;j<=11;j++)
+		{localStorage.setItem("Feld"+j+7,"true");}
+		localStorage.setItem("Feld"+10+6,"true");
+		localStorage.setItem("Feld"+11+6,"true");
+		localStorage.setItem("Feld"+11+5,"true");
+		localStorage.setItem("Feld"+11+4,"true");
+		localStorage.setItem("Feld"+12+4,"true");
+		for(var k=8;k<=11;k++)
+		{ for(var l=2;l<=3;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+}
+function raum3Freischalten()
+{
+		for(var k=5;k<=5;k++)
+		{ for(var l=2;l<=4;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+		for(var i=6;i<=8;i++)
+		{ for(var j=4;j<=6;j++)
+			{localStorage.setItem("Feld"+i+j,"true");}
+		}
+		localStorage.setItem("Feld"+9+6,"true");
+}
+function raum4Freischalten()
+{
+	
+}
 
 init();
