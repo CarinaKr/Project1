@@ -10,10 +10,12 @@ var zErwarteEingabe=false;
 var zSpiel1Gewonnen="MmindGewonnen";
 var zSpiel2Gewonnen="PuzzleGewonnen";
 var zSpiel3Gewonnen="FarbenGewonnen";
+var zSpiel4Gewonnen="SnakeGewonnen";
 
 var zSpiel1Link="Mastermind/Mastermind.html";
 var zSpiel2Link="Puzzle/Puzzle.html";
 var zSpiel3Link="Farben/Farben.html";
+var zSpiel4Link="Snake/Snake.html";
 
 function init()
 {
@@ -83,6 +85,8 @@ function ladeSpielfeld()
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
+	
+	document.getElementById("enter").disabled = true;
 }
 
 function Feld(pX,pY)
@@ -140,6 +144,41 @@ function rechts()
 	}
 }
 
+function enter()
+{
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	
+		if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel1")	//Spiel 1
+		{
+			window.open(zSpiel1Link,"");			
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel2")	//Spiel  2
+		{
+			window.open(zSpiel2Link,"");	
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel3")	//Spiel  3
+		{
+			window.open(zSpiel3Link,"");	
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
+		{
+			window.open(zSpiel4Link,"");
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
+		{
+			
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
+		{
+			
+		}
+		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
+		{
+			
+		}
+}
+
 function pruefeFeld( pX, pY)
 {
 	zMainCtx.clearRect(0,0,800,600);
@@ -147,18 +186,21 @@ function pruefeFeld( pX, pY)
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[pX][pY].zX+5,hatFeld[pX][pY].zY+3,45,45);
 
+	var button=document.getElementById("enter");
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
 	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
 		pSpiel=="Spiel6"||pSpiel=="Spiel7")
 		{
 			zErwarteEingabe=true;
-		zMainCtx.fillStyle="grey";
+			document.getElementById("enter").disabled = false;
+		/*zMainCtx.fillStyle="grey";
 		zMainCtx.font="20px Arial"
 		zMainCtx.textBaseLine='bottom';
-		zMainCtx.fillText("Press Enter",hatFeld[zXS][zYS].zX,hatFeld[zXS][zYS].zY);
+		zMainCtx.fillText("Press Enter",hatFeld[zXS][zYS].zX,hatFeld[zXS][zYS].zY);*/
 	}
 	else
-	{zErwarteEingabe=false;}
+	{zErwarteEingabe=false;
+	 document.getElementById("enter").disabled = true;}
 	
 }
 
@@ -248,6 +290,8 @@ function storage(e)
 	{spiel2Freischalten();}
 	else if(i==zSpiel3Gewonnen&&j=="true")
 	{spiel3Freischalten();}
+	else if(i==zSpiel4Gewonnen&&j=="true")
+	{spiel3Freischalten();}
 
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
@@ -257,8 +301,8 @@ function storage(e)
 
 function spiel1Freischalten()
 {
-		localStorage.setItem("spielFeld"+1+9,"");
-		localStorage.setItem("spielFeld"+2+10,"");
+		//localStorage.setItem("spielFeld"+1+9,"");
+		//localStorage.setItem("spielFeld"+2+10,"");
 		
 		//Raum von Spiel 1
 		localStorage.setItem("Feld"+1+9,"true");
@@ -270,8 +314,8 @@ function spiel1Freischalten()
 }
 function spiel2Freischalten()
 {
-		localStorage.setItem("spielFeld"+3+2,"");
-		localStorage.setItem("spielFeld"+4+3,"");
+		//localStorage.setItem("spielFeld"+3+2,"");
+		//localStorage.setItem("spielFeld"+4+3,"");
 		
 		//Raum von Spiel 2
 		localStorage.setItem("Feld"+3+2,"true");
@@ -283,8 +327,8 @@ function spiel2Freischalten()
 }
 function spiel3Freischalten()
 {
-	localStorage.setItem("spielFeld"+4+6,"");
-	localStorage.setItem("spielFeld"+5+5,"");
+	//localStorage.setItem("spielFeld"+4+6,"");
+	//localStorage.setItem("spielFeld"+5+5,"");
 	
 	//Raum von spiel 3
 	for(var k=4;k<=5;k++)
@@ -298,7 +342,41 @@ function spiel3Freischalten()
 }
 function spiel4Freischalten()
 {
+	//Raum von spiel 4
+	for(var k=6;k<=7;k++)
+		{ for(var l=2;l<=3;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
 	
+	raum3Freischalten();
+	raum2Freischalten();
+}
+function spiel5Freischalten()
+{
+	//Raum von spiel 5
+	for(var k=6;k<=7;k++)
+		{ for(var l=7;l<=8;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+	
+	raum2Freischalten();
+	raum4Freischalten();
+}
+function spiel6Freischalten()
+{
+	//Raum von spiel 3
+	for(var k=9;k<=10;k++)
+		{ for(var l=4;l<=5;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+}
+function spiel7Freischalten()
+{
+	//Raum von spiel 7
+	for(var k=13;k<=14;k++)
+		{ for(var l=3;l<=4;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
 }
 
 function raum1Freischalten()
