@@ -7,6 +7,13 @@ for(var i=0;i<16;i++)
 }
 var zErwarteEingabe=false;
 
+var zSpiel1Gewonnen="MmindGewonnen";
+var zSpiel2Gewonnen="PuzzleGewonnen";
+var zSpiel3Gewonnen="FarbenGewonnen";
+
+var zSpiel1Link="Mastermind/Mastermind.html";
+var zSpiel2Link="Puzzle/Puzzle.html";
+var zSpiel3Link="Farben/Farben.html";
 
 function init()
 {
@@ -164,15 +171,15 @@ function tasteGedrueckt(e)
 	{
 		if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel1")	//Spiel 1
 		{
-			window.open("Mastermind/Mastermind.html","");			
+			window.open(zSpiel1Link,"");			
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel2")	//Spiel  2
 		{
-			window.open("Puzzle/Puzzle.html","");	
+			window.open(zSpiel2Link,"");	
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel3")	//Spiel  3
 		{
-			window.open("Farben/Farben.html","");	
+			window.open(zSpiel3Link,"");	
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
 		{
@@ -235,11 +242,11 @@ function storage(e)
 	var j=e.newValue;
 	
 	localStorage.setItem(e.key,e.newValue);
-	if(i=="MmindGewonnen"&&j=="true")
+	if(i==zSpiel1Gewonnen&&j=="true")
 	{spiel1Freischalten();}
-	else if(i=="PuzzleGewonnen"&&j=="true")
+	else if(i==zSpiel2Gewonnen&&j=="true")
 	{spiel2Freischalten();}
-	else if(i=="FarbenGewonnen"&&j=="true")
+	else if(i==zSpiel3Gewonnen&&j=="true")
 	{spiel3Freischalten();}
 
 	ladeSpielfeld();
@@ -259,10 +266,6 @@ function spiel1Freischalten()
 		localStorage.setItem("Feld"+1+10,"true");
 		localStorage.setItem("Feld"+2+10,"true");
 		
-		//Türen angrenzender Spiele
-		localStorage.setItem("Feld"+7+3,"true");
-		localStorage.setItem("Feld"+7+7,"true");
-		
 		raum2Freischalten();
 }
 function spiel2Freischalten()
@@ -275,11 +278,6 @@ function spiel2Freischalten()
 		localStorage.setItem("Feld"+3+3,"true");
 		localStorage.setItem("Feld"+4+2,"true");
 		localStorage.setItem("Feld"+4+3,"true");
-		
-		//Türen
-		localStorage.setItem("Feld"+6+3,"true");
-		localStorage.setItem("Feld"+5+5,"true");
-		localStorage.setItem("Feld"+9+4,"true");
 		
 		raum3Freischalten();	
 }
@@ -294,15 +292,12 @@ function spiel3Freischalten()
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
 	
-	//Türen
-	localStorage.setItem("Feld"+4+3,"true");
-	localStorage.setItem("Feld"+6+3,"true");
-	localStorage.setItem("Feld"+5+5,"true");
-	localStorage.setItem("Feld"+9+4,"true");
-	localStorage.setItem("Feld"+6+8,"true");
-	
 	raum3Freischalten();
 	raum4Freischalten();
+	
+}
+function spiel4Freischalten()
+{
 	
 }
 
@@ -334,6 +329,9 @@ function raum2Freischalten()
 		{ for(var l=2;l<=3;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
+		
+		localStorage.setItem("Feld"+7+3,"true");
+		localStorage.setItem("Feld"+7+7,"true");
 }
 function raum3Freischalten()
 {
@@ -346,10 +344,25 @@ function raum3Freischalten()
 			{localStorage.setItem("Feld"+i+j,"true");}
 		}
 		localStorage.setItem("Feld"+9+6,"true");
+		
+			//Türen
+		localStorage.setItem("Feld"+6+3,"true");
+		localStorage.setItem("Feld"+5+5,"true");
+		localStorage.setItem("Feld"+9+4,"true");
+		
 }
 function raum4Freischalten()
 {
+	for(var k=4;k<=5;k++)
+		{ for(var l=7;l<=8;l++)
+			{localStorage.setItem("Feld"+k+l,"true");}
+		}
+	for(var i=3;i<=7;i++)
+	{localStorage.setItem("Feld"+i+9,"true");}
 	
+	//Türen
+	localStorage.setItem("Feld"+4+6,"true");
+	localStorage.setItem("Feld"+6+8,"true");
 }
 
 init();
