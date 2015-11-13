@@ -11,11 +11,13 @@ var zSpiel1Gewonnen="MmindGewonnen";
 var zSpiel2Gewonnen="PuzzleGewonnen";
 var zSpiel3Gewonnen="FarbenGewonnen";
 var zSpiel4Gewonnen="SnakeGewonnen";
+var zSpiel5Gewonnen="DartGewonnen";
 
 var zSpiel1Link="Mastermind/Mastermind.html";
 var zSpiel2Link="Puzzle/Puzzle.html";
 var zSpiel3Link="Farben/Farben.html";
 var zSpiel4Link="Snake/Snake.html";
+var zSpiel5Link="Dart/Dart.html";
 
 function init()
 {
@@ -167,7 +169,7 @@ function enter()
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
 		{
-			
+			window.open(zSpiel5Link,"");
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
 		{
@@ -225,11 +227,11 @@ function tasteGedrueckt(e)
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
 		{
-			
+			window.open(zSpiel4Link,"");
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
 		{
-			
+			window.open(zSpiel5Link,"");
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
 		{
@@ -268,9 +270,8 @@ function resetSpiel()
 	localStorage.setItem("MmindGewonnen","false");
 	localStorage.setItem("PuzzleGewonnen","false");
 	localStorage.setItem("FarbenGewonnen","false");
-	localStorage.setItem("Spiel3Gewonnen","false");
-	localStorage.setItem("Spiel4Gewonnen","false");
-	localStorage.setItem("Spiel5Gewonnen","false");
+	localStorage.setItem("SnakeGewonnen","false");
+	localStorage.setItem("DartGewonnen","false");
 	localStorage.setItem("Spiel6Gewonnen","false");
 	localStorage.setItem("Spiel7Gewonnen","false");
 	
@@ -291,7 +292,9 @@ function storage(e)
 	else if(i==zSpiel3Gewonnen&&j=="true")
 	{spiel3Freischalten();}
 	else if(i==zSpiel4Gewonnen&&j=="true")
-	{spiel3Freischalten();}
+	{spiel4Freischalten();}
+	else if(i==zSpiel5Gewonnen&&j=="true")
+	{spiel5Freischalten();}
 
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
