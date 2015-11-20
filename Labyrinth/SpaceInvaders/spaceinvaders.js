@@ -22,6 +22,7 @@ var hatSchiff;
 var zXFigurRand;
 var zPunkte;
 var zLeben;
+var zSchuss;
 var zBewegeNachRechts;
 var zTasteRechtsGedrueckt;
 var zTasteLinksGedrueckt;
@@ -182,6 +183,7 @@ function tasteHoch(e)
 	var key_id=e.keyCode || e.which;
 	if(key_id==38) //up key
 	{zTasteHochGedrueckt=false;
+	 zSchuss=false;
 	 e.preventDefault();
 	}
 	if(key_id==37) //left key
@@ -212,7 +214,8 @@ function Gegner1(pX,pY)
 }
 Gegner1.prototype.draw=function()
 {
-	zMainCtx.drawImage(zGesamtBild,260,0,80,80,this.zX*zGroesse+(zGroesse*2),this.zY*zGroesse,zGroesse*this.zXEchteGroesse,zGroesse*this.zYGroesse);
+	if(this.zLebt)
+	{zMainCtx.drawImage(zGesamtBild,260,0,80,80,this.zX*zGroesse+(zGroesse*2),this.zY*zGroesse,zGroesse*this.zXEchteGroesse,zGroesse*this.zYGroesse);}
 };
 
 function Gegner2(pX,pY)
@@ -225,7 +228,8 @@ function Gegner2(pX,pY)
 }
 Gegner2.prototype.draw=function()
 {
-	zMainCtx.drawImage(zGesamtBild,10,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+	if(this.zLebt)
+	{zMainCtx.drawImage(zGesamtBild,10,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);}
 };
 
 function Gegner3(pX,pY)
@@ -238,7 +242,8 @@ function Gegner3(pX,pY)
 }
 Gegner3.prototype.draw=function()
 {
-	zMainCtx.drawImage(zGesamtBild,130,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+	if(this.zLebt)
+	{zMainCtx.drawImage(zGesamtBild,130,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);}
 };
 
 function Schiff(pX,pY)
@@ -247,11 +252,12 @@ function Schiff(pX,pY)
 	this.zY=pY;
 	this.zXGroesse=16;
 	this.zYGroesse=7;
-	this.zLebt;
+	this.zLebt=false;
 }
 Schiff.prototype.draw=function()
 {
-	zMainCtx.drawImage(zGesamtBild,350,0,160,70,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+	if(this.zLebt)
+	{zMainCtx.drawImage(zGesamtBild,350,0,160,70,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);}
 };
 
 function Spieler(pX,pY)
@@ -338,11 +344,20 @@ function Bullet(pX,pY)
 	this.zY=pY;
 	this.zXGroesse=1;
 	this.zYGroesse=3;
-	this.zLebt;
+	this.zLebt=true;
+	this.zGut;
+	this.zBoese;
 }
 Bullet.prototype.draw=function()
 {
-	zMainCtx.drawImage(zGesamtBild,350,90,10,30,this.zX*zGroesse,this.zY*zGroesse,zGroesse*zXGroesse,zGroesse*zYGroesse);
+	if(this.zLebt)
+	{
+		if(this.zGut)
+		{this.zY--;}
+		else if(this.zBoese)
+		{this.zY++;}
+		zMainCtx.drawImage(zGesamtBild,350,90,10,30,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+	}
 };
 
 function findeRandFigur()
@@ -379,6 +394,101 @@ function findeRandFigur()
 			{hatGegner3[k].zX;}
 			if(hatGegner3[k+11].zX<zXFigurRand)
 			{hatGegner3[k+11].zX;}
+		}
+	}
+}
+
+function enthaehlt(pX,pY,pXBild,pYBild,pBreite,pHoehe)
+{
+	if(pX>pXBild&&pX<pXBild+pBreite&&pY>pYBild&&pY<pYBild+pHoehe)
+	{
+		return true;
+	}
+	return false;
+}
+
+function pruefeGetroffen()
+{
+	for(var n=0;n<hatBullet.length;n++)
+	{	for(var k=0;k<11;k++)
+		{
+			if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner1[k].zX,hatGegner1[k].zY,hatGegner1[k].zXEchteGroesse,hatGegner1[k].zYGroesse)
+							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
+			{
+				hatGegner1[k].zX=-200;
+				hatGegner1[k].zY=-200;
+				hatGegner1[k].zLebt=false;
+				hatBullet[n].zLebt=false;
+			}
+			
+			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner2[k].zX,hatGegner2[k].zY,hatGegner2[k].zXGroesse,hatGegner2[k].zYGroesse)
+							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
+			{
+				hatGegner2[k].zX=-200;
+				hatGegner2[k].zY=-200;
+				hatGegner2[k].zLebt=false;
+				hatBullet[n].zLebt=false;
+			}
+			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner2[k+11].zX,hatGegner2[k+11].zY,hatGegner2[k+11].zXGroesse,hatGegner2[k+11].zYGroesse)
+							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
+			{
+				hatGegner2[k+11].zX=-200;
+				hatGegner2[k+11].zY=-200;
+				hatGegner2[k+11].zLebt=false;
+				hatBullet[n].zLebt=false;
+			}
+			
+			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner3[k].zX,hatGegner3[k].zY,hatGegner3[k].zXGroesse,hatGegner3[k].zYGroesse)
+							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
+			{
+				hatGegner3[k].zX=-200;
+				hatGegner3[k].zY=-200;
+				hatGegner3[k].zLebt=false;
+				hatBullet[n].zLebt=false;
+			}
+			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner3[k+11].zX,hatGegner3[k+11].zY,hatGegner3[k+11].zXGroesse,hatGegner3[k+11].zYGroesse)
+							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
+			{
+				hatGegner3[k+11].zX=-200;
+				hatGegner3[k+11].zY=-200;
+				hatGegner3[k+11].zLebt=false;
+				hatBullet[n].zLebt=false;
+			}
+		}
+		//prüfe Schilder getroffen
+		for(var i=hatSchild[0].zX;i<hatSchild[3].zX+1;i++)
+		{ for(var j=hatSchild[0].zY;j<hatSchild[3].zY+1;j++)
+			{
+				if(enthaehlt(hatBullet[n].zX+2*zGroesse,hatBullet[n].zY*zGroesse,hatFeld[i][j].zX,hatFeld[i][j].zY,hatFeld[i][j].zXEchteGroesse,hatFeld[i][j].zYGroesse)
+					&&hatFeld[i][j].zBesetzt)
+				{
+					hatFeld[i][j].zBesetzt=false;
+				}
+			}	
+		}
+		
+		if(hatBullet[n].zY<-3)
+		{hatBullet[n].zLebt=false;}
+	}
+}
+
+function pruefeGameOver()
+{
+	zGewonnen=true;
+	for(var k=0;k<11;k++)
+	{
+		if(hatGegner1[k].zY>hatSchild[0].zY||hatGegner2[k].zY>hatSchild[0].zY||hatGegner2[k+11].zY>hatSchild[0].zY
+			||hatGegner3[k].zY>hatSchild[0].zY||hatGegner3[k+11].zY>hatSchild[0].zY)
+		{
+			zGameOver=true;
+		}
+		
+		var pZaehler=0;
+		if(hatGegner1[k].zLebt||hatGegner2[k].zLebt||hatGegner2[k+11].zLebt
+			||hatGegner3[k].zLebt||hatGegner3[k+11].zLebt)
+		{
+			zGewonnen=false;
+			zGameOver=true;
 		}
 	}
 }
@@ -447,6 +557,14 @@ function loop()
 		hatSpieler.draw();
 		hatSchiff.draw();
 		
+		//zeichne Bullets
+		for(var m=0;m<hatBullet.length;m++)
+		{
+			hatBullet[m].draw();
+		}
+		pruefeGetroffen();
+		pruefeGameOver();
+		
 		if(zTasteLinksGedrueckt&&hatSpieler.zX>1)
 		{
 			hatSpieler.zX--;
@@ -455,10 +573,27 @@ function loop()
 		{
 			hatSpieler.zX++;
 		}
+		if(zTasteHochGedrueckt&&zSchuss==false)
+		{
+			hatBullet[hatBullet.length]=new Bullet(hatSpieler.zX+(hatSpieler.zXGroesse/2),hatSpieler.zY);
+			hatBullet[hatBullet.length-1].zGut=true;
+			zSchuss=true;
+		}
 	}
 	zWait--;
 	if(zWait<0)
 	{zWait=50;}
+	
+	if(zGameOver)
+	{
+		zMainCtx.fillStyle="red";
+		zMainCtx.font="50px Arial"
+		zMainCtx.textBaseLine='top';
+		if(zGewonnen)
+		{zMainCtx.fillText("You won!",100,200);}
+		else
+		{zMainCtx.fillText("You lost!",100,200);}
+	}
 	
 	requestaframe(loop);
 }
