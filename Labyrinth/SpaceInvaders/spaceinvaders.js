@@ -146,7 +146,7 @@ function resetSpielfeld()
 	hatSchiff.zLebt=false;
 	
 	zPunkte=0;
-	zLeben=0;
+	zLeben=3;
 	zBewegeNachRechts=true;
 	zXFigurRand=0;
 	zWait=0;
@@ -215,7 +215,14 @@ function Gegner1(pX,pY)
 Gegner1.prototype.draw=function()
 {
 	if(this.zLebt)
-	{zMainCtx.drawImage(zGesamtBild,260,0,80,80,this.zX*zGroesse+(zGroesse*2),this.zY*zGroesse,zGroesse*this.zXEchteGroesse,zGroesse*this.zYGroesse);}
+	{
+		zMainCtx.drawImage(zGesamtBild,260,0,80,80,this.zX*zGroesse+(zGroesse*2),this.zY*zGroesse,zGroesse*this.zXEchteGroesse,zGroesse*this.zYGroesse);
+		if(Math.round(Math.random()*200)==50)
+		{
+			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
+			hatBullet[hatBullet.length-1].zGut=false;
+		}
+	}
 };
 
 function Gegner2(pX,pY)
@@ -229,7 +236,14 @@ function Gegner2(pX,pY)
 Gegner2.prototype.draw=function()
 {
 	if(this.zLebt)
-	{zMainCtx.drawImage(zGesamtBild,10,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);}
+	{
+		zMainCtx.drawImage(zGesamtBild,10,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+		if(Math.round(Math.random()*200)==50)
+		{
+			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
+			hatBullet[hatBullet.length-1].zGut=false;
+		}
+	}
 };
 
 function Gegner3(pX,pY)
@@ -243,7 +257,14 @@ function Gegner3(pX,pY)
 Gegner3.prototype.draw=function()
 {
 	if(this.zLebt)
-	{zMainCtx.drawImage(zGesamtBild,130,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);}
+	{
+		zMainCtx.drawImage(zGesamtBild,130,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
+		if(Math.round(Math.random()*200)==50)
+		{
+			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
+			hatBullet[hatBullet.length-1].zGut=false;
+		}
+	}
 };
 
 function Schiff(pX,pY)
@@ -346,7 +367,6 @@ function Bullet(pX,pY)
 	this.zYGroesse=3;
 	this.zLebt=true;
 	this.zGut;
-	this.zBoese;
 }
 Bullet.prototype.draw=function()
 {
@@ -354,7 +374,7 @@ Bullet.prototype.draw=function()
 	{
 		if(this.zGut)
 		{this.zY--;}
-		else if(this.zBoese)
+		else if(this.zGut==false)
 		{this.zY++;}
 		zMainCtx.drawImage(zGesamtBild,350,90,10,30,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
 	}
@@ -455,20 +475,28 @@ function pruefeGetroffen()
 				hatBullet[n].zLebt=false;
 			}
 		}
-		//pr√ºfe Schilder getroffen
-		for(var i=hatSchild[0].zX;i<hatSchild[3].zX+1;i++)
-		{ for(var j=hatSchild[0].zY;j<hatSchild[3].zY+1;j++)
+		//pr¸fe Schilder getroffen
+		for(var i=hatSchild[0].zX;i<hatSchild[3].zX+hatSchild[3].zXGroesse;i++)
+		{ for(var j=hatSchild[0].zY;j<hatSchild[3].zY+hatSchild[3].zYGroesse;j++)
 			{
-				if(enthaehlt(hatBullet[n].zX+2*zGroesse,hatBullet[n].zY*zGroesse,hatFeld[i][j].zX,hatFeld[i][j].zY,hatFeld[i][j].zXEchteGroesse,hatFeld[i][j].zYGroesse)
-					&&hatFeld[i][j].zBesetzt)
+				if(Math.round(hatBullet[n].zX)==i&&Math.round(hatBullet[n].zY)==j
+					&&hatFeld[i][j].zBesetzt&&hatBullet[n].zLebt)
 				{
 					hatFeld[i][j].zBesetzt=false;
+					hatBullet[n].zLebt=false;
 				}
 			}	
 		}
 		
-		if(hatBullet[n].zY<-3)
+		if(hatBullet[n].zY<-3||hatBullet[n].zY>605)
 		{hatBullet[n].zLebt=false;}
+	
+		if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatSpieler.zX,hatSpieler.zY,hatSpieler.zXGroesse,hatSpieler.zYGroesse)
+			&&hatBullet[n].zLebt)
+		{
+			hatBullet[n].zLebt=false;
+			zLeben--;
+		}
 	}
 }
 
@@ -477,8 +505,11 @@ function pruefeGameOver()
 	zGewonnen=true;
 	for(var k=0;k<11;k++)
 	{
-		if(hatGegner1[k].zY>hatSchild[0].zY||hatGegner2[k].zY>hatSchild[0].zY||hatGegner2[k+11].zY>hatSchild[0].zY
-			||hatGegner3[k].zY>hatSchild[0].zY||hatGegner3[k+11].zY>hatSchild[0].zY)
+		if(hatGegner1[k].zY+hatGegner1[k].zYGroesse>hatSchild[0].zY
+			||hatGegner2[k].zY+hatGegner2[k].zYGroesse>hatSchild[0].zY
+			||hatGegner2[k+11].zY+hatGegner2[k+11].zYGroesse>hatSchild[0].zY
+			||hatGegner3[k].zY+hatGegner3[k].zYGroesse>hatSchild[0].zY
+			||hatGegner3[k+11].zY+hatGegner3[k+11].zYGroesse>hatSchild[0].zY)
 		{
 			zGameOver=true;
 		}
@@ -488,8 +519,12 @@ function pruefeGameOver()
 			||hatGegner3[k].zLebt||hatGegner3[k+11].zLebt)
 		{
 			zGewonnen=false;
-			zGameOver=true;
 		}
+	}
+	if(zLeben==0)
+	{
+		zGameOver=true;
+		zGewonnen=false;
 	}
 }
 
@@ -500,7 +535,7 @@ function loop()
 		//Bild neu Zeichnen
 		zMainCtx.clearRect(0,0,800,600);
 		findeRandFigur();
-		if(zBewegeNachRechts&&zXFigurRand>=(zXFelder-hatGegner1[0].zXGroesse)-1&&zWait<=0)	//pr√ºfe ob am rechten Rand
+		if(zBewegeNachRechts&&zXFigurRand>=(zXFelder-hatGegner1[0].zXGroesse)-1&&zWait<=0)	//pr¸fe ob am rechten Rand
 		{
 			zBewegeNachRechts=false;
 			for(var k=0;k<11;k++)
@@ -513,7 +548,7 @@ function loop()
 			}
 			zWait=50;
 		}
-		if(zBewegeNachRechts==false&&zXFigurRand<=1&&zWait<=0) //pr√ºfe ob am linken Rand
+		if(zBewegeNachRechts==false&&zXFigurRand<=1&&zWait<=0) //pr¸fe ob am linken Rand
 		{
 			zBewegeNachRechts=true;
 			for(var k=0;k<11;k++)
@@ -583,9 +618,14 @@ function loop()
 	zWait--;
 	if(zWait<0)
 	{zWait=50;}
+
+	zMainCtx.fillStyle="white";
+	zMainCtx.font="20px Arial"
+	zMainCtx.textBaseLine='buttom';
+	zMainCtx.fillText("Leben "+zLeben,10,590);
 	
-	if(zGameOver)
-	{
+	if(zGameOver||zGewonnen)
+	{	zGameOver=true;
 		zMainCtx.fillStyle="red";
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
