@@ -19,6 +19,7 @@ var hatBullet=new Array();
 var hatSpieler;
 var hatSchiff;
 
+var zZeilen;
 var zXFigurRand;
 var zPunkte;
 var zLeben;
@@ -31,6 +32,7 @@ var zTasteHochGedrueckt;
 var zGewonnen=false;
 var zGameOver=false;
 var zWait;
+var zStartZeit=30;
 
 
 function init()
@@ -145,11 +147,13 @@ function resetSpielfeld()
 	hatSchiff.zY=-200;
 	hatSchiff.zLebt=false;
 	
+	zZeilen=0;
 	zPunkte=0;
 	zLeben=3;
 	zBewegeNachRechts=true;
 	zXFigurRand=0;
 	zWait=0;
+	zStartZeit=10;
 	zTasteHochGedrueckt=false;
 	zTasteLinksGedrueckt=false;
 	zTasteRechtsGedrueckt=false;
@@ -217,7 +221,7 @@ Gegner1.prototype.draw=function()
 	if(this.zLebt)
 	{
 		zMainCtx.drawImage(zGesamtBild,260,0,80,80,this.zX*zGroesse+(zGroesse*2),this.zY*zGroesse,zGroesse*this.zXEchteGroesse,zGroesse*this.zYGroesse);
-		if(Math.round(Math.random()*200)==50)
+		if(Math.round(Math.random()*1000)==50)
 		{
 			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
 			hatBullet[hatBullet.length-1].zGut=false;
@@ -238,7 +242,7 @@ Gegner2.prototype.draw=function()
 	if(this.zLebt)
 	{
 		zMainCtx.drawImage(zGesamtBild,10,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
-		if(Math.round(Math.random()*200)==50)
+		if(Math.round(Math.random()*1000)==50)
 		{
 			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
 			hatBullet[hatBullet.length-1].zGut=false;
@@ -259,7 +263,7 @@ Gegner3.prototype.draw=function()
 	if(this.zLebt)
 	{
 		zMainCtx.drawImage(zGesamtBild,130,0,110,80,this.zX*zGroesse,this.zY*zGroesse,zGroesse*this.zXGroesse,zGroesse*this.zYGroesse);
-		if(Math.round(Math.random()*200)==50)
+		if(Math.round(Math.random()*1000)==50)
 		{
 			hatBullet[hatBullet.length]=new Bullet(this.zX+(this.zXGroesse/2),this.zY);
 			hatBullet[hatBullet.length-1].zGut=false;
@@ -430,7 +434,9 @@ function enthaehlt(pX,pY,pXBild,pYBild,pBreite,pHoehe)
 function pruefeGetroffen()
 {
 	for(var n=0;n<hatBullet.length;n++)
-	{	for(var k=0;k<11;k++)
+	{	
+		//Gegner getroffen
+		for(var k=0;k<11;k++)
 		{
 			if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner1[k].zX,hatGegner1[k].zY,hatGegner1[k].zXEchteGroesse,hatGegner1[k].zYGroesse)
 							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
@@ -439,6 +445,8 @@ function pruefeGetroffen()
 				hatGegner1[k].zY=-200;
 				hatGegner1[k].zLebt=false;
 				hatBullet[n].zLebt=false;
+				zPunkte+=30;
+				zStartZeit--;
 			}
 			
 			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner2[k].zX,hatGegner2[k].zY,hatGegner2[k].zXGroesse,hatGegner2[k].zYGroesse)
@@ -448,6 +456,7 @@ function pruefeGetroffen()
 				hatGegner2[k].zY=-200;
 				hatGegner2[k].zLebt=false;
 				hatBullet[n].zLebt=false;
+				zPunkte+=20;
 			}
 			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner2[k+11].zX,hatGegner2[k+11].zY,hatGegner2[k+11].zXGroesse,hatGegner2[k+11].zYGroesse)
 							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
@@ -456,6 +465,7 @@ function pruefeGetroffen()
 				hatGegner2[k+11].zY=-200;
 				hatGegner2[k+11].zLebt=false;
 				hatBullet[n].zLebt=false;
+				zPunkte+=20;
 			}
 			
 			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner3[k].zX,hatGegner3[k].zY,hatGegner3[k].zXGroesse,hatGegner3[k].zYGroesse)
@@ -465,6 +475,7 @@ function pruefeGetroffen()
 				hatGegner3[k].zY=-200;
 				hatGegner3[k].zLebt=false;
 				hatBullet[n].zLebt=false;
+				zPunkte+=10;
 			}
 			else if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatGegner3[k+11].zX,hatGegner3[k+11].zY,hatGegner3[k+11].zXGroesse,hatGegner3[k+11].zYGroesse)
 							&&hatBullet[n].zLebt&&hatBullet[n].zGut)
@@ -473,6 +484,7 @@ function pruefeGetroffen()
 				hatGegner3[k+11].zY=-200;
 				hatGegner3[k+11].zLebt=false;
 				hatBullet[n].zLebt=false;
+				zPunkte+=10;
 			}
 		}
 		//prüfe Schilder getroffen
@@ -488,9 +500,22 @@ function pruefeGetroffen()
 			}	
 		}
 		
+		//Schiff getroffen
+		if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatSchiff.zX,hatSchiff.zY,hatSchiff.zXGroesse,hatSchiff.zYGroesse)
+			&&hatBullet[n].zLebt)
+		{
+			hatBullet[n].zLebt=false;
+			hatSchiff.zLebt=false;
+			hatSchiff.zX=-200;
+			hatSchiff.zY=-200;
+			zPunkte+=Math.round(Math.random()*50);
+		}
+		
+		//Bullet auserhalb des Bildes
 		if(hatBullet[n].zY<-3||hatBullet[n].zY>605)
 		{hatBullet[n].zLebt=false;}
 	
+		//Spieler getroffen
 		if(enthaehlt(hatBullet[n].zX,hatBullet[n].zY,hatSpieler.zX,hatSpieler.zY,hatSpieler.zXGroesse,hatSpieler.zYGroesse)
 			&&hatBullet[n].zLebt)
 		{
@@ -546,9 +571,10 @@ function loop()
 				hatGegner3[k].zY++;
 				hatGegner3[k+11].zY++;
 			}
-			zWait=50;
+			zWait=zStartZeit;
+			zZeilen++;
 		}
-		if(zBewegeNachRechts==false&&zXFigurRand<=1&&zWait<=0) //prüfe ob am linken Rand
+		else if(zBewegeNachRechts==false&&zXFigurRand<=1&&zWait<=0) //prüfe ob am linken Rand
 		{
 			zBewegeNachRechts=true;
 			for(var k=0;k<11;k++)
@@ -559,7 +585,8 @@ function loop()
 				hatGegner3[k].zY++;
 				hatGegner3[k+11].zY++;
 			}
-			zWait=50;
+			zWait=zStartZeit;
+			zZeilen++;
 		}
 		for(var k=0;k<11;k++)
 		{	
@@ -585,12 +612,35 @@ function loop()
 			hatGegner3[k].draw();
 			hatGegner3[k+11].draw();
 		}
+		
+		//schiff
+		if(hatSchiff.zLebt==false)
+		{
+			var pZufall=Math.round(Math.random()*500);
+			if(pZufall==50&&zZeilen>hatSchiff.zYGroesse+2&&hatSchiff.zLebt==false)
+			{
+				hatSchiff.zX=-hatSchiff.zXGroesse;
+				hatSchiff.zY=1;
+				hatSchiff.zLebt=true;
+			}
+		}
+		else if(hatSchiff.zLebt&&zWait<=0)
+		{
+			hatSchiff.zX+=2;
+			if(hatSchiff.zX>zXFelder)
+			{
+				hatSchiff.zLebt=false;
+				hatSchiff.zX=-200;
+				hatSchiff.zY=-200;
+			}
+		}
+		hatSchiff.draw();
+		
 		for(var i=0;i<4;i++)
 		{
 			hatSchild[i].draw();	
 		}
 		hatSpieler.draw();
-		hatSchiff.draw();
 		
 		//zeichne Bullets
 		for(var m=0;m<hatBullet.length;m++)
@@ -617,12 +667,17 @@ function loop()
 	}
 	zWait--;
 	if(zWait<0)
-	{zWait=50;}
+	{zWait=zStartZeit;}
 
 	zMainCtx.fillStyle="white";
 	zMainCtx.font="20px Arial"
 	zMainCtx.textBaseLine='buttom';
-	zMainCtx.fillText("Leben "+zLeben,10,590);
+	zMainCtx.fillText("Punkte: "+zPunkte,650,590);
+	for(var u=0;u<zLeben;u++)
+	{
+		zMainCtx.drawImage(zGesamtBild,0,80,150,80,10+(u*((hatSpieler.zXGroesse*zGroesse/2)+10)),570,zGroesse*(hatSpieler.zXGroesse/2),zGroesse*(hatSpieler.zYGroesse/2));
+
+	}
 	
 	if(zGameOver||zGewonnen)
 	{	zGameOver=true;

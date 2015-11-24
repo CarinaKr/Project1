@@ -12,12 +12,14 @@ var zSpiel2Gewonnen="PuzzleGewonnen";
 var zSpiel3Gewonnen="FarbenGewonnen";
 var zSpiel4Gewonnen="SnakeGewonnen";
 var zSpiel5Gewonnen="DartGewonnen";
+var zSpiel6Gewonnen="SpaceInvadersGewonnen";
 
 var zSpiel1Link="Mastermind/Mastermind.html";
 var zSpiel2Link="Puzzle/Puzzle.html";
 var zSpiel3Link="Farben/Farben.html";
 var zSpiel4Link="Snake/Snake.html";
 var zSpiel5Link="Dart/Dart.html";
+var zSpiel6Link="SpaceInvaders/SpaceInvaders.html";
 
 function init()
 {
@@ -173,7 +175,7 @@ function enter()
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
 		{
-			
+			window.open(zSpiel6Link,"");
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
 		{
@@ -235,7 +237,7 @@ function tasteGedrueckt(e)
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
 		{
-			
+			window.open(zSpiel6Link,"");
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
 		{
@@ -272,7 +274,7 @@ function resetSpiel()
 	localStorage.setItem("FarbenGewonnen","false");
 	localStorage.setItem("SnakeGewonnen","false");
 	localStorage.setItem("DartGewonnen","false");
-	localStorage.setItem("Spiel6Gewonnen","false");
+	localStorage.setItem("SpaceInvadersGewonnen","false");
 	localStorage.setItem("Spiel7Gewonnen","false");
 	
 	localStorage.setItem("zXSpieler","1");
@@ -295,6 +297,8 @@ function storage(e)
 	{spiel4Freischalten();}
 	else if(i==zSpiel5Gewonnen&&j=="true")
 	{spiel5Freischalten();}
+	else if(i==zSpiel6Gewonnen&&j=="true")
+	{spiel6Freischalten();}
 
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
@@ -367,7 +371,7 @@ function spiel5Freischalten()
 }
 function spiel6Freischalten()
 {
-	//Raum von spiel 3
+	//Raum von spiel 6
 	for(var k=9;k<=10;k++)
 		{ for(var l=4;l<=5;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
