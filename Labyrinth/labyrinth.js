@@ -1,4 +1,6 @@
 var version='0.0.1';
+var zBeginn=0;
+
 var zSpielen=false;
 var hatFeld=new Array(16);
 for(var i=0;i<16;i++)
@@ -13,6 +15,7 @@ var zSpiel3Gewonnen="FarbenGewonnen";
 var zSpiel4Gewonnen="SnakeGewonnen";
 var zSpiel5Gewonnen="DartGewonnen";
 var zSpiel6Gewonnen="SpaceInvadersGewonnen";
+var zSpiel7Gewonnen="QuizGewonnen";
 
 var zSpiel1Link="Mastermind/Mastermind.html";
 var zSpiel2Link="Puzzle/Puzzle.html";
@@ -20,6 +23,7 @@ var zSpiel3Link="Farben/Farben.html";
 var zSpiel4Link="Snake/Snake.html";
 var zSpiel5Link="Dart/Dart.html";
 var zSpiel6Link="SpaceInvaders/SpaceInvaders.html";
+var zSpiel7Link="Quiz/Quiz.html";
 
 function init()
 {
@@ -57,8 +61,8 @@ function mouse(e)
 {
 	zMausX=e.pageX-document.getElementById('game_object').offsetLeft;
 	zMausY=e.pageY-document.getElementById('game_object').offsetTop;
-	document.getElementById('x').innerHTML=zMausX;
-	document.getElementById('y').innerHTML=zMausY;	
+	//document.getElementById('x').innerHTML=zMausX;
+	//document.getElementById('y').innerHTML=zMausY;	
 }
 
 function ladeBilder()
@@ -85,12 +89,64 @@ function ladeSpielfeld()
 		}}
 
 	zHintergrundCtx.drawImage(zLabyrinthBild,0,0,800,600,0,0,800,600);
+	//Schlösser setzen
+	if(localStorage.getItem(zSpiel1Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+1+9)=="true"||localStorage.getItem("Feld"+2+10)=="true")	//Raum 1
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,75,470,50,60);}
+		else if(localStorage.getItem("Feld"+1+9)=="false"||localStorage.getItem("Feld"+2+10)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,75,470,50,60);}
+	}
+	if(localStorage.getItem(zSpiel2Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+3+2)=="true"||localStorage.getItem("Feld"+3+11)=="true")	//Raum 2
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,170,120,50,60);}
+		else if(localStorage.getItem("Feld"+3+2)=="false"||localStorage.getItem("Feld"+3+11)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,170,120,50,60);}
+	}
+	if(localStorage.getItem(zSpiel3Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+4+6)=="true"||localStorage.getItem("Feld"+5+5)=="true")	//Raum 3
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,225,275,50,60);}
+		else if(localStorage.getItem("Feld"+4+6)=="false"||localStorage.getItem("Feld"+5+5)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,225,275,50,60);}
+	}
+	if(localStorage.getItem(zSpiel4Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+6+3)=="true"||localStorage.getItem("Feld"+7+3)=="true")	//Raum 4
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,325,120,50,60);}
+		else if(localStorage.getItem("Feld"+6+3)=="false"||localStorage.getItem("Feld"+7+3)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,325,120,50,60);}
+	}
+	if(localStorage.getItem(zSpiel5Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+6+8)=="true"||localStorage.getItem("Feld"+7+7)=="true")	//Raum 5
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,325,375,50,60);}
+		else if(localStorage.getItem("Feld"+6+8)=="false"||localStorage.getItem("Feld"+7+7)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,325,375,50,60);}
+	}
+	if(localStorage.getItem(zSpiel6Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+9+4)=="true")	//Raum 6
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,475,225,50,60);}
+		else if(localStorage.getItem("Feld"+9+4)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,475,225,50,60);}
+	}
+	if(localStorage.getItem(zSpiel7Gewonnen)=="false")
+	{
+		if(localStorage.getItem("Feld"+13+4)=="true")	//Raum 7
+		{zHintergrundCtx.drawImage(zSpieler,0,100,65,90,675,175,50,60);}
+		else if(localStorage.getItem("Feld"+13+4)=="false")
+		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,675,175,50,60);}
+	}
+	
 	zMainCtx.clearRect(0,0,800,600);
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
+	pruefeFeld(zXS,zYS);
 	
-	document.getElementById("enter").disabled = true;
+
 }
 
 function Feld(pX,pY)
@@ -179,7 +235,7 @@ function enter()
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
 		{
-			
+			window.open(zSpiel7Link,"");
 		}
 }
 
@@ -241,7 +297,7 @@ function tasteGedrueckt(e)
 		}
 		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
 		{
-			
+			window.open(zSpiel7Link,"");
 		}
 	}
 }
@@ -275,7 +331,7 @@ function resetSpiel()
 	localStorage.setItem("SnakeGewonnen","false");
 	localStorage.setItem("DartGewonnen","false");
 	localStorage.setItem("SpaceInvadersGewonnen","false");
-	localStorage.setItem("Spiel7Gewonnen","false");
+	localStorage.setItem("QuizGewonnen","false");
 	
 	localStorage.setItem("zXSpieler","1");
 	localStorage.setItem("zYSpieler","7");
@@ -299,6 +355,19 @@ function storage(e)
 	{spiel5Freischalten();}
 	else if(i==zSpiel6Gewonnen&&j=="true")
 	{spiel6Freischalten();}
+	else if(i==zSpiel7Gewonnen&&j=="true")
+	{spiel7Freischalten();}
+
+	if(localStorage.getItem(zSpiel1Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel2Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel3Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel4Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel5Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel6Gewonnen)=="true")
+	{
+		//Eingang von Spiel 7 freischalten
+		localStorage.setItem("Feld"+13+4,"true");
+	}
 
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
@@ -429,12 +498,13 @@ function raum3Freischalten()
 			{localStorage.setItem("Feld"+i+j,"true");}
 		}
 		localStorage.setItem("Feld"+9+6,"true");
+		localStorage.setItem("Feld"+4+4,"true");
 		
 			//Türen
 		localStorage.setItem("Feld"+6+3,"true");
 		localStorage.setItem("Feld"+5+5,"true");
 		localStorage.setItem("Feld"+9+4,"true");
-		
+		localStorage.setItem("Feld"+4+3,"true");
 }
 function raum4Freischalten()
 {

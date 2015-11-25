@@ -303,6 +303,7 @@ function loop()
 	}
 	
 	//zeichne ganzes Spielfeld
+	zeichneHintergrund();
 	zMainCtx.clearRect(0,0,800,600);
 	for(var j=0;j<8;j++)
 	{
@@ -344,13 +345,9 @@ function backToTheMaze()
 	}
 	var pTemp=localStorage.getItem("PuzzleGewonnen");
 	var i=0;
+	localStorage.setItem("MmindGewonnen","true");
 	//window.open("../Labyrinth/Labyrinth.html","_self");
 	close();
-}
-
-function temp()
-{
-	return "true";
 }
 
 init();

@@ -42,6 +42,7 @@ function init()
 	ladeBilder();
 	zZuege=50;
 	resetSpielfeld();
+	loop();
 }
 function mouse(e)
 {
@@ -163,7 +164,7 @@ function farbeFertig()
 		{ hatFeld[i][j].zGeprueft=false;}
 	}
 	zZuege--;
-	zeichneFeld();
+	//zeichneFeld();
 	pruefeGameOver();
 }
 
@@ -272,7 +273,18 @@ function restart()
 
 function backToTheMaze()
 {
-	window.history.back();
+	if(zGewonnen)
+	{
+		localStorage.setItem("FarbenGewonnen","true");
+	}
+	localStorage.setItem("FarbenGewonnen","true");
+	close();
+}
+
+function loop()
+{
+	zeichneFeld();
+	requestaframe(loop);
 }
 
 

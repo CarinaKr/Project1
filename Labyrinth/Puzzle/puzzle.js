@@ -314,6 +314,7 @@ function loop()
 {
 	//Feld zeu zeichnen
 	zMainCtx.clearRect(0,0,800,600);
+	zeichneHintergrund();
 	for(var i=0;i<4;i++)
 	{ for(var j=0;j<4;j++)
 		{
@@ -336,7 +337,12 @@ function loop()
 
 function backToTheMaze()
 {
-	window.history.back();
+	if(zGewonnen)
+	{
+		localStorage.setItem("PuzzleGewonnen","true");
+	}
+	localStorage.setItem("PuzzleGewonnen","true");
+	close();
 }
 
 

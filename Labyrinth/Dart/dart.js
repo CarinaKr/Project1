@@ -215,6 +215,7 @@ function loop()
 	if(zGameOver==false&&zWarte<=0)
 	{	
 		zMainCtx.clearRect(0,0,800,600);
+		zeichneHintergrund();
 		setzePositionPfeil();
 		zeichnePfeil(zXPfeil,zYPfeil,zXSpitze,zYSpitze);
 		pruefeRundeVorbei();
