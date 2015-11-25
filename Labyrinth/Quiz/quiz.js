@@ -82,65 +82,65 @@ function resetSpielfeld()
 	hatButton[2].zX=50;hatButton[2].zY=350;
 	hatButton[3].zX=400;hatButton[3].zY=350;
 	
-	hatFrage[0].zFrage="Frage 0";
-	hatFrage[0].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[0].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[0].zAntwortF2="Thomas Gottschalk";
-	hatFrage[0].zAntwortF3="Barbara Schöneberger";
+	hatFrage[0].zFrage="Frage 0: Satz des Pythagoras";
+	hatFrage[0].zAntwortRichtig="a^2+b^2=c^2";
+	hatFrage[0].zAntwortF1="a+b=c";
+	hatFrage[0].zAntwortF2="a^2+b^2=c";
+	hatFrage[0].zAntwortF3="a+b=c^2";
 	
-	hatFrage[1].zFrage="Frage 1";
-	hatFrage[1].zAntwortRichtig="dark and stormy";
-	hatFrage[1].zAntwortF1="Sie legen ein Ei und das Baby schlüpft nach 9-10 Monaten.";
-	hatFrage[1].zAntwortF2="Gebären es lebend.";
-	hatFrage[1].zAntwortF3="Das Junge wächst in einem Ei im Uterus der Mutter heran.";
+	hatFrage[1].zFrage="Frage 1: Pi=";
+	hatFrage[1].zAntwortRichtig="3,141592 ... ";
+	hatFrage[1].zAntwortF1="3,141";
+	hatFrage[1].zAntwortF2="3,14257 ... ";
+	hatFrage[1].zAntwortF3="3";
 	
-	hatFrage[2].zFrage="Frage 2";
-	hatFrage[2].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[2].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[2].zAntwortF2="Thomas Gottschalk";
-	hatFrage[2].zAntwortF3="Barbara Schöneberger";
+	hatFrage[2].zFrage="Frage 2: Hamburg hat...";
+	hatFrage[2].zAntwortRichtig="2000<Bruecken<3000";
+	hatFrage[2].zAntwortF1="Bruecken<1000";
+	hatFrage[2].zAntwortF2="1000<Bruecken<2000";
+	hatFrage[2].zAntwortF3="Bruecken>3000";
 	
-	hatFrage[3].zFrage="Frage 3";
-	hatFrage[3].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[3].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[3].zAntwortF2="Thomas Gottschalk";
-	hatFrage[3].zAntwortF3="Barbara Schöneberger";
+	hatFrage[3].zFrage="Frage 3: Die Davidswache ist das ... Polizeirevier Europas.";
+	hatFrage[3].zAntwortRichtig="kleinse";
+	hatFrage[3].zAntwortF1="teuerste";
+	hatFrage[3].zAntwortF2="älteste";
+	hatFrage[3].zAntwortF3="neuste";
 	
-	hatFrage[4].zFrage="Frage 4";
-	hatFrage[4].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[4].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[4].zAntwortF2="Thomas Gottschalk";
-	hatFrage[4].zAntwortF3="Barbara Schöneberger";
+	hatFrage[4].zFrage="Frage 4: Das offizielle Nationalgetränk der Bermudainseln heißt:";
+	hatFrage[4].zAntwortRichtig="dark and stormy";
+	hatFrage[4].zAntwortF1="cold and mysterious";
+	hatFrage[4].zAntwortF2="sweet and spooky";
+	hatFrage[4].zAntwortF3="windy and lost";
 	
-	hatFrage[5].zFrage="Frage 5";
+	hatFrage[5].zFrage="Frage 5: ";
 	hatFrage[5].zAntwortRichtig="Karl Lagerfeld";
 	hatFrage[5].zAntwortF1="Jan Joseph Liefers";
 	hatFrage[5].zAntwortF2="Thomas Gottschalk";
 	hatFrage[5].zAntwortF3="Barbara Schöneberger";
 	
-	hatFrage[6].zFrage="Frage 6";
+	hatFrage[6].zFrage="Frage 6: \"Wer eine Jogginghose trägt hat die Kontrolle über sein Leben verloren.\"";
 	hatFrage[6].zAntwortRichtig="Karl Lagerfeld";
 	hatFrage[6].zAntwortF1="Jan Joseph Liefers";
 	hatFrage[6].zAntwortF2="Thomas Gottschalk";
 	hatFrage[6].zAntwortF3="Barbara Schöneberger";
 	
-	hatFrage[7].zFrage="Frage 7";
-	hatFrage[7].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[7].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[7].zAntwortF2="Thomas Gottschalk";
-	hatFrage[7].zAntwortF3="Barbara Schöneberger";
+	hatFrage[7].zFrage="Frage 7: Summe der Zahlen 1 bis 10: ";
+	hatFrage[7].zAntwortRichtig="5050";
+	hatFrage[7].zAntwortF1="5055";
+	hatFrage[7].zAntwortF2="5000";
+	hatFrage[7].zAntwortF3="5500";
 	
-	hatFrage[8].zFrage="Frage 8";
-	hatFrage[8].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[8].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[8].zAntwortF2="Thomas Gottschalk";
-	hatFrage[8].zAntwortF3="Barbara Schöneberger";
+	hatFrage[8].zFrage="Frage 8: 42^0=";
+	hatFrage[8].zAntwortRichtig="1";
+	hatFrage[8].zAntwortF1="0";
+	hatFrage[8].zAntwortF2="42";
+	hatFrage[8].zAntwortF3="ungueltige Rechnung";
 	
-	hatFrage[9].zFrage="Frage 9";
-	hatFrage[9].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[9].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[9].zAntwortF2="Thomas Gottschalk";
-	hatFrage[9].zAntwortF3="Barbara Schöneberger";
+	hatFrage[9].zFrage="Frage 9: Welche diese Logikgatter gibt es nicht?";
+	hatFrage[9].zAntwortRichtig="AND";
+	hatFrage[9].zAntwortF1="XNOR";
+	hatFrage[9].zAntwortF2="OR";
+	hatFrage[9].zAntwortF3="XAND";
 	
 	zRichtige=0;
 	zFragenGestellt=0;
@@ -178,12 +178,13 @@ Button.prototype.draw=function()
 	if(this.zHover==false)
 	{
 		zMainCtx.drawImage(zGesamtBild,0,0,100,50,this.zX,this.zY,this.zWidth,this.zHeight);
+		zMainCtx.fillStyle="white";
 	}
 	else if(this.zHover)
 	{
 		zMainCtx.drawImage(zGesamtBild,0,50,100,50,this.zX,this.zY,this.zWidth,this.zHeight);
+		zMainCtx.fillStyle="grey";
 	}
-	zMainCtx.fillStyle="grey";
 	zMainCtx.font="20px Arial"
 	zMainCtx.textBaseLine='top';
 	zMainCtx.fillText(this.zText,this.zX+10,this.zY+this.zHeight/2);
@@ -284,7 +285,7 @@ function loop()
 		zMainCtx.fillStyle="black";
 		zMainCtx.font="20px Arial"
 		zMainCtx.textBaseLine='bottom';
-		zMainCtx.fillText(hatFrage[zAktuelleFrage].zFrage,50,150);
+		zMainCtx.fillText(hatFrage[zAktuelleFrage].zFrage,60,150);
 		
 		for(var i=0;i<4;i++)
 		{hatButton[i].draw();}
@@ -298,6 +299,7 @@ function loop()
 	zMainCtx.clearRect(0,0,500,100);
 	zMainCtx.fillStyle="black";
 	zMainCtx.font="15px Arial"
+	zMainCtx.textBaseLine='top';
 	zMainCtx.fillText("Richtige: "+zRichtige,50,80);
 	
 	if(zGameOver&&zWait<=0)
