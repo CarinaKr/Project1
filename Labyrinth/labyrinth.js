@@ -160,7 +160,7 @@ function oben()
 {
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zYS>0&&hatFeld[zXS+0][zYS-1].zAktiv)
+	if(zYS>0&&hatFeld[zXS+0][zYS-1].zAktiv&&nachObenErlaubt(zXS,zYS))
 	{
 		zYS--;
 		localStorage.setItem("zYSpieler",zYS);
@@ -172,7 +172,7 @@ function unten()
 {
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zYS<15&&hatFeld[zXS][zYS+1].zAktiv)
+	if(zYS<15&&hatFeld[zXS][zYS+1].zAktiv&&nachUntenErlaubt(zXS,zYS))
 	{
 		zYS++;
 		localStorage.setItem("zYSpieler",zYS);
@@ -184,7 +184,7 @@ function links1()
 {
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zXS>0&&hatFeld[zXS-1][zYS].zAktiv)
+	if(zXS>0&&hatFeld[zXS-1][zYS].zAktiv&&nachLinksErlaubt(zXS,zYS))
 	{
 		zXS--;
 		localStorage.setItem("zXSpieler",zXS);
@@ -196,13 +196,65 @@ function rechts()
 {
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zXS<15&&hatFeld[zXS+1][zYS].zAktiv)
+	if(zXS<15&&hatFeld[zXS+1][zYS].zAktiv&&nachRechtsErlaubt(zXS,zYS))
 	{
 		zXS++;
 		localStorage.setItem("zXSpieler",zXS);
 		pruefeFeld(zXS,zYS);
 	}
 }
+
+function nachObenErlaubt(pX,pY)
+{
+	if((pX==4&&pY==4)||(pX==7&&pY==4)||(pX==9&&pY==6)||(pX==10&&pY==6)
+		||(pX==5&&pY==7)||(pX==8&&pY==7)||(pX==9&&pY==7)||(pX==7&&pY==9)
+		||(pX==3&&pY==10)||(pX==4&&pY==10)||(pX==5&&pY==10)||(pX==5&&pY==10)||(pX==7&&pY==10)
+		||(pX==2&&pY==9)||(pX==4&&pY==5)||(pX==5&&pY==5)||(pX==6&&pY==7)||(pX==7&&pY==7)
+		||(pX==9&&pY==4)||(pX==9&&pY==4)||(pX==8&&pY==4))
+	{
+		return false;
+	}
+	
+	return true;
+}
+function nachUntenErlaubt(pX,pY)
+{
+	if((pX==2&&pY==8)||(pX==4&&pY==4)||(pX==5&&pY==4)||(pX==6&&pY==6)||(pX==7&&pY==6)
+		||(pX==8&&pY==6)||(pX==9&&pY==6)||(pX==8&&pY==3)||(pX==9&&pY==3)||(pX==10&&pY==3)
+		||(pX==3&&pY==9)||(pX==4&&pY==9)||(pX==5&&pY==9)||(pX==6&&pY==9)||(pX==7&&pY==9)
+		||(pX==3&&pY==3)||(pX==7&&pY==3)||(pX==5&&pY==6)||(pX==7&&pY==8)||(pX==4&&pY==3)
+		||(pX==10&&pY==5)||(pX==10&&pY==5)||(pX==9&&pY==5))
+	{
+		return false;
+	}
+	
+	return true;
+}
+function nachLinksErlaubt(pX,pY)
+{
+	if((pX==3&&pY==9)||(pX==5&&pY==2)||(pX==6&&pY==6)||(pX==8&&pY==2)||(pX==8&&pY==8)
+		||(pX==8&&pY==9)||(pX==10&&pY==6)||(pX==11&&pY==4)||(pX==11&&pY==5)
+		||(pX==3&&pY==3)||(pX==4&&pY==5)||(pX==4&&pY==6)||(pX==6&&pY==2)||(pX==6&&pY==3)
+		||(pX==6&&pY==7)||(pX==6&&pY==8)||(pX==9&&pY==5)||(pX==2&&pY==7))
+	{
+		return false;
+	}
+	
+	return true;
+}
+function nachRechtsErlaubt(pX,pY)
+{
+	if((pX==2&&pY==3)||(pX==5&&pY==2)||(pX==5&&pY==3)||(pX==5&&pY==7)||(pX==7&&pY==9)
+		||(pX==1&&pY==7)||(pX==5&&pY==8)
+		||(pX==2&&pY==9)||(pX==4&&pY==2)||(pX==5&&pY==6)||(pX==7&&pY==2)||(pX==7&&pY==8)
+		||(pX==10&&pY==4)||(pX==10&&pY==5))
+	{
+		return false;
+	}
+	
+	return true;
+}
+
 
 function enter()
 {
@@ -486,6 +538,7 @@ function raum2Freischalten()
 		
 		localStorage.setItem("Feld"+7+3,"true");
 		localStorage.setItem("Feld"+7+7,"true");
+		localStorage.setItem("Feld"+2+10,"true");
 }
 function raum3Freischalten()
 {
