@@ -14,7 +14,7 @@
 				<canvas width='800px' height='600px' id='background_canvas' style='background:#6495ed; position:absolute; top:0px; left:0px;'></canvas>
 				<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 			</div>
-			<script type="text/javascript" src='labyrinth.js'></script>
+			
  		</td>
  	
  		<td> 
@@ -25,17 +25,20 @@
 				</tr>
 				<tr>
 					<td><button type="button" id="links" onclick='links1()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">links</FONT></button></td>
-					<td><button type="button" id="enter" onclick='enter()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">enter</FONT></button></td>
+					<td><button type="button" id="enter" onclick='enter()' style="height: 50px; width: 100px;" ><FONT FACE="Arial" style="font-size:20px">enter</FONT></button></td>
 					<td><button type="button" id="rechts"onclick='rechts()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">rechts</FONT></button></td>
 				</tr>
 				<tr>
 					<td></td><td><button type="button" id="zurueck" onclick='unten()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">runter</FONT></button></td><td></td>
 				</tr>
+				<button type="button" id="restart" onclick='reset()' style="height: 50px; width: 100px;">reset</button>
+				<button type="button" id="win" onclick='win()' style="height: 50px; width: 100px;">for admin</button>
 			</table>
  			
 		</td>
 				
  	</tr>
  	</table>
+	<script type="text/javascript" src='labyrinth.js'></script>
 </body>
 </html>

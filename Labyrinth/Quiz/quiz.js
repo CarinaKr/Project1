@@ -112,11 +112,11 @@ function resetSpielfeld()
 	hatFrage[4].zAntwortF2="sweet and spooky";
 	hatFrage[4].zAntwortF3="windy and lost";
 	
-	hatFrage[5].zFrage="Frage 5: ";
-	hatFrage[5].zAntwortRichtig="Karl Lagerfeld";
-	hatFrage[5].zAntwortF1="Jan Joseph Liefers";
-	hatFrage[5].zAntwortF2="Thomas Gottschalk";
-	hatFrage[5].zAntwortF3="Barbara Schöneberger";
+	hatFrage[5].zFrage="Frage 5: 1 Byte= ";
+	hatFrage[5].zAntwortRichtig="8 Bit";
+	hatFrage[5].zAntwortF1="7 Bit";
+	hatFrage[5].zAntwortF2="10 Bit";
+	hatFrage[5].zAntwortF3="1 Bit";
 	
 	hatFrage[6].zFrage="Frage 6: \"Wer eine Jogginghose trägt hat die Kontrolle über sein Leben verloren.\"";
 	hatFrage[6].zAntwortRichtig="Karl Lagerfeld";
@@ -137,10 +137,10 @@ function resetSpielfeld()
 	hatFrage[8].zAntwortF3="ungueltige Rechnung";
 	
 	hatFrage[9].zFrage="Frage 9: Welche diese Logikgatter gibt es nicht?";
-	hatFrage[9].zAntwortRichtig="AND";
+	hatFrage[9].zAntwortRichtig="XAND";
 	hatFrage[9].zAntwortF1="XNOR";
 	hatFrage[9].zAntwortF2="OR";
-	hatFrage[9].zAntwortF3="XAND";
+	hatFrage[9].zAntwortF3="AND";
 	
 	zRichtige=0;
 	zFragenGestellt=0;
@@ -274,6 +274,12 @@ function restart()
 	zFragenGestellt=0;
 	zGewonnen=false;
 	zGameOver=false;
+	for(var i=0;i<10;i++)
+	{
+		hatFrage[i].zGefragt=false;
+	}
+	zWait=-1;
+	stelleFrage();
 }
 
 function loop()
@@ -322,7 +328,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("QuizGewonnen","true");
 	}
-	localStorage.setItem("QuizGewonnen","true");
+	//localStorage.setItem("QuizGewonnen","true");
 	close();
 }
 
