@@ -52,9 +52,15 @@ function init()
 		{
 			hatFeld[i][j]=new Feld(i*50,j*50);
 		}}
-	resetSpiel();
+		
+	if(localStorage.getItem("Reset")==null)
+	{
+		resetSpiel();
+		localStorage.setItem("Reset",true);
+	}
 	ladeBilder();
 	ladeSpielfeld();
+	loop();
 }
 
 function mouse(e)
@@ -85,6 +91,10 @@ function ladeSpielfeld()
 			if(localStorage.getItem("Feld"+i+j)=="true")
 			{
 				hatFeld[i][j].zAktiv=true;
+			}
+			else if(localStorage.getItem("Feld"+i+j)=="false")
+			{
+				hatFeld[i][j].zAktiv=false;
 			}
 		}}
 
@@ -291,6 +301,24 @@ function enter()
 		}
 }
 
+function reset()
+{
+	resetSpiel();
+	ladeSpielfeld();
+}
+
+function win()
+{
+	localStorage.setItem("MmindGewonnen","true");
+	localStorage.setItem("PuzzleGewonnen","true");
+	localStorage.setItem("FarbenGewonnen","true");
+	localStorage.setItem("SnakeGewonnen","true");
+	localStorage.setItem("DartGewonnen","true");
+	localStorage.setItem("SpaceInvadersGewonnen","true");
+	localStorage.setItem("QuizGewonnen","true");
+	ladeSpielfeld();
+}
+
 function pruefeFeld( pX, pY)
 {
 	zMainCtx.clearRect(0,0,800,600);
@@ -356,6 +384,7 @@ function tasteGedrueckt(e)
 
 function resetSpiel()
 {
+	zBeginn=0;
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
@@ -571,6 +600,15 @@ function raum4Freischalten()
 	//Türen
 	localStorage.setItem("Feld"+4+6,"true");
 	localStorage.setItem("Feld"+6+8,"true");
+}
+
+function loop()
+{
+	if(zBeginn<3)
+	{ladeSpielfeld();
+	 requestaframe(loop);
+	 zBeginn++;
+	}
 }
 
 init();

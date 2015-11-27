@@ -277,13 +277,28 @@ function backToTheMaze()
 	{
 		localStorage.setItem("FarbenGewonnen","true");
 	}
-	localStorage.setItem("FarbenGewonnen","true");
+	//localStorage.setItem("FarbenGewonnen","true");
 	close();
 }
 
 function loop()
 {
 	zeichneFeld();
+	if(zGameOver&&zGewonnen)
+	{
+		zMainCtx.fillStyle="black";
+		zMainCtx.font="50px Arial"
+		zMainCtx.textBaseLine='top';
+		zMainCtx.fillText("You won!",250,200);
+	}
+	
+	else if(zGameOver)
+	{
+		zMainCtx.fillStyle="black";
+		zMainCtx.font="50px Arial"
+		zMainCtx.textBaseLine='top';
+		zMainCtx.fillText("Game Over",250,200);
+	}
 	requestaframe(loop);
 }
 

@@ -33,6 +33,7 @@ var zGewonnen=false;
 var zGameOver=false;
 var zWait;
 var zStartZeit=30;
+var zBulletLenghtRundenBeginn;
 
 
 function init()
@@ -157,6 +158,11 @@ function resetSpielfeld()
 	zTasteHochGedrueckt=false;
 	zTasteLinksGedrueckt=false;
 	zTasteRechtsGedrueckt=false;
+	zBulletLenghtRundenBeginn=hatBullet.length;
+	for(var i=0;i<hatBullet.length;i++)
+	{
+		delete hatBullet[i];
+	}
 }
 
 function restart()
@@ -391,15 +397,15 @@ function findeRandFigur()
 		zXFigurRand=0;
 		for(var k=0;k<11;k++)
 		{	
-			if(hatGegner1[k].zX>zXFigurRand)
+			if(hatGegner1[k].zLebt&&hatGegner1[k].zX>zXFigurRand)
 			{zXFigurRand=hatGegner1[k].zX;}
-			if(hatGegner2[k].zX>zXFigurRand)
+			if(hatGegner2[k].zLebt&&hatGegner2[k].zX>zXFigurRand)
 			{hatGegner2[k].zX;}
-			if(hatGegner2[k+11].zX>zXFigurRand)
+			if(hatGegner2[k+11].zLebt&&hatGegner2[k+11].zX>zXFigurRand)
 			{hatGegner2[k+11].zX;}
-			if(hatGegner3[k].zX>zXFigurRand)
+			if(hatGegner3[k].zLebt&&hatGegner3[k].zX>zXFigurRand)
 			{hatGegner3[k].zX;}
-			if(hatGegner3[k+11].zX>zXFigurRand)
+			if(hatGegner3[k+11].zLebt&&hatGegner3[k+11].zX>zXFigurRand)
 			{hatGegner3[k+11].zX;}
 		}
 	}
@@ -408,15 +414,15 @@ function findeRandFigur()
 		zXFigurRand=zXFelder;
 		for(var k=0;k<11;k++)
 		{	
-			if(hatGegner1[k].zX<zXFigurRand)
+			if(hatGegner1[k].zLebt&&hatGegner1[k].zX<zXFigurRand)
 			{zXFigurRand=hatGegner1[k].zX;}
-			if(hatGegner2[k].zX<zXFigurRand)
+			if(hatGegner2[k].zLebt&&hatGegner2[k].zX<zXFigurRand)
 			{hatGegner2[k].zX;}
-			if(hatGegner2[k+11].zX<zXFigurRand)
+			if(hatGegner2[k+11].zLebt&&hatGegner2[k+11].zX<zXFigurRand)
 			{hatGegner2[k+11].zX;}
-			if(hatGegner3[k].zX<zXFigurRand)
+			if(hatGegner3[k].zLebt&&hatGegner3[k].zX<zXFigurRand)
 			{hatGegner3[k].zX;}
-			if(hatGegner3[k+11].zX<zXFigurRand)
+			if(hatGegner3[k+11].zLebt&&hatGegner3[k+11].zX<zXFigurRand)
 			{hatGegner3[k+11].zX;}
 		}
 	}
@@ -433,7 +439,7 @@ function enthaehlt(pX,pY,pXBild,pYBild,pBreite,pHoehe)
 
 function pruefeGetroffen()
 {
-	for(var n=0;n<hatBullet.length;n++)
+	for(var n=zBulletLenghtRundenBeginn;n<hatBullet.length;n++)
 	{	
 		//Gegner getroffen
 		for(var k=0;k<11;k++)
@@ -643,7 +649,7 @@ function loop()
 		hatSpieler.draw();
 		
 		//zeichne Bullets
-		for(var m=0;m<hatBullet.length;m++)
+		for(var m=zBulletLenghtRundenBeginn;m<hatBullet.length;m++)
 		{
 			hatBullet[m].draw();
 		}
@@ -699,8 +705,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("SpaceInvadersGewonnen","true");
 	}
-	localStorage.setItem("SpaceInvadersGewonnen","true");
-	//window.open("../Labyrinth/Labyrinth.html","_self");
+	//localStorage.setItem("SpaceInvadersGewonnen","true");
 	close();
 }
 
