@@ -233,7 +233,6 @@ function loop()
 			{hatFutter.zX=20;}
 			if(hatFutter.zY<1||hatFutter.zY>zYFelder-2)
 			{hatFutter.zY=20;}
-			{hatFutter.zY=20;}
 			zZeitStart-=5;
 			zIndexKoerper++;
 			hatKoerper[zIndexKoerper-1]=new Koerper(0,0);
@@ -279,7 +278,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("SnakeGewonnen","true");
 	}
-	localStorage.setItem("SnakeGewonnen","true");
+	//localStorage.setItem("SnakeGewonnen","true");
 	close();
 }
 

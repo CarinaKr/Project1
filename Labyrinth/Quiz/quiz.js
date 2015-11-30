@@ -124,7 +124,7 @@ function resetSpielfeld()
 	hatFrage[6].zAntwortF2="Thomas Gottschalk";
 	hatFrage[6].zAntwortF3="Barbara Schöneberger";
 	
-	hatFrage[7].zFrage="Frage 7: Summe der Zahlen 1 bis 10: ";
+	hatFrage[7].zFrage="Frage 7: Summe der Zahlen 1 bis 100: ";
 	hatFrage[7].zAntwortRichtig="5050";
 	hatFrage[7].zAntwortF1="5055";
 	hatFrage[7].zAntwortF2="5000";
@@ -244,7 +244,7 @@ function mausKlick()
 {
 	for(var i=0;i<4;i++)
 	{
-		if(hatButton[i].zHover)
+		if(hatButton[i].zHover&&zWait<-10)
 		{
 			if(i==zRichtigerButton)
 			{
