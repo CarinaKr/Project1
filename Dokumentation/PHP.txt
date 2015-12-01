@@ -19,5 +19,11 @@ Stand:
 -Mini-Game "Farben" fertig
 -Mini-Game "Dart" fertig
 -Mini-Game "Snake" fertig
+-Mini-Game "Space Invaders" fertig
+-Mini-Game "Quiz" fertig
+
+-Labyrinthfunktionen fertig
+
+Derzeit wird das Spiel noch im Allgemeinen ge-debuggt und verbessert.
 
 Planänderung: Labyrinth wird in Javascrip programmiert
