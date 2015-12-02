@@ -341,7 +341,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("PuzzleGewonnen","true");
 	}
-	localStorage.setItem("PuzzleGewonnen","true");
+	//localStorage.setItem("PuzzleGewonnen","true");
 	close();
 }
 

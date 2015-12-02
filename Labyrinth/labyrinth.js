@@ -46,6 +46,14 @@ function init()
 	  
 	  === Feedback Alpers, Ende ===
 	  */
+	  /*
+	  Diese Funktion dient lediglich zur Optimierung des Spieles. Ja nachdem mit welchem Browser das 
+	  Spiel ausführt wird, ist eine höhere Loopzahl möglich, wodurch die Bewegungen im Spiel
+	  flüssiger erscheinen.
+	  Falls allerdings keiner der von der Funktion geprüften Browser verwendet wird, führt die Fuktion
+	  die window.setTimeout(callback,1000/60); aus. Dadurch ist die Anwendung systemunabhängig.
+	  Dez 2
+	  */
 	
 			
 	zHintergrundCanvas=document.getElementById('background_canvas');
@@ -67,6 +75,7 @@ function init()
 		resetSpiel();
 		localStorage.setItem("Reset",true);
 	}
+	resetSpiel();
 	ladeBilder();
 	ladeSpielfeld();
 	loop();
@@ -76,8 +85,6 @@ function mouse(e)
 {
 	zMausX=e.pageX-document.getElementById('game_object').offsetLeft;
 	zMausY=e.pageY-document.getElementById('game_object').offsetTop;
-	//document.getElementById('x').innerHTML=zMausX;
-	//document.getElementById('y').innerHTML=zMausY;	
 }
 
 function ladeBilder()
@@ -90,10 +97,6 @@ function ladeBilder()
 
 function ladeSpielfeld()
 {   
-	//var tempWindow=window.open("../Mastermind/Mastermind.html","");
-	//var pString=tempWindow.temp();
-	//tempWindow.close();
-	
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
@@ -109,6 +112,28 @@ function ladeSpielfeld()
 
 	zHintergrundCtx.drawImage(zLabyrinthBild,0,0,800,600,0,0,800,600);
 	//Schlösser setzen
+	setzeSchloesser();
+	
+	/*
+	=== Feedback Alpers, Dez 2 ===
+	
+	Fassen Sie diese Kontrollstruktur bitte zu einer Funktion zusammen.
+	
+	=== Feedback Alpers, Ende ===
+	*/
+	//Kontrollstruktur wird nun in setzeSchloesser() aufgerufen, Dez 2
+	
+	zMainCtx.clearRect(0,0,800,600);
+	var zXS=parseInt(localStorage.getItem("zXSpieler"));
+	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
+	pruefeFeld(zXS,zYS);
+	
+
+}
+
+function setzeSchloesser()
+{
 	if(localStorage.getItem(zSpiel1Gewonnen)=="false")
 	{
 		if(localStorage.getItem("Feld"+1+9)=="true"||localStorage.getItem("Feld"+2+10)=="true")	//Raum 1
@@ -158,22 +183,6 @@ function ladeSpielfeld()
 		else if(localStorage.getItem("Feld"+13+4)=="false")
 		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,675,175,50,60);}
 	}
-	
-	/*
-	=== Feedback Alpers, Dez 2 ===
-	
-	Fassen Sie diese Kontrollstruktur bitte zu einer Funktion zusammen.
-	
-	=== Feedback Alpers, Ende ===
-	*/
-	
-	zMainCtx.clearRect(0,0,800,600);
-	var zXS=parseInt(localStorage.getItem("zXSpieler"));
-	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
-	pruefeFeld(zXS,zYS);
-	
-
 }
 
 function Feld(pX,pY)
@@ -183,52 +192,63 @@ function Feld(pX,pY)
 	this.zAktiv=false;
 }
 
+
 function oben()
 {
-	var zXS=parseInt(localStorage.getItem("zXSpieler"));
-	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zYS>0&&hatFeld[zXS+0][zYS-1].zAktiv&&nachObenErlaubt(zXS,zYS))
-	{
-		zYS--;
-		localStorage.setItem("zYSpieler",zYS);
-		pruefeFeld(zXS,zYS);
-	}
+	laufe("oben");
 }
 
 function unten()
 {
-	var zXS=parseInt(localStorage.getItem("zXSpieler"));
-	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zYS<15&&hatFeld[zXS][zYS+1].zAktiv&&nachUntenErlaubt(zXS,zYS))
-	{
-		zYS++;
-		localStorage.setItem("zYSpieler",zYS);
-		pruefeFeld(zXS,zYS);
-	}
+	laufe("unten");
 }
 
 function links1()
 {
-	var zXS=parseInt(localStorage.getItem("zXSpieler"));
-	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zXS>0&&hatFeld[zXS-1][zYS].zAktiv&&nachLinksErlaubt(zXS,zYS))
-	{
-		zXS--;
-		localStorage.setItem("zXSpieler",zXS);
-		pruefeFeld(zXS,zYS);
-	}
+	laufe("links");
 }
 
 function rechts()
 {
+	laufe("rechts");
+}
+function laufe(pRichtung)
+{
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	if(zXS<15&&hatFeld[zXS+1][zYS].zAktiv&&nachRechtsErlaubt(zXS,zYS))
+	//prüfe in welche Richtung gelaufen werden soll
+	if(pRichtung=="oben")
 	{
-		zXS++;
-		localStorage.setItem("zXSpieler",zXS);
-		pruefeFeld(zXS,zYS);
+		if(zYS>0&&hatFeld[zXS+0][zYS-1].zAktiv&&erlaubt(zXS,zYS,"nachObenErlaubt"))
+		{
+			zYS--;
+		}
 	}
+	else if(pRichtung=="unten")
+	{
+		if(zYS<15&&hatFeld[zXS][zYS+1].zAktiv&&erlaubt(zXS,zYS,"nachUntenErlaubt"))
+		{
+			zYS++;
+		}
+	}
+	else if(pRichtung=="links")
+	{
+		if(zXS>0&&hatFeld[zXS-1][zYS].zAktiv&&erlaubt(zXS,zYS,"nachLinksErlaubt"))
+		{
+			zXS--;
+		}
+	}
+	else if(pRichtung=="rechts")
+	{
+		if(zXS<15&&hatFeld[zXS+1][zYS].zAktiv&&erlaubt(zXS,zYS,"nachRechtsErlaubt"))
+		{
+			zXS++;
+		}
+	}
+	
+	localStorage.setItem("zXSpieler",zXS);
+	localStorage.setItem("zYSpieler",zYS);
+	pruefeFeld(zXS,zYS);
 }
 
 /*
@@ -238,53 +258,55 @@ Fassen Sie die vier Funktionen für die Richtungen bitte zu einer zusammen.
 
 === Feedback Alpers, Ende ===
 */
+/*Die Function oben() unten() links1() und rechts() werden jeweils bei Knopfdruck aufgerufen und
+  können daher nicht weiter zusammengefasst werden. 
+  Allerdings wurden die Funktion der einzelnen Knopfaufrufe so weit wie möglich zusammengefasst.
+  Dez 2
+  */
 
-function nachObenErlaubt(pX,pY)
+function erlaubt(pX,pY,pRichtung)
 {
-	if((pX==4&&pY==4)||(pX==7&&pY==4)||(pX==9&&pY==6)||(pX==10&&pY==6)
+	if(pRichtung=="nachObenErlaubt")
+	{
+		if((pX==4&&pY==4)||(pX==7&&pY==4)||(pX==9&&pY==6)||(pX==10&&pY==6)
 		||(pX==5&&pY==7)||(pX==8&&pY==7)||(pX==9&&pY==7)||(pX==7&&pY==9)
 		||(pX==3&&pY==10)||(pX==4&&pY==10)||(pX==5&&pY==10)||(pX==5&&pY==10)||(pX==7&&pY==10)
 		||(pX==2&&pY==9)||(pX==4&&pY==5)||(pX==5&&pY==5)||(pX==6&&pY==7)||(pX==7&&pY==7)
 		||(pX==9&&pY==4)||(pX==9&&pY==4)||(pX==8&&pY==4))
-	{
-		return false;
+		{
+			return false;
+		}
 	}
-	
-	return true;
-}
-function nachUntenErlaubt(pX,pY)
-{
-	if((pX==2&&pY==8)||(pX==4&&pY==4)||(pX==5&&pY==4)||(pX==6&&pY==6)||(pX==7&&pY==6)
+	else if(pRichtung=="nachUntenErlaubt")
+	{
+		if((pX==2&&pY==8)||(pX==4&&pY==4)||(pX==5&&pY==4)||(pX==6&&pY==6)||(pX==7&&pY==6)
 		||(pX==8&&pY==6)||(pX==9&&pY==6)||(pX==8&&pY==3)||(pX==9&&pY==3)||(pX==10&&pY==3)
 		||(pX==3&&pY==9)||(pX==4&&pY==9)||(pX==5&&pY==9)||(pX==6&&pY==9)||(pX==7&&pY==9)
 		||(pX==3&&pY==3)||(pX==7&&pY==3)||(pX==5&&pY==6)||(pX==7&&pY==8)||(pX==4&&pY==3)
 		||(pX==10&&pY==5)||(pX==10&&pY==5)||(pX==9&&pY==5))
-	{
-		return false;
+		{
+			return false;
+		}
 	}
-	
-	return true;
-}
-function nachLinksErlaubt(pX,pY)
-{
-	if((pX==3&&pY==9)||(pX==5&&pY==2)||(pX==6&&pY==6)||(pX==8&&pY==2)||(pX==8&&pY==8)
+	else if(pRichtung=="nachLinksErlaubt")
+	{
+		if((pX==3&&pY==9)||(pX==5&&pY==2)||(pX==6&&pY==6)||(pX==8&&pY==2)||(pX==8&&pY==8)
 		||(pX==8&&pY==9)||(pX==10&&pY==6)||(pX==11&&pY==4)||(pX==11&&pY==5)
 		||(pX==3&&pY==3)||(pX==4&&pY==5)||(pX==4&&pY==6)||(pX==6&&pY==2)||(pX==6&&pY==3)
 		||(pX==6&&pY==7)||(pX==6&&pY==8)||(pX==9&&pY==5)||(pX==2&&pY==7))
-	{
-		return false;
+		{
+			return false;
+		}
 	}
-	
-	return true;
-}
-function nachRechtsErlaubt(pX,pY)
-{
-	if((pX==2&&pY==3)||(pX==5&&pY==2)||(pX==5&&pY==3)||(pX==5&&pY==7)||(pX==7&&pY==9)
+	else if(pRichtung=="nachRechtsErlaubt")
+	{
+		if((pX==2&&pY==3)||(pX==5&&pY==2)||(pX==5&&pY==3)||(pX==5&&pY==7)||(pX==7&&pY==9)
 		||(pX==1&&pY==7)||(pX==5&&pY==8)
 		||(pX==2&&pY==9)||(pX==4&&pY==2)||(pX==5&&pY==6)||(pX==7&&pY==2)||(pX==7&&pY==8)
 		||(pX==10&&pY==4)||(pX==10&&pY==5))
-	{
-		return false;
+		{
+			return false;
+		}
 	}
 	
 	return true;
@@ -297,40 +319,32 @@ Fassen Sie diese vier Funktionen bitte zu einer zusammen.
 
 === Feedback Alpers, Ende ===
 */
+// Funktionen wurden zu der Function erlaubt(pX,pY,pRichtung) zusammengefasst, Dez 2
 
 function enter()
 {
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
+	var pZuOeffnenderLink="";
 	
-		if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel1")	//Spiel 1
-		{
-			window.open(zSpiel1Link,"");			
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel2")	//Spiel  2
-		{
-			window.open(zSpiel2Link,"");	
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel3")	//Spiel  3
-		{
-			window.open(zSpiel3Link,"");	
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
-		{
-			window.open(zSpiel4Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
-		{
-			window.open(zSpiel5Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
-		{
-			window.open(zSpiel6Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
-		{
-			window.open(zSpiel7Link,"");
-		}
+	switch(localStorage.getItem("spielFeld"+zXS+zYS))
+	{
+		case "Spiel1":pZuOeffnenderLink=zSpiel1Link;
+						break;
+		case "Spiel2":pZuOeffnenderLink=zSpiel2Link;
+						break;
+		case "Spiel3":pZuOeffnenderLink=zSpiel3Link;
+						break;
+		case "Spiel4":pZuOeffnenderLink=zSpiel4Link;
+						break;
+		case "Spiel5":pZuOeffnenderLink=zSpiel5Link;
+						break;
+		case "Spiel6":pZuOeffnenderLink=zSpiel6Link;
+						break;
+		case "Spiel7":pZuOeffnenderLink=zSpiel7Link;
+						break;
+	}
+	window.open(pZuOeffnenderLink,"");
 }
 
 /* 
@@ -341,6 +355,7 @@ Verschmelzen Sie außerdem diese Funktion mit der Funktion tasteGedrueckt(e) zu 
 
 === Feedback Alpers, Ende ===
 */
+// wurde umgesetzt, Dez 2
 
 function reset()
 {
@@ -357,6 +372,13 @@ function win()
 	localStorage.setItem("DartGewonnen","true");
 	localStorage.setItem("SpaceInvadersGewonnen","true");
 	localStorage.setItem("QuizGewonnen","true");
+	spielFreischalten(1);
+	spielFreischalten(2);
+	spielFreischalten(3);
+	spielFreischalten(4);
+	spielFreischalten(5);
+	spielFreischalten(6);
+	spielFreischalten(7);
 	ladeSpielfeld();
 }
 
@@ -369,8 +391,7 @@ function pruefeFeld( pX, pY)
 
 	var button=document.getElementById("enter");
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
-	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
-		pSpiel=="Spiel6"||pSpiel=="Spiel7")
+	if(pruefeSpiel(pSpiel))
 		
 		/*
 		=== Feedback Alpers, Dez 2 ===
@@ -379,70 +400,51 @@ function pruefeFeld( pX, pY)
 		
 		=== Feedback Alpers, Ende ===
 		*/
-		
+		//wurde in Function pruefeSpiel(pSpiel) ausgegliedert, Dez 2
 		{
 			zErwarteEingabe=true;
 			document.getElementById("enter").disabled = false;
-		/*zMainCtx.fillStyle="grey";
-		zMainCtx.font="20px Arial"
-		zMainCtx.textBaseLine='bottom';
-		zMainCtx.fillText("Press Enter",hatFeld[zXS][zYS].zX,hatFeld[zXS][zYS].zY);*/
-	}
+		}
 	else
 	{zErwarteEingabe=false;
 	 document.getElementById("enter").disabled = true;}
 	
 }
 
+function pruefeSpiel(pSpiel)
+{
+	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
+		pSpiel=="Spiel6"||pSpiel=="Spiel7")
+	{
+		return true;
+	}
+	return false;
+}
+
 function tasteGedrueckt(e)
 {
-	var zXS=parseInt(localStorage.getItem("zXSpieler"));
-	var zYS=parseInt(localStorage.getItem("zYSpieler"));
-	var pTaste=e.keyCode || e.which;
-	if(zErwarteEingabe&&pTaste==13)
-	{
-		if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel1")	//Spiel 1
-		{
-			window.open(zSpiel1Link,"");			
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel2")	//Spiel  2
-		{
-			window.open(zSpiel2Link,"");	
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel3")	//Spiel  3
-		{
-			window.open(zSpiel3Link,"");	
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel4")	//Spiel  4
-		{
-			window.open(zSpiel4Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel5")	//Spiel  5
-		{
-			window.open(zSpiel5Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel6")	//Spiel  6
-		{
-			window.open(zSpiel6Link,"");
-		}
-		else if(localStorage.getItem("spielFeld"+zXS+zYS)=="Spiel7")	//Spiel  7
-		{
-			window.open(zSpiel7Link,"");
-		}
-	}
+	enter();
 }
 
 function resetSpiel()
 {
 	zBeginn=0;
+	/*Das Spielfeld ist in 16x16 Felder aufgeteilt. Für jedes Feld wird im local Storage gespeichert, ob
+	  der Spieler dieses Feld betreten darf, oder nicht. 
+	  Die Abspeicherung sieht wie folg aus: 
+	  localStorage.setItem("Feld"+x-Variable+y-Variable , darf der Spieler das Feld betreten?)
+	*/
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
 			localStorage.setItem("Feld"+i+j,"false");
 			localStorage.setItem("spielFeld"+i+j,"");
 		}}
-	raum1Freischalten();
+	raumFreischalten(1);
 	
+	//Für jede "Tür" zu den einzelnen Räumen wird gespeichert, welches Spiel mit dieser Tür betreten wird
+	//Abspeicherung wie folgt:
+	//localStorage.setItem("spielFeld"+x-Variable+y-Variable , welches Spiel wird betreten?)
 	localStorage.setItem("spielFeld"+1+9,"Spiel1");
 	localStorage.setItem("spielFeld"+2+10,"Spiel1");
 	localStorage.setItem("spielFeld"+3+2,"Spiel2");
@@ -456,6 +458,7 @@ function resetSpiel()
 	localStorage.setItem("spielFeld"+9+4,"Spiel6");
 	localStorage.setItem("spielFeld"+13+4,"Spiel7");
 	
+	//Für jedes Mini-Game wird gespeichert, ob es bereits gewonnen wurde
 	localStorage.setItem("MmindGewonnen","false");
 	localStorage.setItem("PuzzleGewonnen","false");
 	localStorage.setItem("FarbenGewonnen","false");
@@ -475,6 +478,15 @@ function resetSpiel()
 	
 	=== Feedback Alpers, Dez 2 ===
 	*/
+	/* Ja, es würde Sinn ergeben dies in eine Schleife umzuwandeln. Allerdings ist mit momentan nicht
+	   ersichtlich, wie das umsetzbar wäre. Es wird zwar immer die Funktion localStorage.setItem()
+	   aufgerufen, allerdings sind die Werte, die eingegeben werden immer verschieden und mir ist
+	   keine Regelmäßigkeit ersichtlich, welches es mir ermöglichen würde die Werte in einer Schleife
+	   zu verändern.
+	   Die Zahlen sind z.B. die geordneten Paare (1,9)(2,10)(3,2)(4,3)(4,6)...
+	   Diese Werte scheinen für mich keine Regelmäßigkeit zu verfolgen.
+	   Wenn Sie einen Vorschlag hätten, wäre das sehr hilfreich.
+	*/
 }
 
 function storage(e)
@@ -483,20 +495,26 @@ function storage(e)
 	var j=e.newValue;
 	
 	localStorage.setItem(e.key,e.newValue);
-	if(i==zSpiel1Gewonnen&&j=="true")
-	{spiel1Freischalten();}
-	else if(i==zSpiel2Gewonnen&&j=="true")
-	{spiel2Freischalten();}
-	else if(i==zSpiel3Gewonnen&&j=="true")
-	{spiel3Freischalten();}
-	else if(i==zSpiel4Gewonnen&&j=="true")
-	{spiel4Freischalten();}
-	else if(i==zSpiel5Gewonnen&&j=="true")
-	{spiel5Freischalten();}
-	else if(i==zSpiel6Gewonnen&&j=="true")
-	{spiel6Freischalten();}
-	else if(i==zSpiel7Gewonnen&&j=="true")
-	{spiel7Freischalten();}
+	if(j=="true")
+	{
+		switch(i)
+		{
+			case zSpiel1Gewonnen: spielFreischalten(1);
+									break;
+			case zSpiel2Gewonnen: spielFreischalten(2);
+									break;
+			case zSpiel3Gewonnen: spielFreischalten(3);
+									break;
+			case zSpiel4Gewonnen: spielFreischalten(4);
+									break;
+			case zSpiel5Gewonnen: spielFreischalten(5);
+									break;
+			case zSpiel6Gewonnen: spielFreischalten(6);
+									break;
+			case zSpiel7Gewonnen: spielFreischalten(7);
+									break;						
+		}
+	}
 
 	/*
 	=== Feedback Alpers, Dez 2 ===
@@ -505,13 +523,9 @@ function storage(e)
 	
 	=== Feedback Alpers, Dez 2 ===
 	*/
+	//wurde umgesetzt, Dez 2
 
-	if(localStorage.getItem(zSpiel1Gewonnen)=="true"
-		&&localStorage.getItem(zSpiel2Gewonnen)=="true"
-		&&localStorage.getItem(zSpiel3Gewonnen)=="true"
-		&&localStorage.getItem(zSpiel4Gewonnen)=="true"
-		&&localStorage.getItem(zSpiel5Gewonnen)=="true"
-		&&localStorage.getItem(zSpiel6Gewonnen)=="true")
+	if(pruefeAlleSpieleFreigeschaltet())
 	{
 		//Eingang von Spiel 7 freischalten
 		localStorage.setItem("Feld"+13+4,"true");
@@ -524,6 +538,7 @@ function storage(e)
 	
 	=== Feedback Alpers, Dez 2 ===
 	*/
+	//Konditional in der Funktion pruefeAlleSpieleFreigeschaltet(), Dez 2
 	
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
@@ -531,98 +546,101 @@ function storage(e)
 	pruefeFeld(zXS,zYS);
 }
 
-function spiel1Freischalten()
+function pruefeAlleSpieleFreigeschaltet()
 {
-		//localStorage.setItem("spielFeld"+1+9,"");
-		//localStorage.setItem("spielFeld"+2+10,"");
-		
-		//Raum von Spiel 1
-		localStorage.setItem("Feld"+1+9,"true");
-		localStorage.setItem("Feld"+2+9,"true");
-		localStorage.setItem("Feld"+1+10,"true");
-		localStorage.setItem("Feld"+2+10,"true");
-		
-		raum2Freischalten();
+	if(localStorage.getItem(zSpiel1Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel2Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel3Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel4Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel5Gewonnen)=="true"
+		&&localStorage.getItem(zSpiel6Gewonnen)=="true")
+	{
+		return true;
+	}
+	return false;
 }
-function spiel2Freischalten()
+
+function spielFreischalten(pSpiel)
 {
-		//localStorage.setItem("spielFeld"+3+2,"");
-		//localStorage.setItem("spielFeld"+4+3,"");
+	if(pSpiel==1)
+	{
+		for(var i=1;i<3;i++)
+		{for(var j=9;j<11;j++)
+			{
+				localStorage.setItem("Feld"+i+j,"true");
+			}}
 		
-		//Raum von Spiel 2
-		localStorage.setItem("Feld"+3+2,"true");
-		localStorage.setItem("Feld"+3+3,"true");
-		localStorage.setItem("Feld"+4+2,"true");
-		localStorage.setItem("Feld"+4+3,"true");
+		raumFreischalten(2);
+	}
+	else if(pSpiel==2)
+	{
+		for(var i=3;i<5;i++)
+		{for(var j=2;j<4;j++)
+			{
+				localStorage.setItem("Feld"+i+j,"true");
+			}}
 		
-		raum3Freischalten();	
-}
-function spiel3Freischalten()
-{
-	//localStorage.setItem("spielFeld"+4+6,"");
-	//localStorage.setItem("spielFeld"+5+5,"");
-	
-	//Raum von spiel 3
-	for(var k=4;k<=5;k++)
+		raumFreischalten(3);
+	}
+	else if(pSpiel==3)
+	{
+		for(var k=4;k<=5;k++)
 		{ for(var l=5;l<=6;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
 	
-	raum3Freischalten();
-	raum4Freischalten();
-	
-}
-function spiel4Freischalten()
-{
-	//Raum von spiel 4
-	for(var k=6;k<=7;k++)
+		raumFreischalten(3);
+		raumFreischalten(4);
+	}
+	else if(pSpiel==4)
+	{
+		for(var k=6;k<=7;k++)
 		{ for(var l=2;l<=3;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
 	
-	raum3Freischalten();
-	raum2Freischalten();
-}
-function spiel5Freischalten()
-{
-	//Raum von spiel 5
-	for(var k=6;k<=7;k++)
+		raumFreischalten(3);
+		raumFreischalten(2);
+	}
+	else if(pSpiel==5)
+	{
+		for(var k=6;k<=7;k++)
 		{ for(var l=7;l<=8;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
 	
-	raum2Freischalten();
-	raum4Freischalten();
-}
-function spiel6Freischalten()
-{
-	//Raum von spiel 6
-	for(var k=9;k<=10;k++)
+		raumFreischalten(2);
+		raumFreischalten(4);
+	}
+	else if(pSpiel==6)
+	{
+		for(var k=9;k<=10;k++)
 		{ for(var l=4;l<=5;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
-}
-function spiel7Freischalten()
-{
-	//Raum von spiel 7
-	for(var k=13;k<=14;k++)
+	}
+	else if(pSpiel==7)
+	{
+		for(var k=13;k<=14;k++)
 		{ for(var l=3;l<=4;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
+	}
 }
 
-function raum1Freischalten()
+function raumFreischalten(pRaum)
 {
-	localStorage.setItem("Feld"+1+7,"true");
-	localStorage.setItem("Feld"+1+8,"true");
-	localStorage.setItem("Feld"+1+9,"true");
-	for(var k=2;k<=8;k++)
-	{localStorage.setItem("Feld"+2+k,"true");}
-	localStorage.setItem("Feld"+3+2,"true");
-}
-function raum2Freischalten()
-{
-		
+	if(pRaum==1)
+	{
+		localStorage.setItem("Feld"+1+7,"true");
+		localStorage.setItem("Feld"+1+8,"true");
+		localStorage.setItem("Feld"+1+9,"true");
+		for(var k=2;k<=8;k++)
+		{localStorage.setItem("Feld"+2+k,"true");}
+		localStorage.setItem("Feld"+3+2,"true");
+	}
+	else if(pRaum==2)
+	{
 		for(var i=3;i<=8;i++)
 		{localStorage.setItem("Feld"+i+10,"true");}
 		localStorage.setItem("Feld"+8+9,"true");
@@ -643,9 +661,9 @@ function raum2Freischalten()
 		localStorage.setItem("Feld"+7+3,"true");
 		localStorage.setItem("Feld"+7+7,"true");
 		localStorage.setItem("Feld"+2+10,"true");
-}
-function raum3Freischalten()
-{
+	}
+	else if(pRaum==3)
+	{
 		for(var k=5;k<=5;k++)
 		{ for(var l=2;l<=4;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
@@ -662,19 +680,20 @@ function raum3Freischalten()
 		localStorage.setItem("Feld"+5+5,"true");
 		localStorage.setItem("Feld"+9+4,"true");
 		localStorage.setItem("Feld"+4+3,"true");
-}
-function raum4Freischalten()
-{
-	for(var k=4;k<=5;k++)
+	}
+	else if(pRaum==4)
+	{
+		for(var k=4;k<=5;k++)
 		{ for(var l=7;l<=8;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
-	for(var i=3;i<=7;i++)
-	{localStorage.setItem("Feld"+i+9,"true");}
-	
-	//Türen
-	localStorage.setItem("Feld"+4+6,"true");
-	localStorage.setItem("Feld"+6+8,"true");
+		for(var i=3;i<=7;i++)
+		{localStorage.setItem("Feld"+i+9,"true");}
+		
+		//Türen
+		localStorage.setItem("Feld"+4+6,"true");
+		localStorage.setItem("Feld"+6+8,"true");
+	}
 }
 
 /*
@@ -685,6 +704,12 @@ indem Sie mehrere Funktionen zu einer Verschmelzen und mehrfach auftretende glei
 wie localStorage.setItem() über eine Iteration ausführen.
 
 === Feedback Alpers, Ende ===
+*/
+/*Die Funktion wurden so weit wie möglich zusammengefasst. Allerdings reduziert sich dadurch der
+  Quellcode nur geringfügig. 
+  Die localStorage.setItem()-Funktionsaufrufe wurden bereits so weit wie möglich in Schleifen
+  zusammengefasst. Die Aufrufe ausserhalb der Schleifen haben (wie bereits oben erläutert) 
+  unregelmäßige geordnete Zahlenpaare.
 */
 
 function loop()
@@ -728,3 +753,4 @@ All das gilt entsprechend auch für die übrigen Spiele, die Sie programmiert ha
 Aber es genügt mir, wenn Sie die Änderung bei dieser Datei einarbeiten.
 
 === Feedback Alpers, Ende ===
+*/

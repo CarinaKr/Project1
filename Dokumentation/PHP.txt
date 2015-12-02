@@ -8,6 +8,9 @@ Anwendungen, mit PHP:
 
 Durch den Aufbau des Projektes wird der PHP Anteil wohl groesser ausfallen, als der HTML Anteil. Daher wird der PHP
 Anteil zwischen den Gruppenmitgliedern aufgeteilt.
+Ergänzung: Javascrip und HTML Anteile werden von separaten Gruppenmitgliedern programmiert 
+		   (Wie in der GitHub Histroy erkennbar).
+		   Diese Aussage steht lediglich der Vollständigkeitshalber noch in der Dokumentation.
 
 === Feedback Alpers, Dez 2 ===
 

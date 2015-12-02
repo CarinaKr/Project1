@@ -343,10 +343,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("MmindGewonnen","true");
 	}
-	var pTemp=localStorage.getItem("PuzzleGewonnen");
-	var i=0;
-	localStorage.setItem("MmindGewonnen","true");
-	//window.open("../Labyrinth/Labyrinth.html","_self");
+	//localStorage.setItem("MmindGewonnen","true");
 	close();
 }
 

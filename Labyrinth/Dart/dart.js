@@ -250,7 +250,7 @@ function backToTheMaze()
 	{
 		localStorage.setItem("DartGewonnen","true");
 	}
-	localStorage.setItem("DartGewonnen","true");
+	//localStorage.setItem("DartGewonnen","true");
 	//window.open("../Labyrinth/Labyrinth.html","_self");
 	close();
 }
