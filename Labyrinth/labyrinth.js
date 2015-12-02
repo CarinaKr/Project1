@@ -75,7 +75,7 @@ function init()
 		resetSpiel();
 		localStorage.setItem("Reset",true);
 	}
-	resetSpiel();
+	//resetSpiel();
 	ladeBilder();
 	ladeSpielfeld();
 	loop();
@@ -97,6 +97,7 @@ function ladeBilder()
 
 function ladeSpielfeld()
 {   
+	//prüfe ob Felder freigeschaltet sind
 	for(var i=0;i<16;i++)
 	{for(var j=0;j<16;j++)
 		{
@@ -123,13 +124,12 @@ function ladeSpielfeld()
 	*/
 	//Kontrollstruktur wird nun in setzeSchloesser() aufgerufen, Dez 2
 	
+	
 	zMainCtx.clearRect(0,0,800,600);
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[zXS][zYS].zX+5,hatFeld[zXS][zYS].zY+3,45,45);
 	pruefeFeld(zXS,zYS);
-	
-
 }
 
 function setzeSchloesser()
@@ -363,6 +363,7 @@ function reset()
 	ladeSpielfeld();
 }
 
+//Diese Funktion ist nur zu Testzwecken und nicht Bestandteil des endgültigen Spieles
 function win()
 {
 	localStorage.setItem("MmindGewonnen","true");
@@ -389,6 +390,7 @@ function pruefeFeld( pX, pY)
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	zMainCtx.drawImage(zSpieler,0,0,100,100,hatFeld[pX][pY].zX+5,hatFeld[pX][pY].zY+3,45,45);
 
+	//prüfe, ob Spieler auf einer Tür steht
 	var button=document.getElementById("enter");
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
 	if(pruefeSpiel(pSpiel))
