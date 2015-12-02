@@ -7,3 +7,15 @@ Daher werden die HTML-Anteile der Mini-Games vermutlich sich auch sehr ähnlich 
 
 Der HTML-Anteile der Main Methode, also des eigentlichen Labyrintes wird etwas umfangreicher und wir neben einem
 Canvas als Spielbrett und Buttons zur Spielsteuerung auch Links zu den einzelnen Mini-Games enthalten.
+
+=== Feedback Alpers, dez 2 ===
+
+Da Sie den HTML-Teil entwickeln, sollten Sie sich überlegen, was Sie alles in HTML realisieren können.
+Beispielsweise könnten Sie Seiten für einen Log-In, eine Registrierung erstellen, auch wenn Sie
+(da Sie ja niemanden für die DB haben) keine DB-Anbindung für einen tatsächlichen Log-In und eine
+tatsächliche Registrierung haben.
+
+Weiterhin bietet Ihnen HTML 5 wesentlich mehr an als die Version 4. Also nutzen Sie das, was Version 5
+Ihnen bietet, anstatt sich darauf zurück zu ziehen, dass ja alles im Canvas passieren wird. Wir haben diese
+Dinge in der Veranstaltung ausführlich besprochen. Sonst wird das,
+was Sie erstellen sehr weit von einem ausreichenden Anteil an einem Projekt sein.

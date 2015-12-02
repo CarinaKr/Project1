@@ -37,6 +37,15 @@ function init()
 			 { window.setTimeout(callback,1000/60);}	
 		 ;
 	  })();
+	  
+	  /*
+	  === Feedback Alpers, Dez 2 ===
+	  
+	  Das sieht sehr danach aus, als wenn Ihre Anwendung nicht systemunabhängig ist. Genau das war aber 
+	  für das Projekt gefordert.
+	  
+	  === Feedback Alpers, Ende ===
+	  */
 	
 			
 	zHintergrundCanvas=document.getElementById('background_canvas');
@@ -150,6 +159,14 @@ function ladeSpielfeld()
 		{zHintergrundCtx.drawImage(zSpieler,100,10,65,90,675,175,50,60);}
 	}
 	
+	/*
+	=== Feedback Alpers, Dez 2 ===
+	
+	Fassen Sie diese Kontrollstruktur bitte zu einer Funktion zusammen.
+	
+	=== Feedback Alpers, Ende ===
+	*/
+	
 	zMainCtx.clearRect(0,0,800,600);
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
@@ -214,6 +231,14 @@ function rechts()
 	}
 }
 
+/*
+=== Feedback Alpers, Dez 2 ===
+
+Fassen Sie die vier Funktionen für die Richtungen bitte zu einer zusammen.
+
+=== Feedback Alpers, Ende ===
+*/
+
 function nachObenErlaubt(pX,pY)
 {
 	if((pX==4&&pY==4)||(pX==7&&pY==4)||(pX==9&&pY==6)||(pX==10&&pY==6)
@@ -265,6 +290,13 @@ function nachRechtsErlaubt(pX,pY)
 	return true;
 }
 
+/*
+=== Feedback Alpers, Dez 2 ===
+
+Fassen Sie diese vier Funktionen bitte zu einer zusammen.
+
+=== Feedback Alpers, Ende ===
+*/
 
 function enter()
 {
@@ -301,6 +333,15 @@ function enter()
 		}
 }
 
+/* 
+=== Feedback Alpers, Dez 2 ===
+
+Nutzen Sie hier bitte Switch/Cases und nutzen Sie am Ende einmal den Funktionsaufruf window.open()
+Verschmelzen Sie außerdem diese Funktion mit der Funktion tasteGedrueckt(e) zu einer Funktion.
+
+=== Feedback Alpers, Ende ===
+*/
+
 function reset()
 {
 	resetSpiel();
@@ -330,6 +371,15 @@ function pruefeFeld( pX, pY)
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
 	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
 		pSpiel=="Spiel6"||pSpiel=="Spiel7")
+		
+		/*
+		=== Feedback Alpers, Dez 2 ===
+		
+		Gliedern Sie dieses Konditional (a or b or c or ...) bitte in eine Funktion aus.
+		
+		=== Feedback Alpers, Ende ===
+		*/
+		
 		{
 			zErwarteEingabe=true;
 			document.getElementById("enter").disabled = false;
@@ -416,6 +466,15 @@ function resetSpiel()
 	
 	localStorage.setItem("zXSpieler","1");
 	localStorage.setItem("zYSpieler","7");
+	
+	/*
+	=== Feedback Alpers, Dez 2 ===
+	
+	Ändern Sie das bitte in eine Schleife ab, in der der Methodenaufruf mit den in jedem Schleifendurchlauf
+	geänderten Argumenten aufgerufen wird.
+	
+	=== Feedback Alpers, Dez 2 ===
+	*/
 }
 
 function storage(e)
@@ -439,6 +498,14 @@ function storage(e)
 	else if(i==zSpiel7Gewonnen&&j=="true")
 	{spiel7Freischalten();}
 
+	/*
+	=== Feedback Alpers, Dez 2 ===
+	
+	Bitte ändern Sie auch diesen Teil in Switch/Cases um.
+	
+	=== Feedback Alpers, Dez 2 ===
+	*/
+
 	if(localStorage.getItem(zSpiel1Gewonnen)=="true"
 		&&localStorage.getItem(zSpiel2Gewonnen)=="true"
 		&&localStorage.getItem(zSpiel3Gewonnen)=="true"
@@ -450,6 +517,14 @@ function storage(e)
 		localStorage.setItem("Feld"+13+4,"true");
 	}
 
+	/*
+	=== Feedback Alpers, Dez 2 ===
+	
+	Gliedern Sie bitte auch hier das Konditional in eine eigene Funktion aus.
+	
+	=== Feedback Alpers, Dez 2 ===
+	*/
+	
 	ladeSpielfeld();
 	var zXS=parseInt(localStorage.getItem("zXSpieler"));
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
@@ -602,6 +677,16 @@ function raum4Freischalten()
 	localStorage.setItem("Feld"+6+8,"true");
 }
 
+/*
+=== Feedback Alpers, Dez 2 ===
+
+Auch hier (gemeint sind alle ...Freischalten()-Funktionen können Sie die Fehleranfälligkeit deutlich reduzieren,
+indem Sie mehrere Funktionen zu einer Verschmelzen und mehrfach auftretende gleichartige Funktionsaufrufe,
+wie localStorage.setItem() über eine Iteration ausführen.
+
+=== Feedback Alpers, Ende ===
+*/
+
 function loop()
 {
 	if(zBeginn<3)
@@ -612,3 +697,34 @@ function loop()
 }
 
 init();
+
+/*
+=== Feedback Alpers, Dez 2 ===
+
+Lassen Sie sich nicht von den vielen Kommentaren irritieren. Sie haben hier einen echten ersten Zwischenstand erreicht.
+Die ganzen Kommentare haben folgenden Hintergrund: In einem Softwareprojekt sind bezüglich des Quellcodes u.a. zwei Dinge sehr wichtig,
+die gemeinsam zu einem dritten Grund führen:
+
+1. Möglichst geringe Fehleranfälligkeit. 
+Eines der wirkungsvollsten Mittel dagegen besteht darin, dass gleiche Funktionalitäten, 
+die im Programm mehrfach auftauchen in Funktionen ausgegliedert werden.
+
+2. Leicht lesbarer Code.
+Es ist für Projekte überlebenswichtig, dass jede/r sich in kurzer Zeit in einen Code einarbeiten kann.
+(Und das bezieht auch die/denjenigen mit ein, der/die den Code programmiert haben. Versuchen Sie mal diese Datei in einem Monat zu verstehen,
+ohne sich intensiv wieder in die Aufgabe einzuarbeiten.)
+Leider ist bei dieser Datei kaum erkennbar, warum die einzelnen Funktionen und Aufrufe in der gegebenen Reihenfolge vorgenommen werden.
+Auch die setItem()-Funktion ist nicht wirklich klar.
+Aus diesen Gründen sollten Sie Ihren Code mit kurzen Kommentaren versehen, die das Einlesen erleichtern.
+
+3. Leicht erweiterbarer Code.
+Praktisch alle Softwareprojekte werden kontinuierlich erweitert. Und auch wenn Sie bei den Fallunterscheidungen
+meist weniger als 10 Fälle hatten, können Sie sich darauf verlassen, dass das mittel- bis langfristig Dutzende
+bis Hunderte Fälle werden. Wenn Sie dann jeden Fall wie hier implementieren und nicht den Umweg über eine oder mehrere
+Funktionen gehen, die die Konditionale eigenständig prüfen, dann haben Sie nicht nur massiv überfrachtete und damit
+unlesbare Programmzeilen, sondern obendrein noch eine so hohe Fehlerwahrscheinlichkeit, dass Sie schon von einer sicheren Fehlerhaftigkeit sprechen können.
+
+All das gilt entsprechend auch für die übrigen Spiele, die Sie programmiert haben. 
+Aber es genügt mir, wenn Sie die Änderung bei dieser Datei einarbeiten.
+
+=== Feedback Alpers, Ende ===

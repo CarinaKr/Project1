@@ -9,6 +9,17 @@ Anwendungen, mit PHP:
 Durch den Aufbau des Projektes wird der PHP Anteil wohl groesser ausfallen, als der HTML Anteil. Daher wird der PHP
 Anteil zwischen den Gruppenmitgliedern aufgeteilt.
 
+=== Feedback Alpers, Dez 2 ===
+
+Sie wissen, dass Sie genau das nicht tun sollen, weil ich es mehrfach in E-Mails geschrieben und in der Veranstaltung gesagt habe.
+Und Sie wissen aus den gleichen Gründen, warum das so ist.
+Sie wissen, dass Sie nur dann einen Leistungsnachweis für das Projekt erhalten, wenn Ihr Anteil einen ausreichenden Umfang hat und Sie
+die Inhalte der Veranstaltung umgesetzt haben, weil ich auch das in der Veranstaltung mehrfach gesagt und in den E-Mails zum Projekt
+geschrieben habe.
+Sie wissen, dass Sie mich jederzeit ansprechen können, wenn Sie Probleme mit Ihrer Aufgabe haben, und dass ich mir für Sie die Zeit nehme, die nötig ist.
+Wenn Sie dennoch die Vorgaben ignorieren, dann besteht die Konsequenz darin, dass Sie in diesem Semester keinen Leistungsnachweis erhalten.
+
+=== Feedback Alpers, Ende ===
 
 Es hat sich herausgestellt, dass für die Anforderungen für diese Projekt die Verwendung von Javascrip geeigneter ist, als
 PHP. Daher wird der PHP-Anteil in Javascrip programmiert werden.
