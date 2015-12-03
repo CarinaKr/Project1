@@ -14,7 +14,7 @@ var zGameOver=false;
 var zGameStarted=false;
 var zPunkte;
 var zRichtung;
-var zZeitStart=50;
+var zZeitStart=30;
 var zWarteZeit;
 var zIndexKoerper=2;
 
@@ -72,7 +72,7 @@ function resetSpielfeld()
 {   
 	zPunkte=0;
 	zRichtung=1;
-	zZeitStart=50;
+	zZeitStart=20;
 	zWarteZeit=zZeitStart;
 	zIndexKoerper=2;
 	zGameStarted=true;
@@ -122,15 +122,6 @@ Koerper.prototype.draw=function()
 {
 	zMainCtx.drawImage(zBild,0,0,50,50,-zGroesse+this.zX*zGroesse,-zGroesse+this.zY*zGroesse,zGroesse,zGroesse);
 };
-
-function pruefeGameOver()
-{
-	if(zPunkte==10)
-	{
-		zGameOver=true;
-		zGewonnen=true;
-	}
-}
 
 function tasteRunter(e)
 {
@@ -233,7 +224,7 @@ function loop()
 			{hatFutter.zX=20;}
 			if(hatFutter.zY<1||hatFutter.zY>zYFelder-2)
 			{hatFutter.zY=20;}
-			zZeitStart-=5;
+			zZeitStart-=1;
 			zIndexKoerper++;
 			hatKoerper[zIndexKoerper-1]=new Koerper(0,0);
 		}
@@ -251,22 +242,21 @@ function loop()
 	}
 	zWarteZeit--;
 	
-	
-	zGewonnen=false;
-	pruefeGameOver();
-	if(zGewonnen&&zGameStarted)
+	if(zGameOver)
 	{
 		zMainCtx.fillStyle="red";
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
-		zMainCtx.fillText("You won!",100,200);
-	}
-	else if(zGameOver)
-	{
-		zMainCtx.fillStyle="red";
-		zMainCtx.font="50px Arial"
-		zMainCtx.textBaseLine='top';
-		zMainCtx.fillText("You lost!",100,200);
+		zMainCtx.fillText("Game Over:",100,200);
+		if(zPunkte>=10)
+		{
+			zGewonnen=true;
+			zMainCtx.fillText("You won!",100,300);
+		}
+		else
+		{
+			zMainCtx.fillText("You lost!",100,300);
+		}
 	}
 
 	requestaframe(loop);
