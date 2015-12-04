@@ -160,7 +160,7 @@ function mausGedrueckt()
 		for(var j=0;j<4;j++)
 		{
 			hatFeldBackground[i][j].enthaehlt(zMausX,zMausY);
-			if(hatFeldBackground[i][j].zEnthaehlt&&hatFeldBackground[i][j].zNummerErhalten!=16)
+			if(hatFeldBackground[i][j].zEnthaehlt)
 			{
 				hatFeldBackground[i][j].zAusgewaehlt=true;
 				zNummerAusgewaehlt=hatFeldBackground[i][j].zNummerErhalten;
@@ -182,18 +182,22 @@ function mausLosgelassen()
 			if(hatFeldBackground[i][j].zEnthaehlt&&hatFeldBackground[i][j].zNummerErhalten==16)
 			{
 				zNeuX=i;zNeuY=j;
-				if(zNeuX==zAltX+1||zNeuX==zAltX-1||zNeuY==zAltY+1||zNeuY==zAltY-1)
+				if(zNeuX!=zAltX||zNeuY!=zAltY)	//nicht gleiches Feld
 				{
-					hatFeldBackground[zNeuX][zNeuY].zNummerErhalten=hatFeldBackground[zAltX][zAltY].zNummerErhalten;
-					hatFeldBackground[zAltX][zAltY].zNummerErhalten=16;
-					
-					for(var m=0;m<4;m++)
-					{ for(var n=0;n<4;n++)
-						{
-							if(hatFeld[m][n].zNummer==zNummerAusgewaehlt)
-							{hatFeld[m][n].zX=zX0+(zNeuX*zGroesse);
-							  hatFeld[m][n].zY=zY0+(zNeuY*zGroesse);}
-						}				
+					if((zNeuX==zAltX+1&&zAltY==zNeuY)||(zNeuX==zAltX-1&&zAltY==zNeuY)
+						||(zNeuY==zAltY+1&&zAltX==zNeuX)||(zNeuY==zAltY-1&&zAltX==zNeuX))
+					{
+						hatFeldBackground[zNeuX][zNeuY].zNummerErhalten=hatFeldBackground[zAltX][zAltY].zNummerErhalten;
+						hatFeldBackground[zAltX][zAltY].zNummerErhalten=16;
+						
+						for(var m=0;m<4;m++)
+						{ for(var n=0;n<4;n++)
+							{
+								if(hatFeld[m][n].zNummer==zNummerAusgewaehlt)
+								{hatFeld[m][n].zX=zX0+(zNeuX*zGroesse);
+								  hatFeld[m][n].zY=zY0+(zNeuY*zGroesse);}
+							}				
+						}
 					}
 				}
 			}

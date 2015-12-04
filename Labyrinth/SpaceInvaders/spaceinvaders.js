@@ -86,13 +86,13 @@ function init()
 	loop();
 }
 
-function mouse(e)
+/*function mouse(e)
 {
 	zMausX=e.pageX-document.getElementById('game_object').offsetLeft;
 	zMausY=e.pageY-document.getElementById('game_object').offsetTop;
 	document.getElementById('x').innerHTML=zMausX;
 	document.getElementById('y').innerHTML=zMausY;	
-}
+}*/
 
 function ladeBilder()
 {
