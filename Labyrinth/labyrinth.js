@@ -47,8 +47,8 @@ function init()
 	  === Feedback Alpers, Ende ===
 	  */
 	  /*
-	  Diese Funktion dient lediglich zur Optimierung des Spieles. Ja nachdem mit welchem Browser das 
-	  Spiel ausführt wird, ist eine höhere Loopzahl möglich, wodurch die Bewegungen im Spiel
+	  Diese Funktion dient lediglich zur Optimierung des Spieles. Je nachdem mit welchem Browser das 
+	  Spiel ausführt wird, ist eine optimiertere Loopzahl möglich, wodurch die Bewegungen im Spiel
 	  flüssiger erscheinen.
 	  Falls allerdings keiner der von der Funktion geprüften Browser verwendet wird, führt die Fuktion
 	  die window.setTimeout(callback,1000/60); aus. Dadurch ist die Anwendung systemunabhängig.

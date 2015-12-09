@@ -37,8 +37,14 @@ Stand:
 -Mini-Game "Space Invaders" fertig
 -Mini-Game "Quiz" fertig
 
+Planänderung: Labyrinth wird in Javascrip programmiert
 -Labyrinthfunktionen fertig
 
 Derzeit wird das Spiel noch im Allgemeinen ge-debuggt und verbessert.
 
-Planänderung: Labyrinth wird in Javascrip programmiert
+9.12.
+Alle Javascrip Funktionen laufen und wurden nach Feedback überarbeitet.
+Entwicklung des Javascrip Teiles ist somit vorerst abgeschlossen. 
+
+
+
