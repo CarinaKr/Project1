@@ -21,7 +21,7 @@ var zSpiel1Link="Mastermind/Mastermind.html";
 var zSpiel2Link="Puzzle/Puzzle.html";
 var zSpiel3Link="Farben/Farben.html";
 var zSpiel4Link="Snake/Snake.html";
-var zSpiel5Link="Dart/Dart.html";
+var zSpiel5Link="Dart/Game_Einleitung.html";
 var zSpiel6Link="SpaceInvaders/SpaceInvaders.html";
 var zSpiel7Link="Quiz/Quiz.html";
 
@@ -344,7 +344,7 @@ function enter()
 		case "Spiel7":pZuOeffnenderLink=zSpiel7Link;
 						break;
 	}
-	window.open(pZuOeffnenderLink,"");
+	window.open(pZuOeffnenderLink,"_self");
 }
 
 /* 
