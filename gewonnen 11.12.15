@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+	
+	h1 {
+	font-size: 28px;
+	}
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
+	
+
+</style>
+<title>Labyrinth_win</title>
+<img scr="#bildquelle" alt="Banner Labyrinth" border="1"/> 
+
+</head>
+
+<body>
+<div id="column-1">
+<h1>Herzlichen Glückwunsch!</h1>
+<div class="box"><p>Du bist aus dem Labyrinth entkommen! Wir hoffen, dass du Spaß hattest!</p></div>
+</div>
+
+<div id="column-2">
+<h2>Was möchtest du machen?</h2>
+<ul>
+<li> <p><a href="#">Neues Spiel beginnen</a></p></li>
+<li> <p><a href="#">Logout</a></p></li>
+</ul>
+</div>
+
+</body>
+</html>
