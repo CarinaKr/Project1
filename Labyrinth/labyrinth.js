@@ -345,6 +345,11 @@ function enter()
 						break;
 	}
 	window.open(pZuOeffnenderLink,"_self");
+	
+	if(zXS==15&&zYS==4)
+	{
+		window.open("Formalien/gewonnen.html","_self");
+	}
 }
 
 /* 
@@ -393,7 +398,7 @@ function pruefeFeld( pX, pY)
 	//prüfe, ob Spieler auf einer Tür steht
 	var button=document.getElementById("enter");
 	var pSpiel=localStorage.getItem("spielFeld"+pX+pY);
-	if(pruefeSpiel(pSpiel))
+	if(pruefeSpiel(pSpiel,pX,pY))
 		
 		/*
 		=== Feedback Alpers, Dez 2 ===
@@ -413,10 +418,10 @@ function pruefeFeld( pX, pY)
 	
 }
 
-function pruefeSpiel(pSpiel)
+function pruefeSpiel(pSpiel,pX,pY)
 {
 	if(pSpiel=="Spiel1"||pSpiel=="Spiel2"||pSpiel=="Spiel3"||pSpiel=="Spiel4"||pSpiel=="Spiel5"||
-		pSpiel=="Spiel6"||pSpiel=="Spiel7")
+		pSpiel=="Spiel6"||pSpiel=="Spiel7"||(pX==15&&pY==4))
 	{
 		return true;
 	}
@@ -627,6 +632,7 @@ function spielFreischalten(pSpiel)
 		{ for(var l=3;l<=4;l++)
 			{localStorage.setItem("Feld"+k+l,"true");}
 		}
+		localStorage.setItem("Feld"+15+4,"true");
 	}
 }
 
