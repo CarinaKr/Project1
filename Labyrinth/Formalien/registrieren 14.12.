@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+
+	h1 {
+	font-size: 28px;
+	color: #ff0066;
+	}
+	
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
+	
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	}
+
+</style>
+<title>Labyrinth_registrieren</title>
+<img src="banner.png" width="104" height="90" alt="Banner">
+
+</head>
+
+<body>
+<h1>Labyrinth </h1>
+<h2> Registrierung </h2>
+ <form> 
+ 	<label for="username">Username: <br/>
+ 		<input type="text" id="username" name="username"> 
+ 	</label> <br/><br/>
+ 	<label for="vorname">Vorname: <br/>
+ 		<input type="text" id="vorname" name="vorname"> 
+ 	</label> <br/><br/>
+ 	<label for="nachname">Nachname: <br/>
+ 		<input type="text" id="nachname" name="nachname"> 
+ 	</label> <br/><br/>
+ 	<label for="mail">Mailadresse: <br/>
+ 		<input type="text" id="mail" name="mail"> 
+ 	</label> <br/><br/>
+ 	<label for="pw">Passwort:<br/>
+ 		<input id="pw" name="pw"> 
+ 	</label>  <br/><br/>
+ 	<label for="pw">Passwort wiederholen:<br/>
+ 		<input id="pww" name="pww"> <br/>
+ 	</label>  <br/><br/>
+ 	
+ 	<button type="submit" id="submit">registrieren</button>
+ </form>
+ 
+
+</body>
+</html>
