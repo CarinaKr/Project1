@@ -278,7 +278,7 @@ function backToTheMaze()
 		localStorage.setItem("FarbenGewonnen","true");
 	}
 	//localStorage.setItem("FarbenGewonnen","true");
-	close();
+	window.open('../Labyrinth.html',"_self");
 }
 
 function loop()

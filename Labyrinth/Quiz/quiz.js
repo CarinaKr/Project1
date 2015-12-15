@@ -329,7 +329,7 @@ function backToTheMaze()
 		localStorage.setItem("QuizGewonnen","true");
 	}
 	//localStorage.setItem("QuizGewonnen","true");
-	close();
+	window.open('../Labyrinth.html',"_self");
 }
 
 init();
