@@ -706,7 +706,6 @@ function backToTheMaze()
 		localStorage.setItem("SpaceInvadersGewonnen","true");
 	}
 	//localStorage.setItem("SpaceInvadersGewonnen","true");
-	close();
+	window.open('../Labyrinth.html',"_self");
 }
-
 init();
