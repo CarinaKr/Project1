@@ -17,6 +17,7 @@
 	
 	h1 {
 	font-size: 28px;
+	color: #ff0066;
 	}
 	
 	h2 {
@@ -27,15 +28,22 @@
 	font-size: 18px;
 	}
 	
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	
+	}
 
 </style>
 <title>Labyrinth_login</title>
-<img scr="#bildquelle" alt="Banner Labyrinth" border="1"/> 
+<img src="banner.png" width="104" height="90" alt="Banner">
 
 </head>
 
 <body>
-<h1>Labyrinth Login</h1>
+<h1>Labyrinth</h1>
+<h2>Login</h2>
  <form> 
  	<label for="username">Username: <br/>
  		<input type="text" id="username" name="username"> 
@@ -44,13 +52,13 @@
  		<input id="pw" name="pw"> 
  	</label>  <br/><br/>
  </form>
- 
-<div> 
-<p>Noch nicht angemeldet? <a href="registrieren.html">Registrier dich hier!</a></p>
-</div>
 
+<div> 
 <button onclick='einloggen()'>login</button>
 <script type="text/javascript" src='login.js'></script>
+<p>Noch nicht angemeldet? <a href="registrieren.html"> <button  id="submit">Registrier dich hier!</button>
+</a></p>
+</div>
 
 </body>
 </html>
