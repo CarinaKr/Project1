@@ -63,9 +63,9 @@ Alle verfügbaren Räume sind rot markiert, in ihnen erwartet dich ein kleines S
 <div >
 <h2>Was möchtest du machen?</h2>
 
-<a href="link.login"> <button type="submit" id="submit"> login</button>
+<a href="# login"> <button type="submit" id="submit"> login</button>
 </a> </br> </br>
-<a href="link.registrieren"> <button type="submit" id="submit"> Registrieren</button>
+<a href="# registrieren"> <button type="submit" id="submit"> Registrieren</button>
 </a> 
 </div>
 
