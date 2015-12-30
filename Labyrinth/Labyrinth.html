@@ -1,7 +1,60 @@
 <!doctype html>
 <html lang=de>
 
-<head> <FONT FACE="Arial" style="font-size:20px">Das Labyrinth</FONT>
+<head> 
+
+<meta charset="UTF-8">
+
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+	
+	h1 {
+	font-size: 28px;
+	color: #ff0000;
+	}
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 24px;
+	color: #008080;
+	}
+
+	button{
+    }
+	#move{
+	background-color: #FFFFFF; 
+    color: #008080;
+    font-size: 20px;
+    height: 50px; width: 75px;
+	
+	}
+	
+	button{
+    }
+	#ctrl{
+	background-color: #FFFFFF; 
+    color: #008080;
+    font-size: 20px;
+	height: 50px; width: 150px;
+	}
+
+	
+
+</style>
+<title>Labyrinth</title>
+
 </head>
 
 
@@ -10,6 +63,7 @@
  	<table>
  	<tr> 
  		<td width='800px' height='600px' valign=top > 
+		<p> Labyrinth </p>
  			<div id='game_object' style='position: relative'>
 				<canvas width='800px' height='600px' id='background_canvas' style='background:#6495ed; position:absolute; top:0px; left:0px;'></canvas>
 				<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
@@ -17,28 +71,41 @@
 			
  		</td>
  	
+		<td>
+ 		<tr></tr>
+ 		<tr></tr>
+ 		<tr></tr>
+ 		</td>
+		
  		<td> 
  			<table>
 				<tr>
-					<td></td><td> <button type="button" id="vor" onclick='oben()' style="height: 50px; width: 100px;" ><FONT FACE="Arial" style="font-size:20px" ;>hoch</FONT></button> </td><td></td> 
+				<tr> </br> </br> </br> </br>  
+				</tr>
+				<tr>
+					<td></td><td> <button type="button" id="move" onclick='oben()' >vor</button> </td><td></td> 
 			
 				</tr>
 				<tr>
-					<td><button type="button" id="links" onclick='links1()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">links</FONT></button></td>
-					<td><button type="button" id="enter" onclick='enter()' style="height: 50px; width: 100px;" ><FONT FACE="Arial" style="font-size:20px">enter</FONT></button></td>
-					<td><button type="button" id="rechts"onclick='rechts()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">rechts</FONT></button></td>
+					<td><button type="button" id="move" onclick='links1()' >links</button></td>
+					<td><button type="button" id="move" onclick='enter()'  >enter</button></td>
+					<td><button type="button" id="move" onclick='rechts()' >rechts</button></td>
 				</tr>
 				<tr>
-					<td></td><td><button type="button" id="zurueck" onclick='unten()' style="height: 50px; width: 100px;"><FONT FACE="Arial" style="font-size:20px">runter</FONT></button></td><td></td>
+					<td></td><td><button type="button" id="move" onclick='unten()' >runter</button></td><td></td>
 				</tr>
-				<button type="button" id="restart" onclick='reset()' style="height: 50px; width: 100px;">reset</button>
-				<button type="button" id="win" onclick='win()' style="height: 50px; width: 100px;">for admin</button>
 			</table>
  			
 		</td>
 				
  	</tr>
  	</table>
+	
+	<button type="button" id="ctrl" onclick='reset()' >Zurücksetzen</button>
+	<button type="button" id="ctrl" onclick='win()' >for admin</button>
+	<a href="../welcome.html"> <button type="button" id="ctrl"> Logout</button>
+		</a>
+	
 	<script type="text/javascript" src='labyrinth.js'></script>
 </body>
 </html>
