@@ -251,8 +251,8 @@ function backToTheMaze()
 		localStorage.setItem("DartGewonnen","true");
 	}
 	//localStorage.setItem("DartGewonnen","true");
-	//close();
-	window.open('../Labyrinth.html',"_self");
+	close();
+	//window.open('../Labyrinth.html',"_self");
 }
 
 init();

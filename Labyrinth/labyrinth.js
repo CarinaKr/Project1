@@ -327,29 +327,32 @@ function enter()
 	var zYS=parseInt(localStorage.getItem("zYSpieler"));
 	var pZuOeffnenderLink="";
 	
-	switch(localStorage.getItem("spielFeld"+zXS+zYS))
-	{
-		case "Spiel1":pZuOeffnenderLink=zSpiel1Link;
-						break;
-		case "Spiel2":pZuOeffnenderLink=zSpiel2Link;
-						break;
-		case "Spiel3":pZuOeffnenderLink=zSpiel3Link;
-						break;
-		case "Spiel4":pZuOeffnenderLink=zSpiel4Link;
-						break;
-		case "Spiel5":pZuOeffnenderLink=zSpiel5Link;
-						break;
-		case "Spiel6":pZuOeffnenderLink=zSpiel6Link;
-						break;
-		case "Spiel7":pZuOeffnenderLink=zSpiel7Link;
-						break;
-	}
-	window.open(pZuOeffnenderLink,"_self");
-	
 	if(zXS==15&&zYS==4)
 	{
 		window.open("Formalien/gewonnen.html","_self");
 	}
+	else
+	{
+		switch(localStorage.getItem("spielFeld"+zXS+zYS))
+		{
+			case "Spiel1":pZuOeffnenderLink=zSpiel1Link;
+							break;
+			case "Spiel2":pZuOeffnenderLink=zSpiel2Link;
+							break;
+			case "Spiel3":pZuOeffnenderLink=zSpiel3Link;
+							break;
+			case "Spiel4":pZuOeffnenderLink=zSpiel4Link;
+							break;
+			case "Spiel5":pZuOeffnenderLink=zSpiel5Link;
+							break;
+			case "Spiel6":pZuOeffnenderLink=zSpiel6Link;
+							break;
+			case "Spiel7":pZuOeffnenderLink=zSpiel7Link;
+							break;
+		}
+		window.open(pZuOeffnenderLink,"");
+	}
+	
 }
 
 /* 
@@ -702,6 +705,8 @@ function raumFreischalten(pRaum)
 		localStorage.setItem("Feld"+4+6,"true");
 		localStorage.setItem("Feld"+6+8,"true");
 	}
+	
+	//this.ladeSpielfeld();
 }
 
 /*

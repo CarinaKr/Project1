@@ -344,7 +344,8 @@ function backToTheMaze()
 		localStorage.setItem("MmindGewonnen","true");
 	}
 	//localStorage.setItem("MmindGewonnen","true");
-	window.open('../Labyrinth.html',"_self");
+	//window.open('../Labyrinth.html',"_self");
+	close();
 }
 
 init();

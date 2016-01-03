@@ -269,7 +269,8 @@ function backToTheMaze()
 		localStorage.setItem("SnakeGewonnen","true");
 	}
 	//localStorage.setItem("SnakeGewonnen","true");
-	window.open('../Labyrinth.html',"_self");
+	//window.open('../Labyrinth.html',"_self");
+	close();
 }
 
 
