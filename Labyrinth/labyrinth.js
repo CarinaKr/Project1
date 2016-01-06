@@ -1,5 +1,6 @@
 var version='0.0.1';
 var zBeginn=0;
+var zTasteGedrueckt=false;
 
 var zSpielen=false;
 var hatFeld=new Array(16);
@@ -62,6 +63,7 @@ function init()
 	zMainCtx=main_canvas.getContext('2d');
 	
 	document.addEventListener("keypress",tasteGedrueckt,false);
+	document.addEventListener("keyup",tasteLosgelassen,false);
 	window.addEventListener("storage",storage,false);
 	
 	for(var i=0;i<16;i++)
@@ -413,11 +415,12 @@ function pruefeFeld( pX, pY)
 		//wurde in Function pruefeSpiel(pSpiel) ausgegliedert, Dez 2
 		{
 			zErwarteEingabe=true;
-			document.getElementById("enter").disabled = false;
+			//document.getElementById("enter").disabled = false;
 		}
 	else
 	{zErwarteEingabe=false;
-	 document.getElementById("enter").disabled = true;}
+	 //document.getElementById("enter").disabled = true;
+	 }
 	
 }
 
@@ -433,7 +436,24 @@ function pruefeSpiel(pSpiel,pX,pY)
 
 function tasteGedrueckt(e)
 {
-	enter();
+	var key_id=e.keyCode || e.which;
+	
+	if(key_id==13&&zTasteGedrueckt==false)
+	{enter();e.preventDefault();}
+	else if(key_id==40&&zTasteGedrueckt==false) //down key
+	{unten();e.preventDefault();}
+	else if(key_id==38&&zTasteGedrueckt==false) //up key
+	{oben();e.preventDefault();}
+	else if(key_id==37&&zTasteGedrueckt==false) //left key
+	{links1();e.preventDefault();}
+	else if(key_id==39&&zTasteGedrueckt==false) //right key
+	{rechts();e.preventDefault();}
+	zTasteGedrueckt=true;
+}
+
+function tasteLosgelassen(e)
+{
+	zTasteGedrueckt=false;
 }
 
 function resetSpiel()
