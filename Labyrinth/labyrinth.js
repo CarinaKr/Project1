@@ -415,11 +415,11 @@ function pruefeFeld( pX, pY)
 		//wurde in Function pruefeSpiel(pSpiel) ausgegliedert, Dez 2
 		{
 			zErwarteEingabe=true;
-			//document.getElementById("enter").disabled = false;
+			document.getElementById("enter").disabled = false;
 		}
 	else
 	{zErwarteEingabe=false;
-	 //document.getElementById("enter").disabled = true;
+	 document.getElementById("enter").disabled = true;
 	 }
 	
 }

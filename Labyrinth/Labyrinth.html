@@ -33,7 +33,7 @@
 
 	button{
     }
-	#move{
+	.move{
 	background-color: #FFFFFF; 
     color: #008080;
     font-size: 20px;
@@ -43,7 +43,7 @@
 	
 	button{
     }
-	#ctrl{
+	.ctrl{
 	background-color: #FFFFFF; 
     color: #008080;
     font-size: 20px;
@@ -83,16 +83,16 @@
 				<tr> </br> </br> </br> </br>  
 				</tr>
 				<tr>
-					<td></td><td> <button type="button" id="move" onclick='oben()' >vor</button> </td><td></td> 
+					<td></td><td> <button type="button" class="move" onclick='oben()' >vor</button> </td><td></td> 
 			
 				</tr>
 				<tr>
-					<td><button type="button" id="move" onclick='links1()' >links</button></td>
-					<td><button type="button" id="move" onclick='enter()'  >enter</button></td>
-					<td><button type="button" id="move" onclick='rechts()' >rechts</button></td>
+					<td><button type="button" class="move" onclick='links1()' >links</button></td>
+					<td><button type="button" class="move" id="enter" onclick='enter()'  >enter</button></td>
+					<td><button type="button" class="move" onclick='rechts()' >rechts</button></td>
 				</tr>
 				<tr>
-					<td></td><td><button type="button" id="move" onclick='unten()' >runter</button></td><td></td>
+					<td></td><td><button type="button" class="move" onclick='unten()' >runter</button></td><td></td>
 				</tr>
 			</table>
  			
@@ -101,9 +101,9 @@
  	</tr>
  	</table>
 	
-	<button type="button" id="ctrl" onclick='reset()' >Zurücksetzen</button>
-	<button type="button" id="ctrl" onclick='win()' >for admin</button>
-	<a href="../welcome.html"> <button type="button" id="ctrl"> Logout</button>
+	<button type="button" class="ctrl" onclick='reset()' >Zurücksetzen</button>
+	<button type="button" class="ctrl" onclick='win()' >for admin</button>
+	<a href="../welcome.html"> <button type="button" class="ctrl"> Logout</button>
 		</a>
 	
 	<script type="text/javascript" src='labyrinth.js'></script>
