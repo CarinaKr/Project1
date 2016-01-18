@@ -46,5 +46,11 @@ Derzeit wird das Spiel noch im Allgemeinen ge-debuggt und verbessert.
 Alle Javascrip Funktionen laufen und wurden nach Feedback überarbeitet.
 Entwicklung des Javascrip Teiles ist somit vorerst abgeschlossen. 
 
+=== Feedback Alpers, Jan 18 ===
 
+Zu einigen Dateien habe ich Feedback gegeben, dass sich auf die Qualität des Code bezieht.
+Hier geht es um Hinweise, die Sie langfristig beherrschen müssen, weil Sie sonst bei umfangreichen Projekten
+mittelfristig zu viel Zeit für Änderungen verschwenden werden.
+
+=== Feedback Alpers, Ende ===
 

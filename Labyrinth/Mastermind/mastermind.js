@@ -349,3 +349,21 @@ function backToTheMaze()
 }
 
 init();
+
+/*
+=== Feedback Alpers, Jan 18 ===
+
+Die Funktionen zeichneKugel, draw und zeigeLösung haben identische Teile. Nutzen Sie hier eine Funktion, um diese Teile
+auszulagern, damit Änderungen leichter umsetzbar sind.
+
+Hier sollten Sie außerdem besser noch ein Array einsetzen, in dem die Werte gespeichert sind, die sich
+zwischen den einzelnen Funktionsaufrufen ändern und die dann einem einzelnen Funktionsaufruf übergeben. (Momentan haben Sie
+für jeden einzelnen Fall einen Funktionsaufruf.)
+Wenn Sie das nicht tun, werden Sie bei Änderungen an der aufgerufenen Funktion sehr viel Arbeit bekommen und mit
+Sicherheit irgendwo Fehler machen.
+
+Ähnliches gilt bei zKugelnWeiss==4 und zReihe==9: Hier gibt es nur marginale Unterschiede, sodass diese Teile in eine eigene
+Funktion ausgelagert werden sollten, um die Fehleranfälligkeit zu reduzieren und die Wartbarkeit zu verbessern.
+
+=== Feedback Alpers, Ende ===
+*/

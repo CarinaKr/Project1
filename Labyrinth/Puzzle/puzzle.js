@@ -352,3 +352,14 @@ function backToTheMaze()
 
 
 init();
+
+/*
+=== Feedback Alpers, Jan 18 ===
+
+Arbeiten Sie nochmal die Nutzung von Switch/Case durch und setzen Sie das (u.a. hier) um.
+Das reduziert den Codeumfang teilweise deutlich und reduziert damit auch den Aufwand bei Änderungen.
+
+Zusätzlich schauen Sie bitte auch hier, wo Sie mit Funktionen nahezu gleiche Code-Passagen auslagern können.
+
+=== Feedback Alpers, Ende ===
+*/

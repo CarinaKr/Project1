@@ -19,3 +19,22 @@ Weiterhin bietet Ihnen HTML 5 wesentlich mehr an als die Version 4. Also nutzen 
 Ihnen bietet, anstatt sich darauf zurück zu ziehen, dass ja alles im Canvas passieren wird. Wir haben diese
 Dinge in der Veranstaltung ausführlich besprochen. Sonst wird das,
 was Sie erstellen sehr weit von einem ausreichenden Anteil an einem Projekt sein.
+
+=== Feedback Alpers, jan 18 ===
+
+Leider haben Sie letztlich nichts anderes getan, als ein und dasselbe HTML-Dokument
+wieder und wieder zu kopieren und minimale Details auszutauschen. Wenn Sie als MedieninformatikerIn mit HTML arbeiten,
+dann überlegen Sie sich dagegen, welche unterschiedlichen (!) Ansichten es geben sollen.
+
+Und für jede dieser Ansichten erstellen Sie ein HTML-Dokument.
+
+Alles, was innerhalb einer Ansicht geändert werden soll wird mittels einer anderen Programmiersprache ausgetauscht. Diese Sprache wird zur Pogrammierung des 
+Controllers im Sinne des Model-View-Controller-Patterns genutzt, also hier PHP oder JS.
+
+In anderen Worten: Sie haben ungefähr dreißig HTML-Dokumente für vermutlich zwei Ansichten erstellt. Ändern Sie das bitte ab.
+
+Erstellen Sie außerdem ein CSS-Dokument, das Sie dann aus den HTML-Dokumenten aufrufen.
+
+Und vor allem: Nutzen Sie HTML 5 mit allem, was es sinnvolles anbietet. Da gibt es auch für Ihr Projekt eine Menge Möglichkeiten.
+
+=== Feedback Alpers, Ende ===
