@@ -100,37 +100,25 @@ function Feld(pX,pY,pNummer)
 	this.zAusgewaehlt=false;
 	this.zNummer=pNummer;
 	
-	if(pNummer==1)
-	{this.zSrcX=0;this.zSrcY=0;}
-	else if(pNummer==2)
-	{this.zSrcX=100;this.zSrcY=0;}
-	else if(pNummer==3)
-	{this.zSrcX=200;this.zSrcY=0;}
-	else if(pNummer==4)
-	{this.zSrcX=300;this.zSrcY=0;}
-	else if(pNummer==5)
-	{this.zSrcX=0;this.zSrcY=100;}
-	else if(pNummer==6)
-	{this.zSrcX=100;this.zSrcY=100;}
-	else if(pNummer==7)
-	{this.zSrcX=200;this.zSrcY=100;}
-	else if(pNummer==8)
-	{this.zSrcX=300;this.zSrcY=100;}
-	else if(pNummer==9)
-	{this.zSrcX=0;this.zSrcY=200;}
-	else if(pNummer==10)
-	{this.zSrcX=100;this.zSrcY=200;}
-	else if(pNummer==11)
-	{this.zSrcX=200;this.zSrcY=200;}
-	else if(pNummer==12)
-	{this.zSrcX=300;this.zSrcY=200;}
-	else if(pNummer==13)
-	{this.zSrcX=0;this.zSrcY=300;}
-	else if(pNummer==14)
-	{this.zSrcX=100;this.zSrcY=300;}
-	else if(pNummer==15)
-	{this.zSrcX=200;this.zSrcY=300;}
-	
+	switch(pNummer)
+	{
+		case 1:this.zSrcX=0;this.zSrcY=0;break;
+		case 2:this.zSrcX=100;this.zSrcY=0;break;
+		case 3:this.zSrcX=200;this.zSrcY=0;break;
+		case 3:this.zSrcX=300;this.zSrcY=0;break;
+		case 4:this.zSrcX=300;this.zSrcY=0;break;
+		case 5:this.zSrcX=0;this.zSrcY=100;break;
+		case 6:this.zSrcX=100;this.zSrcY=100;break;
+		case 7:this.zSrcX=200;this.zSrcY=100;break;
+		case 8:this.zSrcX=300;this.zSrcY=100;break;
+		case 9:this.zSrcX=0;this.zSrcY=200;break;
+		case 10:this.zSrcX=100;this.zSrcY=200;break;
+		case 11:this.zSrcX=200;this.zSrcY=200;break;
+		case 12:this.zSrcX=300;this.zSrcY=200;break;
+		case 13:this.zSrcX=0;this.zSrcY=300;break;
+		case 14:this.zSrcX=100;this.zSrcY=300;break;
+		case 15:this.zSrcX=200;this.zSrcY=300;break;
+	}
 }
 
 
@@ -187,17 +175,8 @@ function mausLosgelassen()
 					if((zNeuX==zAltX+1&&zAltY==zNeuY)||(zNeuX==zAltX-1&&zAltY==zNeuY)
 						||(zNeuY==zAltY+1&&zAltX==zNeuX)||(zNeuY==zAltY-1&&zAltX==zNeuX))
 					{
-						hatFeldBackground[zNeuX][zNeuY].zNummerErhalten=hatFeldBackground[zAltX][zAltY].zNummerErhalten;
-						hatFeldBackground[zAltX][zAltY].zNummerErhalten=16;
 						
-						for(var m=0;m<4;m++)
-						{ for(var n=0;n<4;n++)
-							{
-								if(hatFeld[m][n].zNummer==zNummerAusgewaehlt)
-								{hatFeld[m][n].zX=zX0+(zNeuX*zGroesse);
-								  hatFeld[m][n].zY=zY0+(zNeuY*zGroesse);}
-							}				
-						}
+						versetzeSteine(zAltX,zAltY,zNeuX,zNeuY,zNummerAusgewaehlt);
 					}
 				}
 			}
@@ -247,41 +226,41 @@ function shuffle()
 			if(hatFeldBackground[i][j].zNummerErhalten==16)
 			{
 				pNeuX=i;pNeuY=j;
-				if(pZufallRichtung==0)  //oberer Stein nach unten
+				
+				switch(pZufallRichtung)
 				{
-					if(j>0)
-					{
-						pAltX=i;pAltY=j-1;
-						pZuege--;
-						pBewegt=true;
-					}
-				}
-				else if(pZufallRichtung==1)   //linker Stein nach rechts
-				{
-					if(i>0)
-					{
-						pAltX=i-1;pAltY=j;
-						pZuege--;
-						pBewegt=true;
-					}
-				}
-				else if(pZufallRichtung==2)   //unterer Stein nach oben
-				{
-					if(j<3)
-					{
-						pAltX=i;pAltY=j+1;
-						pZuege--;
-						pBewegt=true;
-					}
-				}
-				else if(pZufallRichtung==3)   //rechter Stein nach links
-				{
-					if(i<3)
-					{
-						pAltX=i+1;pAltY=j;
-						pZuege--;
-						pBewegt=true;
-					}
+					case 0: 
+						if(j>0)		//oberer Stein nach unten
+						{
+							pAltX=i;pAltY=j-1;
+							pZuege--;
+							pBewegt=true;
+						}
+						break;
+					case 1:
+						if(i>0)		//linker Stein nach rechts
+						{
+							pAltX=i-1;pAltY=j;
+							pZuege--;
+							pBewegt=true;
+						}
+						break;
+					case 2:
+						if(j<3)		//unterer Stein nach oben
+						{
+							pAltX=i;pAltY=j+1;
+							pZuege--;
+							pBewegt=true;
+						}
+						break;
+					case 3:
+						if(i<3)		//rechter Stein nach links
+						{
+							pAltX=i+1;pAltY=j;
+							pZuege--;
+							pBewegt=true;
+						}
+						break;
 				}
 			}
 		}
@@ -289,21 +268,27 @@ function shuffle()
 	  
 	  if(pBewegt)
 	  { pNummerAusgewaehlt=hatFeldBackground[pAltX][pAltY].zNummerErhalten;
+		
+		versetzeSteine(pAltX,pAltY,pNeuX,pNeuY,pNummerAusgewaehlt);
+	  }
+		
+	}while(pZuege>=0);
+	//zGameStarted=true;
+}
+
+function versetzeSteine(pAltX,pAltY,pNeuX,pNeuY,pNummer)
+{
 		hatFeldBackground[pNeuX][pNeuY].zNummerErhalten=hatFeldBackground[pAltX][pAltY].zNummerErhalten;
 		hatFeldBackground[pAltX][pAltY].zNummerErhalten=16;
 					
 		for(var m=0;m<4;m++)
 		{ for(var n=0;n<4;n++)
 			{
-				if(hatFeld[m][n].zNummer==pNummerAusgewaehlt)
+				if(hatFeld[m][n].zNummer==pNummer)
 				{hatFeld[m][n].zX=zX0+(pNeuX*zGroesse);
 					hatFeld[m][n].zY=zY0+(pNeuY*zGroesse);}
 			}				
 		}
-	  }
-		
-	}while(pZuege>=0);
-	//zGameStarted=true;
 }
 
 function restart()
@@ -362,4 +347,7 @@ Das reduziert den Codeumfang teilweise deutlich und reduziert damit auch den Auf
 Zusätzlich schauen Sie bitte auch hier, wo Sie mit Funktionen nahezu gleiche Code-Passagen auslagern können.
 
 === Feedback Alpers, Ende ===
+
+Einige Code-Passagen aus Shuffle und MausLosgelassen wurden in versetzeSteine() ausgelagert.
+If-elseif Bedinungen wurden in Switch/Case umgewandelt.
 */

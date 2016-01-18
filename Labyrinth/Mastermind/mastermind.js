@@ -95,6 +95,7 @@ function zeigeLoesung()
 {
 	for(var i=0;i<4;i++)
 	{
+		/*
 		if(zLoesung[i]==0){zMainCtx.drawImage(zMainBild,0,0,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 		else if(zLoesung[i]==1){zMainCtx.drawImage(zMainBild,50,0,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 		else if(zLoesung[i]==2){zMainCtx.drawImage(zMainBild,100,0,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
@@ -103,6 +104,8 @@ function zeigeLoesung()
 		else if(zLoesung[i]==5){zMainCtx.drawImage(zMainBild,50,50,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 		else if(zLoesung[i]==6){zMainCtx.drawImage(zMainBild,0,100,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
 		else if(zLoesung[i]==7){zMainCtx.drawImage(zMainBild,50,100,50,50,400+i*(zGroesse+10),250,(zGroesse-5),(zGroesse-5));}
+		*/
+		zeichneKugel(400+i*(zGroesse+10),250,zLoesung[i]);
 	}
 	zMainCtx.fillStyle="black";
 	zMainCtx.font="30px Arial"
@@ -129,6 +132,7 @@ function Kugel(pX, pY, pFarbe)
 }
 Kugel.prototype.draw=function()
 {   
+	/*
 	if(this.zFarbe==0){zMainCtx.drawImage(zMainBild,0,0,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //blau
 	else if(this.zFarbe==1){zMainCtx.drawImage(zMainBild,50,0,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //rot
 	else if(this.zFarbe==2){zMainCtx.drawImage(zMainBild,100,0,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //gelb
@@ -137,6 +141,8 @@ Kugel.prototype.draw=function()
 	else if(this.zFarbe==5){zMainCtx.drawImage(zMainBild,50,50,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //d-rot
 	else if(this.zFarbe==6){zMainCtx.drawImage(zMainBild,0,100,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //lila
 	else if(this.zFarbe==7){zMainCtx.drawImage(zMainBild,50,100,50,50,this.zX,this.zY,(zGroesse-5),(zGroesse-5));} //orange
+	*/
+	zeichneKugel(this.zX,this.zY,this.zFarbe)
 };
 Kugel.prototype.enthaehlt=function(pX,pY)
 {
@@ -232,27 +238,28 @@ function reiheAuswerten()
 	
 	if(zKugelnWeiss==4)
 	{
-		zGameOver=true;
+		
 		zGewonnen=true;
-		zMainCtx.fillStyle="red";
-		zMainCtx.font="50px Arial"
-		zMainCtx.textBaseLine='top';
-		zMainCtx.fillText("You won!",100,200);
-		zeigeLoesung();
+		spielende("You won!");
 		
 	}
 	if(zReihe<9)
 	{zReihe++;}
 	else if(zReihe==9)
 	{
-		zGameOver=true;
-		zMainCtx.fillStyle="red";
-		zMainCtx.font="50px Arial"
-		zMainCtx.textBaseLine='top';
-		zMainCtx.fillText("You lost!",100,200);
-		zeigeLoesung();
+		spielende("You lost!");
 	}
   }
+}
+
+function spielende(text)
+{
+	zGameOver=true;
+	zMainCtx.fillStyle="red";
+	zMainCtx.font="50px Arial"
+	zMainCtx.textBaseLine='top';
+	zMainCtx.fillText(text,100,200);
+	zeigeLoesung();
 }
 
 function zeichneKugel(pX,pY,pFarbe)
@@ -366,4 +373,10 @@ Sicherheit irgendwo Fehler machen.
 Funktion ausgelagert werden sollten, um die Fehleranfälligkeit zu reduzieren und die Wartbarkeit zu verbessern.
 
 === Feedback Alpers, Ende ===
+
+Für die Funktionen zeichneKugel, draw und zeigeLoesung wurde nun jeweils die Funktion zeichneKugel verwendet. 
+Ja, ein Array in dieser Funktion wäre praktisch, ist allerdings nicht möglich, da die x,y-Koordinaten für die 
+Bildabschnitte, die Aufgerufen werden, keine Ordnung haben. 
+
+zKugelnWeiss==4 und zReihe==9 wurde in die Funktion spielende(text) ausgelagert.
 */
