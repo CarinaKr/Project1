@@ -264,7 +264,7 @@ function spielende(text)
 
 function zeichneKugel(pX,pY,pFarbe)
 {
-	if(pFarbe==0){zMainCtx.drawImage(zMainBild,0,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //blau
+	/*if(pFarbe==0){zMainCtx.drawImage(zMainBild,0,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //blau
 	else if(pFarbe==1){zMainCtx.drawImage(zMainBild,50,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //rot
 	else if(pFarbe==2){zMainCtx.drawImage(zMainBild,100,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //gelb
 	else if(pFarbe==3){zMainCtx.drawImage(zMainBild,150,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //gruen
@@ -273,7 +273,31 @@ function zeichneKugel(pX,pY,pFarbe)
 	else if(pFarbe==6){zMainCtx.drawImage(zMainBild,0,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //lila
 	else if(pFarbe==7){zMainCtx.drawImage(zMainBild,50,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //orange
 	else if(pFarbe==8){zMainCtx.drawImage(zMainBild,150,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //weiss
-	else if(pFarbe==9){zMainCtx.drawImage(zMainBild,150,50,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //schwarz
+	else if(pFarbe==9){zMainCtx.drawImage(zMainBild,150,50,50,50,pX,pY,(zGroesse-5),(zGroesse-5));} //schwarz*/
+	
+	switch(pFarbe)
+	{
+		case 0: 
+			zMainCtx.drawImage(zMainBild,0,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//blau
+		case 1: 
+			zMainCtx.drawImage(zMainBild,50,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//rot
+		case 2: 
+			zMainCtx.drawImage(zMainBild,100,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//gelb
+		case 3: 
+			zMainCtx.drawImage(zMainBild,150,0,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//gruen
+		case 4: 
+			zMainCtx.drawImage(zMainBild,0,50,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//d-gruen
+		case 5: 
+			zMainCtx.drawImage(zMainBild,50,50,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//d-rot
+		case 6: 
+			zMainCtx.drawImage(zMainBild,0,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//lila
+		case 7: 
+			zMainCtx.drawImage(zMainBild,50,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//orange
+		case 8: 
+			zMainCtx.drawImage(zMainBild,150,100,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//weiss
+		case 9: 
+			zMainCtx.drawImage(zMainBild,150,50,50,50,pX,pY,(zGroesse-5),(zGroesse-5));break;	//schwarz
+	}
 }
 
 function restart()
