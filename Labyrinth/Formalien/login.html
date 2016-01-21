@@ -1,33 +1,73 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link href="design.css" type="text/css" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+	
+	h1 {
+	font-size: 28px;
+	color: #ff0000;
+	}
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
+	
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	
+	}
 
-		<title>Labyrinth_login</title>
-	</head>
+</style>
+<title>Labyrinth_login</title>
+<img src="banner.png" width="104" height="90" alt="Banner">
 
-	<body>
-		<h1>Labyrinth</h1>
-		<h2>Login</h2>
- 	<div id="erste_spalte_login"> 
- 		<form>	
- 			<label for="username">Username: <br/>
- 				<input type="text" id="username" name="username"> 
- 			</label> <br/><br/>
- 			<label for="pw">Passwort:<br/>
- 				<input id="pw" name="pw"> 
- 			</label>  <br/><br/>
- 			<button type="submit" id="submit">login</button
- 		</form>
- 	</div>
+</head>
 
-	<div id="zweite_spalte_login"> 
-		<p>Noch nicht angemeldet? </p>
-		<a href="# registrieren"> 
-			<button type="submit" id="submit">Registrier dich hier!
-			</button>
-		</a>
-	</div>
-	</body>
+<body>
+<h1>Labyrinth</h1>
+<h2>Login</h2>
+ <form> 
+ 	<label for="username">Username: <br/>
+ 		<input type="text" id="username" name="username"> 
+ 	</label> <br/><br/>
+ 	<label for="pw">Passwort:<br/>
+ 		<input id="pw" name="pw"> 
+ 	</label>  <br/><br/>
+ </form>
+
+<div> 
+<button onclick='einloggen()'>login</button>
+<script type="text/javascript" src='login.js'></script>
+<p>Noch nicht angemeldet? <a href="registrieren.html"> <button  id="submit">Registrier dich hier!</button>
+</a></p>
+</div>
+
+</body>
 </html>
+<!--
+=== Feedback Alpers, jan 18 ===
+
+Leider immer noch HTML 4.01.
+Keinerlei erkennbare Strukturierung für die Anwendung.
+CSS ist im HTML-Dokument enthalten, obwohl genau die gleichen Definitionen für praktisch alle HTML-Dokumente verwendet werden sollen.
+
+=== Feedback Alpers, Ende ===
+-->

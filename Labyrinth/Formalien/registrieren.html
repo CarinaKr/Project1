@@ -1,36 +1,81 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link href="design.css" type="text/css" rel="stylesheet">
-		<title>Labyrinth_registrieren</title>
-	</head>
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
 
-	<body>
-		<h1>Labyrinth </h1>
-		<h2> Registrierung </h2>
-		
-		<form> 
- 			<label for="username">Username: <br/>
- 				<input type="text" id="username" name="username"> 
- 			</label> <br/><br/>
- 			<label for="vorname">Vorname: <br/>
- 				<input type="text" id="vorname" name="vorname"> 
- 			</label> <br/><br/>
- 			<label for="nachname">Nachname: <br/>
- 				<input type="text" id="nachname" name="nachname"> 
- 			</label> <br/><br/>
- 			<label for="mail">Mailadresse: <br/>
- 				<input type="text" id="mail" name="mail"> 
- 			</label> <br/><br/>
- 			<label for="pw">Passwort:<br/>
- 				<input id="pw" name="pw"> 
- 			</label>  <br/><br/>
- 			<label for="pw">Passwort wiederholen:<br/>
- 				<input id="pww" name="pww"> <br/>
- 			</label>  <br/><br/>
+	h1 {
+	font-size: 28px;
+	color: #ff0000;
+	}
+	
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
+	
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	}
+
+</style>
+<title>Labyrinth_registrieren</title>
+<img src="banner.png" width="104" height="90" alt="Banner">
+
+</head>
+
+<body>
+<h1>Labyrinth </h1>
+<h2> Registrierung </h2>
+ <form> 
+ 	<label for="username">Username: <br/>
+ 		<input type="text" id="username" name="username"> 
+ 	</label> <br/><br/>
+ 	<label for="vorname">Vorname: <br/>
+ 		<input type="text" id="vorname" name="vorname"> 
+ 	</label> <br/><br/>
+ 	<label for="nachname">Nachname: <br/>
+ 		<input type="text" id="nachname" name="nachname"> 
+ 	</label> <br/><br/>
+ 	<label for="mail">Mailadresse: <br/>
+ 		<input type="text" id="mail" name="mail"> 
+ 	</label> <br/><br/>
+ 	<label for="pw">Passwort:<br/>
+ 		<input id="pw" name="pw"> 
+ 	</label>  <br/><br/>
+ 	<label for="pw">Passwort wiederholen:<br/>
+ 		<input id="pww" name="pww"> <br/>
+ 	</label>  <br/><br/>
  	
- 			<button type="submit" id="submit">registrieren</button>
- 		</form>
- 	</body>
+ 	<button type="submit" id="submit">registrieren</button>
+ </form>
+ 
+
+</body>
 </html>
+<!--
+=== Feedback Alpers, jan 18 ===
+
+Leider immer noch HTML 4.01.
+Keinerlei erkennbare Strukturierung für die Anwendung.
+CSS ist im HTML-Dokument enthalten, obwohl genau die gleichen Definitionen für praktisch alle HTML-Dokumente verwendet werden sollen.
+
+=== Feedback Alpers, Ende ===
+-->

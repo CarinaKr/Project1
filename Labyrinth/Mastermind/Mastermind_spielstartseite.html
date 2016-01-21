@@ -1,39 +1,81 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link href="design.css" type="text/css" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+	
+	h1 {
+	font-size: 28px;
+	color: #ff0000;
+	}
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
 
-		<title>Mastermind</title>
-	</head>
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	
+	}
 
-	<body>
-		<h1>Labyrinth</h1>
 
-		<div id="column-1">
-			<h2>Mastermind</h2>
-			<p>So funktioniert's: </p>
-			<div class="box">
-				<p>Spielregeln Mastermind</p>
-			</div>
-			<div class="box">
-				<p>Regel Regel Regel</p>
-			</div>
-			<div class="box">
-				<p>Text Text Text</p>
-			</div>
-		</div> <br/>
+	
 
-		<div >
-			<a href="Mastermind"> 
-				<button type="submit" id="submit">Mastermind spielen
-				</button>
-			</a> </br> </br>
-			<a href="labyrinth"> 
-				<button type="submit" id="submit"> Zurück zum Labyrinth
-				</button>
-			</a> 
-		</div>
+</style>
+
+<title>Mastermind</title>
+<img src="banner.png" width="104" height="90" alt="Banner">
+</head>
+
+
+
+
+
+<body>
+<h1>Labyrinth</h1>
+
+<div id="column-1">
+<h2>Mastermind</h2>
+<p>So funktioniert's: </p>
+<div class="box"><p>
+				Ziel es Spieles ist es den geheimen Farbcode zu knacken.  <br>
+				Der Code besteht aus vier der acht auszuwählenden Farben.<br>
+				Beginne bei der untersten Reihe und setze vier der Farben in die vier Kästchen. Danach klicke auf "Check Row".<br>
+				Nun erscheinen rechts neben dem Spielfeld schwarze und weiße Kreise. <br>
+				Ein weißer Kreis bedeutet du hast eine richige Farbe auf dem richtigen Platz.<br>
+				Ein schwarzer Kreis bedeutet du hast eine richtige Farbe auf dem falschen Platz.<br>
+				Du hast zehn Versuche um den richtigen Code herauszufinden.<br>
+				
+				</p></div>
+<div class="box"><p>Viel Erfolg!</p></div>
+<div class="box"><p></p></div>
+
+</div> <br/>
+
+<div >
+<a href="Mastermind.html"> <button type="submit" id="submit">Mastermind spielen</button>
+</a> </br> </br>
+<a href="../Labyrinth.html"> <button type="submit" id="submit"> Zurück zum Labyrinth</button>
+</a> 
+</div>
+
 
 </body>
 </html>

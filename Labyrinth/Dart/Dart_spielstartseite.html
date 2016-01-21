@@ -1,41 +1,91 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-	<meta charset="UTF-8">
-	<link href="design.css" type="text/css" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<style> 
+	img {
+  	width: 100%; 
+  	height: auto;
+	}
+	
+	body {
+	margin: 10px auto;
+  	max-width: 60em;
+  	font-family: sans-serif;
+  	color: #008080;
+	}
+	
+	h1 {
+	font-size: 28px;
+	color: #ff0000;
+	}
+	
+	h2 {
+	font-size: 24px;
+	}
+	
+	p {
+	font-size: 18px;
+	}
 
-	<title>Dart</title>
+	button{
+    }
+	#submit{
+    background-color: #cccccc;
+	
+	}
+
+
+	
+
+</style>
+
+<title>Dart</title>
+<img src="banner.png" width="104" height="90" alt="Banner">
 </head>
 
 
+
+
+
 <body>
-	<header>
-		<img src="labyrinth.banner.png" width="104" height="90" alt="Banner">
-	<header/>
+<h1>Labyrinth</h1>
 
-	<h1>Labyrinth</h1>
+<div id="column-1">
+<h2>Dart</h2>
+<p>So funktioniert's: </p>
+<div class="box"><p>Das Ziel ist es mindestens 20 Punkte zu erreichen. <br>
+								Du hast 3 Pfeile. <br>
+								Der Pfeil beginnt am oberen Rand und fällt nach unten, bis du eine Maustaste drueckst.<br>
+								Mit der linken Maustaste drehst du den Pfeil gegen den Uhrzeigersinn. Mit der rechten 
+								Maustaste drehst du den Pfeil mit dem Uhrzeigersinn. <br>
+								Dies ist auch möglich während der Pfeil fliegt.<br>
+								Triffts du das Weiße der Scheibe, bekommst du einen Punkt. Triffst du das Gelbe, bekommst du
+								10 Punkte.<br></p></div>
+<div class="box"><p></p></div>
+<div class="box"><p></p></div>
 
-	<div id="column-1">
-		<h2>Dart</h2>
-		<p>So funktioniert's: </p>
-		<div class="box"><p>Spielregeln Dart</p>
-		</div>
-		<div class="box"><p>Regel Regel Regel</p>
-		</div>
-		<div class="box"><p>Text Text Text</p>
-		</div>
-	</div> <br/>
+</div> <br/>
 
-	<div >
-		<a href="dart"> 
-			<button type="submit" id="submit">Dart spielen
-			</button>
-		</a> </br> </br>
-		<a href="labyrinth"> 
-			<button type="submit" id="submit"> Zurück zum Labyrinth
-			</button>
-		</a> 
-	</div>
-	
+<div >
+<a href="Dart.html"> <button  id="submit">Dart spielen</button>
+</a> </br> </br>
+<a href="../Labyrinth.html"> <button  id="submit"> Zurück zum Labyrinth</button>
+</a> 
+</div>
+
+
 </body>
 </html>
+<!--
+=== Feedback Alpers, jan 18 ===
+
+Leider immer noch HTML 4.01.
+Keinerlei erkennbare Strukturierung für die Anwendung.
+CSS ist im HTML-Dokument enthalten, obwohl genau die gleichen Definitionen für praktisch alle HTML-Dokumente verwendet werden sollen.
+Keine Einrückungen z.B. per Tabulator-Taste, sodass kaum erkennbar ist, wo Container beginnen und enden, bzw.
+welche Container in anderen Containern enthalten sind.
+
+=== Feedback Alpers, Ende ===
+-->
+Johanna Halfmann: Diese Version ist ersetzt durch Dart.html 
