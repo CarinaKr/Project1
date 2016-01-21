@@ -1,122 +1,60 @@
 <!doctype html>
 <html lang=de>
 
-<head> 
+	<head>
+		<meta charset="UTF-8">
+		<link href="design.css" type="text/css" rel="stylesheet">
+		<title>Labyrinth</title>
+	</head>
 
-<meta charset="UTF-8">
-
-<style> 
-	img {
-  	width: 100%; 
-  	height: auto;
-	}
-	
-	body {
-  	max-width: 60em;
-  	font-family: sans-serif;
-  	color: #008080;
-	}
-	
-	h1 {
-	font-size: 28px;
-	color: #ff0000;
-	}
-	
-	h2 {
-	font-size: 24px;
-	}
-	
-	p {
-	font-size: 24px;
-	color: #008080;
-	}
-
-	button{
-    }
-	.move{
-	background-color: #FFFFFF; 
-    color: #008080;
-    font-size: 20px;
-    height: 50px; width: 75px;
-	
-	}
-	
-	button{
-    }
-	.ctrl{
-	background-color: #FFFFFF; 
-    color: #008080;
-    font-size: 20px;
-	height: 50px; width: 150px;
-	}
-
-	
-
-</style>
-<title>Labyrinth</title>
-
-</head>
-
-
-<body bgcolor=#dcdcdc>
+<body bgcolor=#cccccc>
 	
  	<table>
- 	<tr> 
+ 	 	<tr> 
  		<td width='800px' height='600px' valign=top > 
-		<p> Labyrinth </p>
+ 		<p> Labyrinth </p>
  			<div id='game_object' style='position: relative'>
 				<canvas width='800px' height='600px' id='background_canvas' style='background:#6495ed; position:absolute; top:0px; left:0px;'></canvas>
 				<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 			</div>
-
+			
  		</td>
-		
-		
- 	
-		<td>
+ 			
+ 		<td>
  		<tr></tr>
  		<tr></tr>
  		<tr></tr>
  		</td>
-		
  		<td> 
+ 		
  			<table>
 				<tr>
 				<tr> </br> </br> </br> </br>  
 				</tr>
-				<tr>
-					<td></td><td> <button type="button" class="move" onclick='oben()' >vor</button> </td><td></td> 
+					<td></td> <td><button type="button" id="move" onclick='oben()'>vor</button></td> <td></td> 
 			
 				</tr>
 				<tr>
-					<td><button type="button" class="move" onclick='links1()' >links</button></td>
-					<td><button type="button" class="move" id="enter" onclick='enter()'  >enter</button></td>
-					<td><button type="button" class="move" onclick='rechts()' >rechts</button></td>
+					<td><button type="button" id="move" onclick='links1()'>links</button></td>
+					<td><button type="button" id="move" onclick='enter()'>enter</button></td>
+					<td><button type="button" id="move" onclick='rechts()'>rechts</button></td>
 				</tr>
 				<tr>
-					<td></td><td><button type="button" class="move" onclick='unten()' >runter</button></td><td></td>
+					<td></td><td><button type="button" id="move" onclick='unten()'>runter</button></td><td></td>
 				</tr>
+				
 			</table>
  			
 		</td>
 				
  	</tr>
  	</table>
-	
-	<button type="button" class="ctrl" onclick='reset()' >Zurücksetzen</button>
-	<button type="button" class="ctrl" onclick='win()' >for admin</button>
-	<a href="../welcome.html"> <button type="button" class="ctrl"> Logout</button>
+ 		<button type="button" id="ctrl" onclick='reset()'>Zurücksetzen</button>
+		<button type="button" id="ctrl" onclick='win()'>for admin</button>
+		<a href="link.login"> <button type="button" id="ctrl"> Logout</button>
 		</a>
-	
+		
+
 	<script type="text/javascript" src='labyrinth.js'></script>
 </body>
 </html>
-
-<!-- 
-=== Feedback Alpers, Dez 1 ===
-
-Ziel: Ein eigenständiger HTML5-Teil, Arbeitsaufwand > 50 Stunden.
-Stand: HTML5 fehlt, Arbeitsaufwand < 3 Stunden.
-
-=== Feedback Alpers, Ende ===
--->
