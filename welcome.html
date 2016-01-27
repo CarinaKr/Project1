@@ -1,100 +1,45 @@
 <!DOCTYPE HTML>
-<html>
+<html lang=de>
 <head>
-<meta charset="UTF-8">
-<style> 
-	img {
-  	width: 100%; 
-  	height: auto;
-	}
-	
-	body {
-	margin: 10px auto;
-  	max-width: 60em;
-  	font-family: sans-serif;
-  	color: #008080;
-	}
-	
-	h1 {
-	font-size: 28px;
-	color: #ff0000;
-	}
-	
-	h2 {
-	font-size: 24px;
-	}
-	
-	p {
-	font-size: 18px;
-	}
-
-	button{
-    }
-	#submit{
-    background-color: #cccccc;
-	
-	}
-
-	#erste_spalte {
-	
-	width: 720px;
-	float:left;
-	}
-	#zweite_spalte {
-
-	margin-left: 760px;
-	width: 300px;
-	}
-
-	
-
-</style>
-
-<title>Labyrinth_welcome</title>
-<img src="banner.png" width="104" height="90" alt="Banner">
+	<meta charset=UTF-8>
+	<link href="design.css" type="text/css" rel="stylesheet">
+	<title>Labyrinth_welcome</title>
 </head>
 
-
-
-
-
 <body>
-<h1>Labyrinth</h1>
 
-<div id="erste_spalte">
-<h2>Herzlich willkommen im Labyrinth. </h2>
-<p>So funktioniert's: </p>
-<div class="box"><p>Du bist im Labyrinth gefangen. Um es verlassen zu können bzw. ins nächste Level zu gelangen, musst du möglichst viele Spiele gewinnen.</p></div>
-<div class="box"><p>Du musst dich durch verschiedene Räume spielen um aus dem Labyrinth zu entkommen.
-Alle verfügbaren Räume sind rot markiert, in ihnen erwartet dich ein kleines Spiel. Wenn du es gewinnst, wird der nächste Raum freigeschaltet. <br/>
-Solltest du verlieren, kannst du es noch einmal probieren oder einen anderen Raum wählen. <br/>
-Bewegen kannst du dich mit den Buttons oder mithilfe der Pfeiltasten auf der Tastatur. <br/>
-Die Räume betrittst du mit dem "Enter"-Button oder der "Enter"-Taste auf der Tastatur.
-</p></div>
-<div class="box"><p>Viel Spaß!</p></div>
-</div> <br/>
+	<header>
+		<img src="labyrinth.banner.png" width="104" height="90" alt="Banner">
+	<header/>
+	<main> 
+		<h1>Labyrinth</h1> 
+	</main> 
+	<footer> <!-- eventuell --> </footer>
+	
+	
+	<article id="erste_spalte">
+		<h2>Herzlich willkommen im Labyrinth. </h2>
+		<p>So funktioniert's: </p>
+	<section class="box">
+		<p>Du bist im Labyrinth gefangen. Um es verlassen zu können bzw. ins nächste Level zu gelangen, musst du möglichst viele Spiele gewinnen.</p>
+		</section>
+	<section class="box">
+		<p>Du musst dich durch verschiedene Räume spielen um aus dem Labyrinth zu entkommen.
+		Alle verfügbaren Räume sind rot markiert, in ihnen erwartet dich ein kleines Spiel. Wenn du es gewinnst, wird der nächste Raum freigeschaltet. Solltest du verlieren, kannst du es noch einmal probieren oder einen anderen Raum wählen.</p>
+		</section>
+	<section class="box">
+	<p>Viel Spaß!</p>
+	</section>
+	</article> <br>
 
-<div id="zweite_spalte">
-<h2>Was möchtest du machen?</h2>
+	<article id="zweite_spalte" >
+	<h2>Was möchtest du machen?</h2>
 
-<a href="Labyrinth/Formalien/login.html"> <button type="submit" id="submit"> login</button>
-</a> </br> </br>
-<a href="Labyrinth/Formalien/registrieren.html"> <button type="submit" id="submit"> Registrieren</button>
-</a> 
-</div>
-
+	<a href="../login.html"> <button type="submit" id="submit"> Login </button>
+	</a> <br> <br>
+	<a href="../registrieren.html"> <button type="submit" id="submit"> Registrieren </button>
+	</a> 
+	</article>
 
 </body>
 </html>
-
-<!--
-=== Feedback Alpers, jan 18 ===
-
-Leider immer noch HTML 4.01.
-Keinerlei erkennbare Strukturierung für die Anwendung.
-CSS ist im HTML-Dokument enthalten, obwohl genau die gleichen Definitionen für praktisch alle HTML-Dokumente verwendet werden sollen.
-Keine Einrückungen z.B. per Tabulator-Taste, sodass kaum erkennbar ist, wo Container beginnen und enden, bzw.
-welche Container in anderen Containern enthalten sind.
-
-=== Feedback Alpers, Ende ===
--->
