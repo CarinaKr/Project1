@@ -29,7 +29,7 @@ function init()
 		 ;
 	  })();
 	
-			
+	resizeGame();		
 	zHintergrundCanvas=document.getElementById('background_canvas');
 	zHintergrundCtx=background_canvas.getContext('2d');
 	zMainCanvas=document.getElementById('main_canvas');
