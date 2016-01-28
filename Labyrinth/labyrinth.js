@@ -56,7 +56,7 @@ function init()
 	  Dez 2
 	  */
 	
-			
+	resizeGame();		
 	zHintergrundCanvas=document.getElementById('background_canvas');
 	zHintergrundCtx=background_canvas.getContext('2d');
 	zMainCanvas=document.getElementById('main_canvas');
@@ -81,6 +81,7 @@ function init()
 	ladeBilder();
 	ladeSpielfeld();
 	loop();
+	
 }
 
 function mouse(e)
