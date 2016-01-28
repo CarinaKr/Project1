@@ -4,14 +4,15 @@
 	<head>
 		<title>Mastermind</title>
 		<meta charset=utf-8>
+		<link href="../design.css" type="text/css" rel="stylesheet">
 	</head>
 
 	<body>
-	  <button onclick='restart()'>Restart</button>
-	  <button onclick='reiheAuswerten()'>Check Row</button>
-	  <button onclick='backToTheMaze()'>Back to the Maze</button>
+	  <button class="submit" onclick='restart()'>Zurücksetzen</button>
+	  <button class="submit" onclick='reiheAuswerten()'>Check Row</button>
+	  <button class="submit" onclick='backToTheMaze()'>Zurück zum Labyrinth</button>
 	  
-		<div id='game_object' style='position: relative'>
+		<div id='game_object'>
 			<canvas width='800px' height='600px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 		</div>

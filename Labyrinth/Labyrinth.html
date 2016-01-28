@@ -13,7 +13,9 @@
  	 	<tr> 
  		<td width='800px' height='600px' valign=top > 
  		
+
  				<h2> Labyrinth </h2>
+
  			<div id='game_object' style=''>
 				<canvas width='800px' height='600px' id='background_canvas' style='background:#6495ed;'></canvas>
 				<canvas width='800px' height='600px' id='main_canvas' style='position:absolute;top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
@@ -43,16 +45,19 @@
 					<td></td><td><button type="button" class="move" onclick='unten()'>runter</button></td><td></td>
 				</tr>
 				
-			</table> 			
+			</table>
+ 			
 		</td>
+				
  	</tr>
  	</table>
  	 		
  		<button type="button" class="ctrl" onclick='reset()'>Zurücksetzen</button>
 		<button type="button" class="ctrl" onclick='win()'>for admin</button>
 		<a href="../welcome.html"> <button type="button" class="ctrl"> Logout</button>
-		</a>		
-
+		</a>
+		
+	<script type="text/javascript" src='resizeGame.js'></script>
 	<script type="text/javascript" src='labyrinth.js'></script>
 </body>
 </html>

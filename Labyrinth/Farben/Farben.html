@@ -4,11 +4,12 @@
 	<head>
 		<title>Farbspiel</title>
 		<meta charset=utf-8>
+		<link href="../design.css" type="text/css" rel="stylesheet">
 	</head>
 
 	<body>
-	  <button class="submit" onclick='restart()'>Restart</button>
-	  <button class="submit" onclick='backToTheMaze()'>Back to the Maze</button><br>
+	  <button class="submit" onclick='restart()'>Zurücksetzen</button>
+	  <button class="submit" onclick='backToTheMaze()'>Zurück zum Labyrinth</button><br>
 	  <br>
 	  <button class="submit" onclick='blau()'>Blau</button>
 	  <button class="submit" onclick='rot()'>Rot</button>
@@ -18,8 +19,7 @@
 	  <button class="submit" onclick='hellblau()'>Hellblau</button>
 	  <br>
 	  
-	  <!-- <span id='x'></span> X <span id='y'></span> Y -->
-		<div id='game_object' style='position: relative'>
+		<div id='game_object'>
 			<canvas width='800px' height='680px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='680px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 		</div>

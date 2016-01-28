@@ -4,13 +4,14 @@
 	<head>
 		<title>Space Invaders</title>
 		<meta charset=utf-8>
+		<link href="../design.css" type="text/css" rel="stylesheet">
 	</head>
 
 	<body>
-	  <button onclick='restart()'>Restart</button>
-	  <button onclick='backToTheMaze()'>Back to the Maze</button>
-	  <!--<span id='x'></span> X <span id='y'></span> Y -->
-		<div id='game_object' style='position: relative'>
+	  <button class="submit" onclick='restart()'>Zurücksetzen</button>
+	  <button class="submit" onclick='backToTheMaze()'>Zurück zum Labyrinth</button>
+
+		<div id='game_object'>
 			<canvas width='800px' height='600px' id='background_canvas' style='background:black; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 		</div>
