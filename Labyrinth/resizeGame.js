@@ -13,8 +13,8 @@ function resizeGame() {
         gameArea.style.width = (0.9*newWidth) + 'px';
     } else {
         newHeight = newWidth / widthToHeight;
-        gameArea.style.width = (0.9* newHeight) + 'px';
-        gameArea.style.height = (0.9*newWidth) + 'px';
+        gameArea.style.width = (0.9* newWidth) + 'px';
+        gameArea.style.height = (0.9*newHeight) + 'px';
     }
     
     //gameArea.style.marginTop = (-newHeight / 2) + 'px';
