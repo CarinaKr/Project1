@@ -10,7 +10,7 @@
 	  <button onclick='restart()'>Restart</button>
 	  <button onclick='reiheAuswerten()'>Check Row</button>
 	  <button onclick='backToTheMaze()'>Back to the Maze</button>
-	  <!--<span id='x'></span> X <span id='y'></span> Y -->
+	  
 		<div id='game_object' style='position: relative'>
 			<canvas width='800px' height='600px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
@@ -19,24 +19,3 @@
 	</body>
 
 </html>
-
-<!--
-=== Feedback Alpers, jan 18 ===
-
-Genau wie bei den Beschreibungsseiten haben Sie letztlich hier nichts anderes getan, als ein und dasselbe HTML-Dokument
-wieder und wieder zu kopieren und minimale Details auszutauschen. Wenn Sie als MedieninformatikerIn mit HTML arbeiten,
-dann überlegen Sie sich dagegen, welche unterschiedlichen (!) Ansichten es geben sollen.
-
-Und für jede dieser Ansichten erstellen Sie ein HTML-Dokument.
-
-Alles, was innerhalb einer Ansicht geändert werden soll wird mittels einer anderen Programmiersprache ausgetauscht. Diese Sprache wird zur Pogrammierung des 
-Controllers im Sinne des Model-View-Controller-Patterns genutzt, also hier PHP oder JS.
-
-In anderen Worten: Sie haben ungefähr dreißig HTML-Dokumente für vermutlich zwei Ansichten erstellt. Ändern Sie das bitte ab.
-
-Erstellen Sie außerdem ein CSS-Dokument, das Sie dann aus den HTML-Dokumenten aufrufen.
-
-Und vor allem: Nutzen Sie HTML 5 mit allem, was es sinnvolles anbietet. Da gibt es auch für Ihr Projekt eine Menge Möglichkeiten.
-
-=== Feedback Alpers, Ende ===
--->
