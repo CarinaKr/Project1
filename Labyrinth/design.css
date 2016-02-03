@@ -78,9 +78,13 @@ button{
 		right:3%;
 	}
 	
-	#background_canvas,#main_canvas
+#background_canvas,#main_canvas
 	{
 		position:absolute;
 		width:100%;
 		height:100%;
+	}
+	
+.tabelle{
+	width: 100%;
 	}
