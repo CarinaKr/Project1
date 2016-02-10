@@ -58,3 +58,53 @@
 	<script type="text/javascript" src='labyrinth.js'></script>
 </body>
 </html>
+
+<!--
+=== Feedback Alpers, Feb 10 ===
+
+Das ist leider reines HTML 4.01.
+Außerdem war eine Vorgabe, dass die Anwendung systemunabhängig sein soll. Das ist hier nicht
+der Fall, denn Sie habe eine Vorgabe für die Auflösung des Displays erstellt. Genauso sind Vorgaben
+über die Attribute width und height nicht systemunabhängig.
+
+Die Grundidee, die Sie im Projekt umsetzen sollten war die, dass Sie mit HTML die Struktur
+der Anwendung (bzw. der Spiele) vorgeben, und dass die Funktionalität bzw. dynamische
+Änderungen an den Elementen der Struktur durch eine Sprache wie PHP oder JS durchgeführt wird.
+Was Sie hier dagegen tun ist, eine statische Struktur aufzubauen, in die ein Canvas eingefügt wird,
+in dem in JS eine eigene dynamische und funktionale Struktur programmiert wird.
+
+Wie ich sehe, haben sie außerordentlich viele HTML-Dokumente erstellt. Doch das ist nicht Ihre
+Aufgabe: Es genügt vollkommen, wenn Sie anhand weniger HTML-Dokumente (selbst zwei oder drei könnten ausreichen)
+zeigen, dass Sie im Stande sind, im Sinne des MVC das Modell mit HTML 5 umsetzen.
+
+Diese (und die folgenden Punkte meines Feedbacks) gelten im Grunde für alle HTML-Dokumente,
+die Sie inzwischen hochgeladen haben:
+
+- In HTML5 verwenden wir nicht mehr die <button>-Container, sondern <input>-Container.
+- Verwenden Sie für die Strukturierung der Seite bitte die neuen Container, die wir in der
+Veranstaltung besprochen haben und die von entsprechend entwickelten Browsern genutzt werden,
+um die Anordnung der Elemten durchzuführen. In logout.html und registrieren.html haben Sie das 
+beispielsweise getan.
+- Der Standardtyp für den <script>-Container ist JavaScript. Dennoch zu programmieren, dass die Dateien
+vom Typ JavaScript sind, ist typische für HTML4 und hat in HTML5 nichts zu suchen.
+- Das style-Attribut sollte nur dann verwendet werden, wenn es gar nicht anders geht.
+- CSS-Dokumente werden jetzt mit deutlich weniger Code eingebunden als bei HTML4.
+- Bis auf sehr wenige Ausnahmen ist die Verwendung des <div>-Containers ebenfalls ein ganz klares Zeichen
+dafür, dass HTML4 verwendet wird.
+- Wenn Sie Audio-, Video- und Bild-Dateien einbinden, dann gibt es jetzt einen neuen Container, in den
+auch <img>-Container eingefügt werden sollen. Sehen Sie sich die entsprechenden Passagen im Skript an
+und setzen Sie sie bitte um.
+- Wenn Sie (wie bei registrieren.html) eine Möglichkeit für NutzerInnen schaffen, um sich anzumelden,
+dann sollten Sie die Eingaben auch irgendwo weiter verarbeiten lassen. Das ist leider noch nicht der
+Fall.
+
+Bezüglich der Verzeichnisstruktur ein Hinweis: Wenn Sie sich die Spiele- und Spiele_startseite-Dokumente genau
+ansehen, werden Sie feststellen, dass die durchgehend die gleiche Struktur haben. Die einfachste
+Variante wäre hier, mittels Auslagerung der unterschiedlichen Teile in PHP-Dateien und das Einfügen
+mittels include() aus dem knappen Dutzend nahezu identischer Dateien eine Datei abzuleiten, in die dann
+die jeweils unterschiedlichen Inhalte eingefügt werden.
+
+Wenn sie hier die jeweiligen Texte in einem Dictionary abspeichern, können Sie außerdem
+einen wesentlich besseren Überblick über die Bestandteile des Gesamtpakets bekommen.
+
+=== Feedback Alpers, Ende === 
