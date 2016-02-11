@@ -518,6 +518,22 @@ function resetSpiel()
 	   Diese Werte scheinen für mich keine Regelmäßigkeit zu verfolgen.
 	   Wenn Sie einen Vorschlag hätten, wäre das sehr hilfreich.
 	*/
+	
+	/*
+	=== Feedback Alpers, Feb 10 ===
+	
+	Das wäre recht simpel: Der Methodenaufruf lautet ja jeweils
+	
+		localStorage.setItem(String a, String b);
+	
+	also müssten Sie die Argumente a und b nur noch in einem 2-dimensionalen Array
+	ablegen und dann im Rahmen einer Schleife über dieses Array iterieren.
+	
+	Das hätte auch wieder den Vorteil, dass Sie das Programm später problemlos erweitern könnten,
+	da Sie ja nur neue Werte ins Array einfügen, aber die Schleife wie gehabt nutzen könnten.
+	
+	=== Feedback Alpers, Ende ===
+	*/
 }
 
 function storage(e)
