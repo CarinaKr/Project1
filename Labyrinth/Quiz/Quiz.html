@@ -8,16 +8,16 @@
 	</head>
 
 	<body>
-	  <button class="submit" onclick='restart()'>Zurücksetzen</button>
-	  <button class="submit" onclick='backToTheMaze()'>Zurück zum Labyrinth</button>
+	  <input type="button" value="Zurücksetzen" class="submit" onclick='restart()'>
+	  <input type="button" value="Zurück zum Labyrinth" class="submit" onclick='backToTheMaze()'>
 	  
 	  
 	  		<div id='game_object'>
 			<canvas width='800px' height='600px' id='background_canvas' style='background:white; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 		</div>
-		<script type="text/javascript" src='../resizeGame.js'></script>
-		<script type="text/javascript" src='quiz.js'></script>
+		<script src='../resizeGame.js'></script>
+		<script src='quiz.js'></script>
 	</body>
 
 </html>

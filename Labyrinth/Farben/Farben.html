@@ -8,23 +8,23 @@
 	</head>
 
 	<body>
-	  <button class="submit" onclick='restart()'>Zurücksetzen</button>
-	  <button class="submit" onclick='backToTheMaze()'>Zurück zum Labyrinth</button><br>
+	  <input type="button" class="submit" value="Zurücksetzen" onclick='restart()'>Zurücksetzen</button>
+	  <input type="button" class="submit" value="Zurück zum Labyrinth" onclick='backToTheMaze()'>Zurück zum Labyrinth</button><br>
 	  <br>
-	  <button class="submit" onclick='blau()'>Blau</button>
-	  <button class="submit" onclick='rot()'>Rot</button>
-	  <button class="submit" onclick='gelb()'>Gelb</button>
-	  <button class="submit" onclick='gruen()'>Gruen</button>
-	  <button class="submit" onclick='orange()'>Orange</button>
-	  <button class="submit" onclick='hellblau()'>Hellblau</button>
+	  <input type="button" class="submit" value="Blau" onclick='blau()'>
+	  <input type="button" class="submit" value="Rot" onclick='rot()'>
+	  <input type="button" class="submit" value="Gelb" onclick='gelb()'>
+	  <input type="button" class="submit" value="Grün" onclick='gruen()'>
+	  <input type="button" class="submit" value="Orange" onclick='orange()'>
+	  <input type="button" class="submit" value="Hellblau" onclick='hellblau()'>
 	  <br>
 	  
 		<div id='game_object'>
 			<canvas width='800px' height='680px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
 			<canvas width='800px' height='680px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
 		</div>
-		<script type="text/javascript" src='../resizeGame.js'></script>
-		<script type="text/javascript" src='farben.js'></script>
+		<script src='../resizeGame.js'></script>
+		<script src='farben.js'></script>
 	</body>
 
 </html>

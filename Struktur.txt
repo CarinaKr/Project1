@@ -1,0 +1,28 @@
+Labyrinth Struktur
+
+welcome.html
+	login.html (User "abc" PW "abc")
+	registrieren.html 	(Daten werden nicht übermittelt; 
+						Seite dient nur der Vervollständigung der Login-Option;
+						Logisch wäre es, wenn danach Labyrinth.html geöffnet wird)
+		
+		Labyrinth.html
+			-Game_spielstartseite.html (Spielerläuterungen)
+				Game.html (Spiel)
+					Labyrinth.html (zurück)
+					Game.html (Neustart)
+				Labyrinth.html (zurück)
+		
+		
+			if (ein oder mehrere Räume sind verschlossen)
+				gewonnen.html
+					logout.html 
+					labyrinth.html
+	
+			if (letztes Game gewonnen)
+				fertig.html 
+					logout
+					Labyrinth.html (neues Labyrinth starten)
+			
+			logout.html
+				login.html
