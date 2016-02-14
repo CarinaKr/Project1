@@ -14,7 +14,7 @@ welcome.html
 				Labyrinth.html (zurück)
 		
 		
-			if (ein oder mehrere Räume sind verschlossen)
+			if (ein oder mehrere Räume sind noch verschlossen)
 				gewonnen.html
 					logout.html 
 					labyrinth.html

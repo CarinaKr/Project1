@@ -5,45 +5,50 @@
 		<link href="design.css" type="text/css" rel="stylesheet">
 		<title>Labyrinth</title>
 	</head>
-<body bgcolor=#cccccc>	
- 	<table class="tabelle">
- 	 	<tr> 
- 		<td width='800px' height='600px' valign=top >  			
- 			<div id='game_object' style=''>
+	<body bgcolor=#cccccc>	
+		 <header>
+ 		</header>
+ 		<main>
+ 			<table class="tabelle">
+ 	 		<tr> 
+ 			<td width='800px' height='600px' valign=top >  			
+ 				<article id='game_object' style=''>
 				<canvas width='800px' height='600px' id='background_canvas' style='background:#6495ed;'></canvas>
 				<canvas width='800px' height='600px' id='main_canvas' style='position:absolute;top:0px; left:0px;' onmousemove='mouse(event)'>Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
-			</div>			
- 		</td> 			
- 		<td>
- 		<tr></tr>
- 		<tr></tr>
- 		<tr></tr>
- 		</td>
- 		<td>  		
- 			<table>
-				<tr>
-				<tr> </br> </br> </br> </br>  
-				</tr>
-					<td></td> <td><input type="button" value="oben" class="move" onclick='oben()'></td> <td></td> 
+				</article>			
+ 			</td> 			
+ 			<td>
+ 			<tr></tr>
+ 			<tr></tr>
+ 			<tr></tr>
+ 			</td>
+ 			<td>  		
+ 				<table>
+					<tr>
+					<tr> </br> </br> </br> </br>  
+					</tr>
+						<td></td> <td><input type="button" value="oben" class="move" onclick='oben()'></td> <td></td> 
 			
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 					<td><input type="button" value="links" class="move" onclick='links1()'> </td>
 					<td><input type="button" value="enter" class="move" id="enter" onclick='enter()'> </td>					
 					<td><input type="button" value="rechts" class="move" onclick='rechts()'> </td>
-				</tr>
-				<tr>
-					<td></td><td><input type="button" value="unten" class="move" onclick='unten()'></td><td></td>
-				</tr>
-			</table> 			
-		</td>				
- 	</tr>
- 	</table>	 		
- 		<input type="button"  value="Zurücksetzen" class="ctrl" onclick='reset()'>
-		<input type="button" value="for Admin" class="ctrl" onclick='win()'>
-		<a href="../welcome.html"> <input type="button" value="Logout" class="ctrl">
-		</a>		
-	<script src='resizeGame.js'></script>
-	<script src='labyrinth.js'></script>
-</body>
+					</tr>
+					<tr>
+						<td></td><td><input type="button" value="unten" class="move" onclick='unten()'></td><td></td>
+					</tr>
+				</table> 			
+			</td>				
+ 			</tr>
+ 			</table>	 		
+ 			<input type="button"  value="Zurücksetzen" class="ctrl" onclick='reset()'>
+			<input type="button" value="for Admin" class="ctrl" onclick='win()'>
+				<a href="../welcome.html"> 
+					<input type="button" value="Logout" class="ctrl">
+				</a>		
+			<script src='resizeGame.js'></script>
+			<script src='labyrinth.js'></script>
+		</main>
+	</body>
 </html>

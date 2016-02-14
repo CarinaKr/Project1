@@ -1,31 +1,30 @@
 <!doctype html>
 <html>
-
 	<head>
 		<title>Farbspiel</title>
 		<meta charset=utf-8>
 		<link href="../design.css" type="text/css" rel="stylesheet">
 	</head>
-
 	<body>
-	  <input type="button" class="submit" value="Zurücksetzen" onclick='restart()'>Zurücksetzen</button>
-	  <input type="button" class="submit" value="Zurück zum Labyrinth" onclick='backToTheMaze()'>Zurück zum Labyrinth</button><br>
-	  <br>
-	  <input type="button" class="submit" value="Blau" onclick='blau()'>
-	  <input type="button" class="submit" value="Rot" onclick='rot()'>
-	  <input type="button" class="submit" value="Gelb" onclick='gelb()'>
-	  <input type="button" class="submit" value="Grün" onclick='gruen()'>
-	  <input type="button" class="submit" value="Orange" onclick='orange()'>
-	  <input type="button" class="submit" value="Hellblau" onclick='hellblau()'>
-	  <br>
-	  
-		<div id='game_object'>
-			<canvas width='800px' height='680px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
-			<canvas width='800px' height='680px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
-		</div>
-		<script src='../resizeGame.js'></script>
-		<script src='farben.js'></script>
+		<header>
+		</header>
+		<main>
+	 		<input type="button" class="submit" value="Zurücksetzen" onclick='restart()'>
+	  		<input type="button" class="submit" value="Zurück zum Labyrinth" onclick='backToTheMaze()'>
+	  		<br/>
+	  		<input type="button" class="submit" value="Blau" onclick='blau()'>
+	  		<input type="button" class="submit" value="Rot" onclick='rot()'>
+	  		<input type="button" class="submit" value="Gelb" onclick='gelb()'>
+	  		<input type="button" class="submit" value="Grün" onclick='gruen()'>
+	  		<input type="button" class="submit" value="Orange" onclick='orange()'>
+	  		<input type="button" class="submit" value="Hellblau" onclick='hellblau()'>
+	  		<br/>
+			<article id='game_object'>
+				<canvas width='800px' height='680px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
+				<canvas width='800px' height='680px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
+			</article>
+			<script src='../resizeGame.js'></script>
+			<script src='farben.js'></script>
+		</main>
 	</body>
-
 </html>
-

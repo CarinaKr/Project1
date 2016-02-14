@@ -6,18 +6,19 @@
 		<meta charset=utf-8>
 		<link href="../design.css" type="text/css" rel="stylesheet">
 	</head>
-
 	<body>
-	  <input type="button" class="submit" value="Zurüksetzen" onclick='restart()'>
-	  <input type="button" class="submit" value="Zurück zum Labyrinth" onclick='backToTheMaze()'>
+		<header>
+		</header>
+		<main>
+			<input type="button" class="submit" value="Zurüksetzen" onclick='restart()'>
+	  		<input type="button" class="submit" value="Zurück zum Labyrinth" onclick='backToTheMaze()'>
 	  
-
-		<div id='game_object'>
-			<canvas width='800px' height='600px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
-			<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
-		</div>
-		<script src='../resizeGame.js'></script>
-		<script src='dart.js'></script>
+			<article id='game_object'>
+				<canvas width='800px' height='600px' id='background_canvas' style='background:gray; position:absolute; top:0px; left:0px;'></canvas>
+				<canvas width='800px' height='600px' id='main_canvas' style=' position:absolute; top:0px; left:0px;' >Leider kann dieser Browser das Spiel nicht ausführen!</canvas>
+			</article>
+			<script src='../resizeGame.js'></script>
+			<script src='dart.js'></script>
+		</main>
 	</body>
-
 </html>
