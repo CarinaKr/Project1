@@ -534,6 +534,11 @@ function resetSpiel()
 	
 	=== Feedback Alpers, Ende ===
 	*/
+	/*
+	Ja, darüber hatte ich auch schon nachgedacht, allerdings sehe ich keine Vorteil darin die Werte in einem Array zu speichern. 
+	Das würde nicht weniger Code bedeuten und auch die Übersichtlichkeit nicht verbessern. 
+	Zudem würde es keinen Unterschied machen, ob ich bei einer Erweiterung das Array erweitern würde, oder direkt meinen Aufruf von LocalStorage.
+	*/
 }
 
 function storage(e)

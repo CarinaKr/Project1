@@ -252,6 +252,8 @@ function loop()
 		{
 			zGewonnen=true;
 			zMainCtx.fillText("You won!",100,300);
+			localStorage.setItem("SnakeGewonnen","true");
+			window.open('../Formalien/gewonnen.html',"_self");
 		}
 		else
 		{

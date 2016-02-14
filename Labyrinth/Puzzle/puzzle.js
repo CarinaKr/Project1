@@ -319,6 +319,8 @@ function loop()
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
 		zMainCtx.fillText("You won!",100,200);
+		localStorage.setItem("PuzzleGewonnen","true");
+		window.open('../Formalien/gewonnen.html',"_self");
 	}
 
 	requestaframe(loop);

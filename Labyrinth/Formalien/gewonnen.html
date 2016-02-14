@@ -14,12 +14,21 @@
 			<p>Du hast das Spiel gewonnen und dir damit einen neuen Raum erspielt!</p><br/>
 	
 			<h2>Was möchtest du machen?</h2>
-			<a href="../Labyrinth.html"> 
-				<input value="Zurück zum Labyrinth" type="submit" class="submit">
-			</a> <br/><br/>		
+			<!--<a href="../Labyrinth.html"> -->
+				<input value="Zurück zum Labyrinth" class="submit" onclick='back()'>
+			<!--</a> <br/><br/>
 			<a href="logout.html"> 
-				<input value="Logout" type="submit" class="submit"> 
-			</a> 
+				<input value="Logout" class="submit"> 
+			</a> -->
 		</main>
 	</body>
+	
+	<script>
+		function back()
+		{
+			close();
+		}
+	
+	</script>
+	
 </html>

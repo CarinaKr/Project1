@@ -101,7 +101,7 @@ function resetSpielfeld()
 	hatFrage[2].zAntwortF3="Bruecken>3000";
 	
 	hatFrage[3].zFrage="Frage 3: Die Davidswache ist das ... Polizeirevier Europas.";
-	hatFrage[3].zAntwortRichtig="kleinse";
+	hatFrage[3].zAntwortRichtig="kleinste";
 	hatFrage[3].zAntwortF1="teuerste";
 	hatFrage[3].zAntwortF2="älteste";
 	hatFrage[3].zAntwortF3="neuste";
@@ -314,7 +314,11 @@ function loop()
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
 		if(zGewonnen)
-		{zMainCtx.fillText("You won!",100,200);}
+		{
+			zMainCtx.fillText("You won!",100,200);
+			localStorage.setItem("QuizGewonnen","true");
+			window.open('../Formalien/gewonnen.html',"_self");
+		}
 		else
 		{zMainCtx.fillText("You lost!",100,200);}
 	}

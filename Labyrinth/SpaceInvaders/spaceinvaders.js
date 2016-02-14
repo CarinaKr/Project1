@@ -691,7 +691,11 @@ function loop()
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
 		if(zGewonnen)
-		{zMainCtx.fillText("You won!",100,200);}
+		{
+			zMainCtx.fillText("You won!",100,200);
+			localStorage.setItem("SpaceInvadersGewonnen","true");
+			window.open('../Formalien/gewonnen.html',"_self");
+		}
 		else
 		{zMainCtx.fillText("You lost!",100,200);}
 	}

@@ -246,6 +246,8 @@ function pruefeGameOver()
 		zMainCtx.font="50px Arial"
 		zMainCtx.textBaseLine='top';
 		zMainCtx.fillText("You won!",250,200);
+		localStorage.setItem("FarbenGewonnen","true");
+		window.open('../Formalien/gewonnen.html',"_self");
 	}
 	
 	if(zZuege==0&&zGewonnen==false)
