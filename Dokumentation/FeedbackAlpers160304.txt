@@ -1,4 +1,3 @@
 Feedback Alpers, 4. März 2016 bezügl. des HTML-Teils
 
-Leider 
-
+Leider haben Sie an noch nicht die Dinge überarbeitet, auf die es mir zentral ankam. Momentan programmieren Sie Masse statt Klasse. Als Beispiel habe ich ein Verzeichnis ins Projekt eingefügt, in dem ich exemplarisch einige Codefragmente eingefügt habe.
