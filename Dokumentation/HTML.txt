@@ -37,4 +37,12 @@ Erstellen Sie außerdem ein CSS-Dokument, das Sie dann aus den HTML-Dokumenten a
 
 Und vor allem: Nutzen Sie HTML 5 mit allem, was es sinnvolles anbietet. Da gibt es auch für Ihr Projekt eine Menge Möglichkeiten.
 
-=== Feedback Alpers, Ende ===
+
+=== Finale Überarbeitung gemäß Feedback ==
+
+Wie Anfang März besprochen haben wir eine spielstartseite_all.php erstellt, die entsprechend des Spiels 
+entsprechende Inhalte (Head, header und Main) einbindet. Beispielhaft haben wir den header_all.php erstellt 
+um zu zeugen, wie die Verknüpfung aussehen soll.
+Der Vollständigkeit wegen, sollten nun für die einzelnen Spiele php-Dateien hinterlegt 
+werden, in denen die besagten head und main-Inhalte zu finden sind.
+
