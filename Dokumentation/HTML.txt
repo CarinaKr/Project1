@@ -1,3 +1,7 @@
+==================================
+=== Ursprüngliche Beschreibung ===
+==================================
+
 Anwendungen, mit HTML:
 
 Die HTML-Anteile der Mini-Games werden vermutlich eher kürzer ausfallen und lediglich einen Canvas (der dann in PHP/
@@ -8,7 +12,9 @@ Daher werden die HTML-Anteile der Mini-Games vermutlich sich auch sehr ähnlich 
 Der HTML-Anteile der Main Methode, also des eigentlichen Labyrintes wird etwas umfangreicher und wir neben einem
 Canvas als Spielbrett und Buttons zur Spielsteuerung auch Links zu den einzelnen Mini-Games enthalten.
 
+==============================
 === Feedback Alpers, dez 2 ===
+==============================
 
 Da Sie den HTML-Teil entwickeln, sollten Sie sich überlegen, was Sie alles in HTML realisieren können.
 Beispielsweise könnten Sie Seiten für einen Log-In, eine Registrierung erstellen, auch wenn Sie
@@ -20,7 +26,9 @@ Ihnen bietet, anstatt sich darauf zurück zu ziehen, dass ja alles im Canvas pas
 Dinge in der Veranstaltung ausführlich besprochen. Sonst wird das,
 was Sie erstellen sehr weit von einem ausreichenden Anteil an einem Projekt sein.
 
+===============================
 === Feedback Alpers, jan 18 ===
+===============================
 
 Leider haben Sie letztlich nichts anderes getan, als ein und dasselbe HTML-Dokument
 wieder und wieder zu kopieren und minimale Details auszutauschen. Wenn Sie als MedieninformatikerIn mit HTML arbeiten,
@@ -46,3 +54,13 @@ um zu zeugen, wie die Verknüpfung aussehen soll.
 Der Vollständigkeit wegen, sollten nun für die einzelnen Spiele php-Dateien hinterlegt 
 werden, in denen die besagten head und main-Inhalte zu finden sind.
 
+===================================
+=== Feedback Alpers, 2016-05-19 ===
+===================================
+
+Im letzten Feedback hatte ich folgendes (in der Datei spielstartseite_all.html) notiert und das ist mir wirklich wichtig, denn wenn Sie diese Aufgabe umsetzen und dabei insbesondere mit einem Dictionary in PHP arbeiten, werden Sie feststellen, dass Ihre Anwendung (abgesehen von den Bilddateien) aus ganz wenigen Dateien besteht:
+
+(Feedback vom 20. April, auf das ich mich beziehe:)
+Das ist ein guter erster Schritt. Jetzt fehlt noch, dass die Dateien auch da sind, wo sie hier stehen. Dazu müssten also head_..., header_... und main_... Dateien in diesem Verzeichnis sein.
+
+Bitte entscheiden Sie außerdem noch, welche Datei spielstartseite_all.html oder .php verwendet werden soll.
